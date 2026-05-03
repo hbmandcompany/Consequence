@@ -69,7 +69,7 @@ export function Marketplace() {
       <Container>
         <div className="flex items-end justify-between gap-8 mb-10">
           <div>
-            <Eyebrow label="Marketplace · consequence.cc" />
+            <Eyebrow label="Marketplace · Trending" />
             <h2 className="font-display text-[clamp(28px,3vw,44px)] leading-[1.05] tracking-tight mt-4 max-w-[20ch]">
               Sourced from your network. Priced by the room.
             </h2>

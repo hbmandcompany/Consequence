@@ -29,8 +29,8 @@ export function SiteFooter() {
           <FooterCol
             title="Surfaces"
             items={[
-              { label: "consequence.cc", href: "/cc", note: "For You" },
-              { label: "consequence.software", href: "/software", note: "Engine" },
+              { label: "Trending", href: "/cc", note: "For You" },
+              { label: "WorkSpace", href: "/#software", note: "Engine" },
               { label: "Studio", href: "/cc#studio" },
               { label: "Marketplace", href: "/cc#market" },
             ]}
@@ -38,16 +38,16 @@ export function SiteFooter() {
           <FooterCol
             title="Engine"
             items={[
-              { label: "Inference", href: "/software#inference" },
-              { label: "Simulation", href: "/software#simulation" },
-              { label: "Digital Twins", href: "/software#twins" },
-              { label: "Architecture", href: "/software#architecture" },
+              { label: "Inference", href: "/#inference" },
+              { label: "Simulation", href: "/#simulation" },
+              { label: "Digital Twins", href: "/#twins" },
+              { label: "Architecture", href: "/#architecture" },
             ]}
           />
           <FooterCol
             title="House"
             items={[
-              { label: "Hated By Many LLC", href: "#" },
+              { label: "HBM & Company LLC", href: "#" },
               { label: "Press", href: "#" },
               { label: "Careers", href: "#" },
               { label: "Privacy & Terms", href: "#" },
@@ -60,7 +60,7 @@ export function SiteFooter() {
             What happens next.
           </div>
           <div className="text-[10px] tabular uppercase tracking-[0.2em] text-ink/40 whitespace-nowrap">
-            © {year} Hated By Many LLC · Amsterdam · Warsaw · Brooklyn
+            © {year} HBM & Company LLC · Amsterdam · Warsaw · Brooklyn
           </div>
         </div>
       </div>

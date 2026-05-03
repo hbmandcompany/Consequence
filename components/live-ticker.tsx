@@ -17,7 +17,7 @@ export function LiveTicker() {
   const repeated = [...items, ...items, ...items];
   return (
     <div className="fade-x-mask overflow-hidden">
-      <div className="flex animate-ticker py-5" style={{ width: "max-content" }}>
+      <div className="ticker-marquee flex py-5" style={{ width: "max-content" }}>
         {repeated.map((it, i) => (
           <div
             key={i}
@@ -33,15 +33,6 @@ export function LiveTicker() {
           </div>
         ))}
       </div>
-      <style jsx>{`
-        .animate-ticker {
-          animation: ticker-x 60s linear infinite;
-        }
-        @keyframes ticker-x {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-33.3333%); }
-        }
-      `}</style>
     </div>
   );
 }

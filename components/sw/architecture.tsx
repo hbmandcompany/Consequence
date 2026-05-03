@@ -8,7 +8,7 @@ const layers = [
     n: "Application",
     id: "07",
     tag: "Surfaces",
-    desc: "consequence.cc · consequence.software · partner APIs · admin tools",
+    desc: "Trending · WorkSpace · partner APIs · admin tools",
     accent: "ink",
   },
   {

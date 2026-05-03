@@ -7,14 +7,22 @@ import clsx from "clsx";
 import { Mark } from "./mark";
 
 const links = [
-  { href: "/", label: "Index" },
-  { href: "/cc", label: "consequence.cc", suffix: "For You" },
-  { href: "/software", label: "consequence.software", suffix: "Engine" },
-];
+  { href: "/", label: "Home", suffix: undefined as string | undefined, active: (p: string, h: string) => p === "/" && h !== "#software" },
+  { href: "/cc", label: "Trending", suffix: "For You", active: (p: string) => p === "/cc" },
+  { href: "/#software", label: "WorkSpace", suffix: "Engine", active: (p: string, h: string) => p === "/" && h === "#software" },
+] as const;
 
 export function SiteNav() {
   const pathname = usePathname();
+  const [hash, setHash] = useState("");
   const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    setHash(typeof window !== "undefined" ? window.location.hash : "");
+    const onHash = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -39,16 +47,13 @@ export function SiteNav() {
             Consequence
           </span>
           <span className="hidden md:inline-block text-[10px] tabular tracking-[0.18em] uppercase text-ink/40 ml-2 pl-3 border-l border-ink/10">
-            Hated By Many
+            HBM & Company
           </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
           {links.map((l) => {
-            const active =
-              l.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(l.href);
+            const active = l.active(pathname, hash);
             return (
               <Link
                 key={l.href}
@@ -82,7 +87,7 @@ export function SiteNav() {
             Sign in
           </Link>
           <Link
-            href="/software"
+            href="/#contact"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink text-snow-50 text-[12px] tracking-tight hover:bg-ink/90 transition-colors"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-tiff animate-breathe" />

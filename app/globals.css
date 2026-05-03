@@ -101,7 +101,23 @@ html, body {
   background-position: 0 center;
 }
 
-/* Number tabular */
+/* DAW illustration — playhead scrub */
+.daw-playhead-scrub {
+  animation: daw-scrub 11s ease-in-out infinite alternate;
+}
+@keyframes daw-scrub {
+  from { transform: translateX(0); }
+  to { transform: translateX(88px); }
+}
+
+@keyframes ticker-marquee-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.3333%); }
+}
+.ticker-marquee {
+  animation: ticker-marquee-x 60s linear infinite;
+}
+
 .tabular {
   font-variant-numeric: tabular-nums;
 }

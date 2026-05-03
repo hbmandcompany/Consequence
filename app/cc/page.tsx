@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
 import { ForYouFeed } from "@/components/cc/for-you";
-import { Container, Display, Eyebrow, FadeUp, Pill, Section } from "@/components/ui";
+import {
+  Container,
+  Display,
+  Eyebrow,
+  FadeUp,
+  Pill,
+  Section,
+} from "@/components/ui";
 import { CCTopBar } from "@/components/cc/topbar";
 import { Marketplace } from "@/components/cc/marketplace";
 import { ProducerSpotlight } from "@/components/cc/spotlight";
 import { Wallet } from "@/components/cc/wallet";
 
 export const metadata: Metadata = {
-  title: "consequence.cc — For You",
+  title: "consequence.cc — Trending · For You",
   description:
-    "Producer-first studio, marketplace and wallet. Tuned to who you are — and who you're about to become.",
+    "Producer-first studio, marketplace and wallet at consequence.cc. Tuned to who you are — and who you&rsquo;re about to become.",
 };
 
 export default function CCPage() {
@@ -32,9 +39,9 @@ export default function CCPage() {
               </Display>
               <p className="mt-8 max-w-[52ch] text-[16px] text-ink/65 leading-[1.6]">
                 The room has been listening. Twelve sessions resumed in the
-                background, three collaborators noticed your last bounce, and
-                the                 marketplace surfaced two stems your model thinks you&rsquo;ll
-                fall in love with at 3:14 a.m.
+                background, three collaborators noticed your last bounce, and the
+                marketplace surfaced two stems your model thinks you&rsquo;ll fall in
+                love with at 3:14 a.m.
               </p>
             </div>
             <CCTopBar />
@@ -53,7 +60,7 @@ export default function CCPage() {
             <Eyebrow label="The room knows" />
             <div className="mt-8 grid grid-cols-12 gap-8 items-end">
               <div className="col-span-12 md:col-span-7">
-                <Display>
+                <Display as="h2">
                   Tuned to you.
                   <br />
                   <span className="italic text-ink/80">Quietly. Continuously.</span>
@@ -61,9 +68,9 @@ export default function CCPage() {
               </div>
               <div className="col-span-12 md:col-span-5">
                 <p className="text-[15px] text-ink/65 leading-[1.7]">
-                  Every play, skip, save, and split feeds back into your twin.
-                  Your studio rearranges itself overnight. Your feed is never
-                  the same shape twice. The work moves with you.
+                  Every play, skip, save, and split feeds back into your twin. Your
+                  studio rearranges itself overnight. Your feed is never the same
+                  shape twice. The work moves with you.
                 </p>
               </div>
             </div>

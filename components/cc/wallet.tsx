@@ -8,7 +8,7 @@ const flows = [
   { t: "Antwerp Brushed Rhodes", who: "Sólveig Tinde — pack purchased", v: "− $38.00", k: "out" },
   { t: "Halls of Linen — pre-save royalties", who: "Network share, 412 listeners", v: "+ $84.40", k: "in" },
   { t: "Ownership transfer · Quiet Hours", who: "Solana mint — 0xA9…1F2", v: "+ $220.00", k: "in" },
-  { t: "Marketplace fee · this week", who: "Hated By Many · house cut", v: "− $46.12", k: "out" },
+  { t: "Marketplace fee · this week", who: "HBM & Company · house cut", v: "− $46.12", k: "out" },
 ];
 
 export function Wallet() {

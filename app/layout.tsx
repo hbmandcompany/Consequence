@@ -3,6 +3,7 @@ import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { HashScroll } from "@/components/hash-scroll";
 
 const sans = Inter({
   subsets: ["latin"],
@@ -24,9 +25,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Consequence — A real-time consequence engine",
+  title: "Consequence — Studio, marketplace & engine",
   description:
-    "Consequence Software is a real-time consequence engine for music, behavior, and markets. Built by Hated By Many.",
+    "Consequence Software: real-time consequence engine, Trending (studio & marketplace), and WorkSpace infrastructure — one experience. Built by HBM & Company.",
   metadataBase: new URL("https://consequence.software"),
   openGraph: {
     title: "Consequence",
@@ -44,6 +45,7 @@ export default function RootLayout({
     <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
       <body className="paper min-h-screen text-ink antialiased">
         <SiteNav />
+        <HashScroll />
         <main className="relative">{children}</main>
         <SiteFooter />
       </body>

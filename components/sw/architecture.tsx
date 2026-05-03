@@ -1,6 +1,16 @@
 "use client";
 
 import clsx from "clsx";
+import type { LucideIcon } from "lucide-react";
+import {
+  Disc3,
+  Layers,
+  Mic2,
+  Music2,
+  Radio,
+  Sparkles,
+  SquareStack,
+} from "lucide-react";
 import { useState } from "react";
 
 const layers = [
@@ -55,11 +65,70 @@ const layers = [
   },
 ];
 
+const payoutFlow = [
+  {
+    n: "01",
+    t: "Sunday Receipt",
+    d: "Voice note from the green room; hums sketched in, tempo tapped on a knee",
+    status: "Tracked",
+    txRef: "Sunday Receipt.logicx",
+    Icon: Mic2,
+  },
+  {
+    n: "02",
+    t: "Coast Permission",
+    d: "Guide bump hit the group chat; everyone has the same dirty board mix",
+    status: "Vaulted",
+    txRef: "Coast Permission.logicx",
+    Icon: Radio,
+  },
+  {
+    n: "03",
+    t: "Every Third Echo",
+    d: "Choir stacks printed in passes; breaths trimmed, the lift is all manual",
+    status: "Comping",
+    txRef: "Every Third Echo.logicx",
+    Icon: Layers,
+  },
+  {
+    n: "04",
+    t: "Your Ghost Wore My Coat",
+    d: "Two dates of the tour married on the timeline; one take leads, one shadows",
+    status: "Frozen",
+    txRef: "Your Ghost Wore My Coat.logicx",
+    Icon: SquareStack,
+  },
+  {
+    n: "05",
+    t: "Nothing but Ceiling",
+    d: "String lift mocked from MIDI; chairs arrive Thursday, bows marked in red",
+    status: "Printed",
+    txRef: "Nothing but Ceiling.logicx",
+    Icon: Music2,
+  },
+  {
+    n: "06",
+    t: "Match Strike",
+    d: "Count-offs staged for the full band pass; lights cue held on bar nine",
+    status: "Cued",
+    txRef: "Match Strike.logicx",
+    Icon: Sparkles,
+  },
+  {
+    n: "07",
+    t: "Borrowed Light",
+    d: "Last chorus recall printed back into the main session; rides copied by hand",
+    status: "Closed",
+    txRef: "Borrowed Light.logicx",
+    Icon: Disc3,
+  },
+] as const;
+
 export function ArchitectureDiagram() {
   const [hover, setHover] = useState<number | null>(null);
   return (
     <div className="grid grid-cols-12 gap-y-6 gap-x-8">
-      <div className="col-span-12 md:col-span-8">
+      <div className="col-span-12 md:col-span-8 order-2 md:order-1">
         <div className="bg-snow-0 border border-ink/10 overflow-hidden">
           {layers.map((l, i) => (
             <button
@@ -102,19 +171,18 @@ export function ArchitectureDiagram() {
         </div>
       </div>
 
-      <div className="col-span-12 md:col-span-4">
-        <div className="bg-snow-0 border border-ink/10 p-6 sticky top-24">
-          <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/45">
-            Event flow
+      <div className="col-span-12 md:col-span-4 order-1 md:order-2">
+        <div className="bg-snow-0 border border-ink/10 p-6 md:sticky md:top-24">
+          <div className="flex items-baseline justify-between gap-3">
+            <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/45">
+              Song projects
+            </div>
+            <div className="text-[10px] text-ink/35 tabular">Songs in flight · .logicx</div>
           </div>
-          <div className="mt-4 space-y-3 text-[13px] text-ink/80">
-            <Step n="01" t="Ingest" d="Ingestion endpoints validate & enrich" />
-            <Step n="02" t="Stream" d="Kafka — partitioned by entity, 3-replica" />
-            <Step n="03" t="Feature" d="Stateless workers compute derived features" />
-            <Step n="04" t="Twin update" d="Per-entity workers, in-order, transactional" />
-            <Step n="05" t="Inference" d="Triton — batched at 5–25ms, GPU-served" />
-            <Step n="06" t="Trigger" d="Simulation orchestrator fans out workflows" />
-            <Step n="07" t="Propagate" d="Outputs back into the bus as new state" />
+          <div className="mt-4 divide-y divide-ink/10 border-y border-ink/10">
+            {payoutFlow.map((row) => (
+              <PayoutTxRow key={row.n} {...row} />
+            ))}
           </div>
           <div className="mt-6 pt-5 border-t border-ink/10 grid grid-cols-2 gap-3 text-[11px] tabular uppercase tracking-[0.16em] text-ink/55">
             <div>
@@ -132,15 +200,48 @@ export function ArchitectureDiagram() {
   );
 }
 
-function Step({ n, t, d }: { n: string; t: string; d: string }) {
+const statusPillClass: Record<string, string> = {
+  Tracked: "bg-ink/8 text-ink/70",
+  Vaulted: "bg-gold/15 text-ink/75",
+  Comping: "bg-gold/25 text-ink/80",
+  Frozen: "bg-tiff/10 text-ink/80",
+  Printed: "bg-gold/20 text-ink/80",
+  Cued: "bg-ink/6 text-ink/55",
+  Closed: "bg-tiff/20 text-tiff",
+};
+
+function PayoutTxRow({
+  n,
+  t,
+  d,
+  status,
+  txRef,
+  Icon,
+}: {
+  n: string;
+  t: string;
+  d: string;
+  status: string;
+  txRef: string;
+  Icon: LucideIcon;
+}) {
+  const pill = clsx(
+    "inline-flex w-fit items-center rounded-full px-2 py-0.5 text-[9px] font-medium tabular uppercase tracking-[0.14em]",
+    statusPillClass[status] ?? "bg-ink/6 text-ink/55"
+  );
   return (
-    <div className="flex items-baseline gap-3 border-t border-ink/10 pt-3 first:border-t-0 first:pt-0">
-      <span className="text-[10px] tabular uppercase tracking-[0.18em] text-ink/40 w-6">
-        {n}
-      </span>
-      <div>
-        <div className="text-ink/90">{t}</div>
-        <div className="text-[12px] text-ink/55">{d}</div>
+    <div className="flex gap-3 py-4 first:pt-3 last:pb-3">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-ink/10 bg-snow-100 text-ink/55">
+        <Icon className="h-3.5 w-3.5" strokeWidth={1.5} aria-hidden />
+      </div>
+      <div className="min-w-0 flex-1 space-y-1.5">
+        <div className="text-[11px] tabular tracking-[0.12em] text-ink/40">{n}</div>
+        <div className="text-[13px] font-medium tracking-tight text-ink">{t}</div>
+        <div>
+          <span className={pill}>{status}</span>
+        </div>
+        <p className="text-[12px] leading-snug text-ink/55">{d}</p>
+        <div className="break-all pt-1 font-mono text-[11px] tracking-wide text-ink/50">{txRef}</div>
       </div>
     </div>
   );

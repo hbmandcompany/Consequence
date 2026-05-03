@@ -4,10 +4,10 @@ import { Mark } from "./mark";
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-ink/10 mt-32">
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-10 pt-20 pb-10">
+    <footer className="border-t border-ink/10 mt-0">
+      <div className="mx-auto max-w-[1480px] px-6 lg:px-10 py-16">
         <div className="grid grid-cols-12 gap-y-12 gap-x-8">
-          <div className="col-span-12 md:col-span-5">
+          <div className="col-span-12 lg:col-span-4">
             <div className="flex items-center gap-3">
               <Mark className="w-7 h-7 text-ink" />
               <span className="font-display text-2xl tracking-tight">Consequence</span>
@@ -26,41 +26,67 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <FooterCol
-            title="Surfaces"
-            items={[
-              { label: "Trending", href: "/cc", note: "For You" },
-              { label: "WorkSpace", href: "/#software", note: "Engine" },
-              { label: "Studio", href: "/cc#studio" },
-              { label: "Marketplace", href: "/cc#market" },
-            ]}
-          />
-          <FooterCol
-            title="Engine"
-            items={[
-              { label: "Inference", href: "/#inference" },
-              { label: "Simulation", href: "/#simulation" },
-              { label: "Digital Twins", href: "/#twins" },
-              { label: "Architecture", href: "/#architecture" },
-            ]}
-          />
-          <FooterCol
-            title="House"
-            items={[
-              { label: "HBM & Company LLC", href: "#" },
-              { label: "Press", href: "#" },
-              { label: "Careers", href: "#" },
-              { label: "Privacy & Terms", href: "#" },
-            ]}
-          />
+          <div className="col-span-12 lg:col-span-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-x-8 gap-y-10">
+              <FooterCol
+                title="Surfaces"
+                items={[
+                  { label: "Trending", href: "/cc", note: "For You" },
+                  { label: "WorkSpace", href: "/#software", note: "Engine" },
+                  { label: "Studio", href: "/cc#studio" },
+                  { label: "Marketplace", href: "/cc#market" },
+                  { label: "Feed", href: "/cc#feed" },
+                  { label: "Wallet", href: "/cc#wallet" },
+                ]}
+              />
+              <FooterCol
+                title="Engine"
+                items={[
+                  { label: "Inference", href: "/#inference" },
+                  { label: "Simulation", href: "/#simulation" },
+                  { label: "Digital Twins", href: "/#twins" },
+                  { label: "Architecture", href: "/#architecture" },
+                ]}
+              />
+              <FooterCol
+                title="Platform"
+                items={[
+                  { label: "Operators", href: "/#operators" },
+                  { label: "Scaling", href: "/#scaling" },
+                  { label: "Resilience", href: "/#resilience" },
+                  { label: "Contact", href: "/#contact" },
+                ]}
+              />
+              <FooterCol
+                title="Site"
+                items={[
+                  { label: "Home", href: "/#hero" },
+                  { label: "Manifesto", href: "/#manifesto" },
+                  { label: "Surfaces", href: "/#surfaces" },
+                  { label: "Scale", href: "/#scale" },
+                  { label: "Press", href: "/#press" },
+                  { label: "Closing", href: "/#closing" },
+                ]}
+              />
+              <FooterCol
+                title="House"
+                items={[
+                  { label: "HBM & Company", href: "#" },
+                  { label: "Press", href: "#" },
+                  { label: "Careers", href: "#" },
+                  { label: "Privacy & Terms", href: "#" },
+                ]}
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="mt-20 pt-8 border-t border-ink/10 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+        <div className="mt-16 pt-8 border-t border-ink/10 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
           <div className="font-display text-[clamp(64px,12vw,200px)] leading-[0.85] tracking-tightest-2 text-ink/90">
             What happens next.
           </div>
           <div className="text-[10px] tabular uppercase tracking-[0.2em] text-ink/40 whitespace-nowrap">
-            © {year} HBM & Company LLC · Amsterdam · Warsaw · Brooklyn
+            © {year} HBM & Company · Amsterdam · Warsaw · Brooklyn
           </div>
         </div>
       </div>
@@ -76,13 +102,13 @@ function FooterCol({
   items: { label: string; href: string; note?: string }[];
 }) {
   return (
-    <div className="col-span-6 md:col-span-2">
+    <div className="min-w-0">
       <div className="text-[10px] tabular uppercase tracking-[0.2em] text-ink/40 mb-5">
         {title}
       </div>
       <ul className="space-y-3">
         {items.map((it) => (
-          <li key={it.label} className="flex items-baseline gap-2">
+          <li key={`${title}-${it.label}`} className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
             <Link href={it.href} className="text-[14px] text-ink/80 hover:text-ink uline">
               {it.label}
             </Link>

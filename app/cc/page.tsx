@@ -54,7 +54,7 @@ export default function CCPage() {
       <ProducerSpotlight />
       <Wallet />
 
-      <Section className="py-32 border-t border-ink/10">
+      <Section id="tuned" className="py-32 border-t border-ink/10 scroll-mt-28">
         <Container>
           <FadeUp>
             <Eyebrow label="The room knows" />

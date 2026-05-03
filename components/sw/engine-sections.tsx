@@ -14,9 +14,12 @@ import {
 import { ArchitectureDiagram } from "@/components/sw/architecture";
 import { LiveMetrics } from "@/components/sw/live-metrics";
 import { CodeMonolith } from "@/components/sw/code-monolith";
+import { DigitalTwinsDashboard } from "@/components/sw/digital-twins-dashboard";
+import { InferenceMeetIllustration } from "@/components/sw/inference-meet-illustration";
+import { SimulationMpcIllustration } from "@/components/sw/simulation-mpc-illustration";
 import { ScalePath } from "@/components/sw/scale-path";
 
-/** Full WorkSpace / engine narrative — embedded on the homepage. */
+/** WorkSpace / engine narrative — embedded on the homepage. */
 export function EngineDeepDive() {
   return (
     <>
@@ -34,46 +37,42 @@ export function EngineDeepDive() {
 
 function SwHero() {
   return (
-    <Section
-      id="software"
-      className="pt-20 lg:pt-28 pb-24 overflow-hidden border-t border-ink/10 scroll-mt-28"
-    >
+    <Section id="software" className="scroll-mt-28 border-t border-ink/10 pt-20 pb-24 lg:pt-28 lg:pb-24 overflow-hidden">
       <Container>
         <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-end">
           <div className="col-span-12 lg:col-span-8">
             <div className="flex items-center gap-3 mb-8">
-              <Pill tone="gold">Engine</Pill>
+              <Pill tone="gold">Treasury</Pill>
               <span className="text-[11px] tabular tracking-[0.2em] uppercase text-ink/45">
-                WorkSpace · v 1.0
+                Reserve Bank · v 1.0
               </span>
             </div>
             <Display as="h2">
-              The engine
+              The ledger
               <br />
               underneath
               <br />
               <span className="italic text-ink/85">everything.</span>
             </Display>
             <Lede className="mt-10 max-w-[60ch]">
-              A Kubernetes-native, event-driven, GPU-accelerated substrate that
-              ingests behavior, decisions, performance and capital — and
-              answers, continuously and at industrial scale, the only question
-              that matters: <em>what happens next?</em>
+              A single banking core that ingests balances, rails, risk, policy and treasury positions — and
+              answers, in continuous time and at institutional scale, the only question that matters:{" "}
+              <em>what happens next?</em>
             </Lede>
 
-            <div className="mt-10 flex items-center gap-4">
+            <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="#architecture"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-ink text-snow-50 text-[13px] hover:bg-ink/90 transition-colors"
               >
-                Read the architecture
+                How the rails connect
                 <ChevronRight className="w-4 h-4" />
               </Link>
               <Link
                 href="#contact"
                 className="inline-flex items-center gap-2 text-[13px] uline text-ink"
               >
-                Talk to a platform engineer
+                Talk to treasury
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
@@ -94,23 +93,23 @@ function SwOverview() {
   const items = [
     {
       k: "Ingest",
-      v: "Kafka",
-      d: "Million-events-per-second nervous system. Schema-disciplined. Three-replica.",
+      v: "Writes",
+      d: "Entity-shaped records with atomic updates to one document at a time. Each change fans out to multiple replicas; nothing is admitted until enough copies acknowledge. Indexes warm asynchronously so ingestion stays ahead of reads.",
     },
     {
       k: "Predict",
-      v: "Triton",
-      d: "GPU inference at p99 < 50ms. Canary, shadow, auto-rollback.",
+      v: "Ledger",
+      d: "Balances live in accounts; movement is packaged as debits and credits that succeed entirely or roll back together. Executors process in parallel yet agree on a single ordering. Confirmations arrive quickly for operations; stronger finality gates exist when policy requires them.",
     },
     {
       k: "Forecast",
-      v: "Argo + Ray",
-      d: "Monte Carlo, agent-based, RL — scaled to 10,000 pods on demand.",
+      v: "Batch",
+      d: "Coordinated work spreads across fleets of ephemeral workers, then collapses into summarized outcomes pushed back into durable state—for stress paths, scenario libraries, and rehearsals beyond what an interactive API can carry.",
     },
     {
       k: "Remember",
-      v: "Twins",
-      d: "Living digital state of every modeled actor — probabilistic, queryable.",
+      v: "Reads",
+      d: "Projections fuse document writes and ledger movements into hot, queryable entity surfaces. Secondary indexes serve lookups; timestamps and lineage tie every snapshot to what produced it.",
     },
   ];
   return (
@@ -152,14 +151,14 @@ function Pillars() {
     {
       id: "inference",
       n: "Inference",
-      tag: "GPU · Triton · KServe · Ray Serve",
-      title: "Models that score reality, in real time.",
-      body: "Behavioral prediction, content ranking, virality scoring, anomaly detection, reward modelling. Multi-instance GPU partitioning, request batching at the millisecond, canary rollouts with shadow comparison and automatic rollback on regression.",
+      tag: "Presence · Shared context · Roles · Review queue",
+      title: "The room sees the same picture updating, not a snapshot from yesterday.",
+      body: "Live presence on shared workspaces, comments anchored to specific records and policy lines, and controlled invites so partners only infer what they are allowed to see. Proposals queue as reviewable diffs before they land in production; attribution rides every change so teams reconcile intent from the trail—not from side e‑mail.",
       bullets: [
-        "p99 < 50ms on production fleets",
-        "1067 req/s/GPU at 32-batch",
-        "MIG partitioning · 4–7 instances per H100",
-        "MLflow-tracked versions, traffic-shifted",
+        "Sub‑second presence across shared canvases and ledgers",
+        "Threads pinned to objects, balances, and wire instructions",
+        "Reviewer‑gated proposals with shadow comparison to live state",
+        "Exportable attribution log for internal and external audit",
       ],
     },
     {
@@ -202,10 +201,11 @@ function Pillars() {
             </Display>
           </div>
           <div className="col-span-12 md:col-span-5 text-[15px] text-ink/65 leading-[1.7]">
-            Inference says what is happening now. Simulation says what will
-            happen if we let it. Twins remember everything that has happened.
-            Each scales independently. Each fails independently. None of them
-            block the others.
+            Inference is the collaboration layer: shared context, presence, and
+            review before anything ships. Simulation says what will happen if we
+            let it. Twins remember everything that has happened. Each scales
+            independently. Each fails independently. None of them block the
+            others.
           </div>
         </div>
 
@@ -221,34 +221,60 @@ function Pillars() {
 
 function PillarRow({ p, index }: { p: Pillar; index: number }) {
   return (
-    <div id={p.id} className="grid grid-cols-12 gap-y-8 gap-x-8 bg-snow-0 border border-ink/10 p-8 lg:p-12 hover:border-ink/30 transition-colors duration-700 scroll-mt-28">
-      <div className="col-span-12 md:col-span-4">
-        <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/40">
-          0{index + 1} / 03
+    <div
+      id={p.id}
+      className="scroll-mt-28 border border-ink/10 bg-snow-0 p-8 transition-colors duration-700 hover:border-ink/30 lg:p-12"
+    >
+      <div className="grid grid-cols-12 gap-y-8 gap-x-8">
+        <div className="col-span-12 md:col-span-4">
+          <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/40">
+            0{index + 1} / 03
+          </div>
+          <div className="font-display text-[clamp(48px,5.4vw,80px)] leading-[1] tracking-tightest-2 mt-3">
+            {p.n}
+          </div>
+          <div className="text-[11px] tabular uppercase tracking-[0.18em] text-ink/45 mt-3">
+            {p.tag}
+          </div>
         </div>
-        <div className="font-display text-[clamp(48px,5.4vw,80px)] leading-[1] tracking-tightest-2 mt-3">
-          {p.n}
+        <div className="col-span-12 md:col-span-5">
+          <h3 className="font-display text-[clamp(24px,2.4vw,34px)] leading-[1.15] tracking-tight">
+            {p.title}
+          </h3>
+          <p className="mt-5 text-[15px] text-ink/65 leading-[1.7]">{p.body}</p>
         </div>
-        <div className="text-[11px] tabular uppercase tracking-[0.18em] text-ink/45 mt-3">
-          {p.tag}
+        <div className="col-span-12 md:col-span-3">
+          <ul className="space-y-3 border-l border-ink/15 pl-5">
+            {p.bullets.map((b) => (
+              <li key={b} className="flex items-start gap-2 text-[13px] text-ink/75">
+                <Zap className="mt-1 h-3 w-3 shrink-0 text-tiff-500" />
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-      <div className="col-span-12 md:col-span-5">
-        <h3 className="font-display text-[clamp(24px,2.4vw,34px)] leading-[1.15] tracking-tight">
-          {p.title}
-        </h3>
-        <p className="mt-5 text-[15px] text-ink/65 leading-[1.7]">{p.body}</p>
-      </div>
-      <div className="col-span-12 md:col-span-3">
-        <ul className="space-y-3 border-l border-ink/15 pl-5">
-          {p.bullets.map((b) => (
-            <li key={b} className="text-[13px] text-ink/75 flex items-start gap-2">
-              <Zap className="w-3 h-3 text-tiff-500 mt-1 shrink-0" />
-              <span>{b}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {p.id === "inference" ? (
+        <div className="mt-10 border-t border-ink/10 pt-10">
+          <div className="mx-auto max-w-5xl">
+            <InferenceMeetIllustration />
+          </div>
+        </div>
+      ) : null}
+      {p.id === "simulation" ? (
+        <div className="mt-10 border-t border-ink/10 pt-10">
+          <div className="mx-auto max-w-3xl">
+            <SimulationMpcIllustration />
+          </div>
+        </div>
+      ) : null}
+      {p.id === "twins" ? (
+        <div className="mt-10 border-t border-ink/10 pt-10">
+          <div className="mx-auto max-w-6xl">
+            <DigitalTwinsDashboard />
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -274,9 +300,7 @@ function Architecture() {
             surfaces. Each layer scales and fails on its own clock.
           </div>
         </div>
-        <FadeUp>
-          <ArchitectureDiagram />
-        </FadeUp>
+        <ArchitectureDiagram />
       </Container>
     </Section>
   );
@@ -284,7 +308,7 @@ function Architecture() {
 
 function CodeAndMetrics() {
   return (
-    <Section className="py-32 border-t border-ink/10">
+    <Section id="operators" className="py-32 border-t border-ink/10 scroll-mt-28">
       <Container>
         <div className="grid grid-cols-12 gap-y-12 gap-x-8">
           <div className="col-span-12 md:col-span-5">
@@ -319,7 +343,7 @@ function CodeAndMetrics() {
 
 function Scaling() {
   return (
-    <Section className="py-32 border-t border-ink/10">
+    <Section id="scaling" className="py-32 border-t border-ink/10 scroll-mt-28">
       <Container>
         <div className="flex items-end justify-between gap-8 mb-12">
           <div>
@@ -388,7 +412,7 @@ function Resilience() {
     },
   ];
   return (
-    <Section className="py-32 border-t border-ink/10 bg-snow-100">
+    <Section id="resilience" className="py-32 border-t border-ink/10 bg-snow-100 scroll-mt-28">
       <Container>
         <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-end mb-12">
           <div className="col-span-12 md:col-span-7">

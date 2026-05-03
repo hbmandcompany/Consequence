@@ -18,6 +18,7 @@ import {
   LlmChatSurfaceIllustration,
   SynthPluginDesktopIllustration,
 } from "@/components/illustrations/home-visuals";
+import { PartnerStackMarquee } from "@/components/partner-stack-marquee";
 import { EngineDeepDive } from "@/components/sw/engine-sections";
 
 export default function HomePage() {
@@ -117,7 +118,7 @@ function Hero() {
 
 function Manifesto() {
   return (
-    <Section className="py-32">
+    <Section id="manifesto" className="py-32 scroll-mt-28">
       <Container>
         <div className="grid grid-cols-12 gap-y-10 gap-x-8">
           <div className="col-span-12 md:col-span-4">
@@ -257,9 +258,9 @@ function SurfaceCard({
 
         <div className="relative mt-6 rounded-lg overflow-hidden border border-ink/10 bg-[#161618]">
           {visual === "llm" ? (
-            <LlmChatSurfaceIllustration className="w-full h-[124px] block" />
+            <LlmChatSurfaceIllustration className="w-full h-[min(280px,42vw)] min-h-[220px] max-h-[320px] block" />
           ) : (
-            <SynthPluginDesktopIllustration className="w-full h-[124px] block" />
+            <SynthPluginDesktopIllustration className="w-full h-auto max-h-[min(400px,90vw)] block mx-auto" />
           )}
         </div>
 
@@ -286,7 +287,7 @@ function SurfaceCard({
 
 function Numbers() {
   return (
-    <Section className="py-32 border-t border-ink/10 bg-snow-100">
+    <Section id="scale" className="py-32 border-t border-ink/10 bg-snow-100 scroll-mt-28">
       <Container>
         <div className="flex items-end justify-between gap-8 mb-16">
           <Display className="max-w-[16ch]">
@@ -360,7 +361,7 @@ function Press() {
     },
   ];
   return (
-    <Section className="py-32 border-t border-ink/10">
+    <Section id="press" className="py-32 border-t border-ink/10 scroll-mt-28">
       <Container>
         <Eyebrow label="In the Room" />
         <FadeUp className="mt-10">
@@ -390,7 +391,7 @@ function Press() {
 
 function Closing() {
   return (
-    <Section className="py-32 border-t border-ink/10">
+    <Section id="closing" className="py-24 border-t border-ink/10 scroll-mt-28">
       <Container>
         <div className="grid grid-cols-12 gap-y-10 gap-x-8 items-end">
           <div className="col-span-12 md:col-span-8">
@@ -426,6 +427,13 @@ function Closing() {
               <ArrowUpRight className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
           </div>
+        </div>
+
+        <div className="mt-10 pt-8 border-t border-ink/10 max-md:-mx-1">
+          <p className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/35 mb-4">
+            Stack in motion
+          </p>
+          <PartnerStackMarquee />
         </div>
       </Container>
     </Section>

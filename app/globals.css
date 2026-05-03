@@ -118,6 +118,13 @@ html, body {
   animation: ticker-marquee-x 60s linear infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .ticker-marquee {
+    animation: none;
+    transform: none;
+  }
+}
+
 .tabular {
   font-variant-numeric: tabular-nums;
 }

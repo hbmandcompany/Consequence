@@ -75,7 +75,7 @@ const tiles = [
 
 export function ForYouFeed() {
   return (
-    <Section className="py-16 border-t border-ink/10">
+    <Section id="feed" className="py-16 border-t border-ink/10 scroll-mt-28">
       <Container>
         <div className="flex items-end justify-between gap-8 mb-10">
           <div>

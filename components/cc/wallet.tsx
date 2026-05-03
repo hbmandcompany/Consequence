@@ -13,7 +13,7 @@ const flows = [
 
 export function Wallet() {
   return (
-    <Section className="py-24 border-t border-ink/10 bg-snow-100">
+    <Section id="wallet" className="py-24 border-t border-ink/10 bg-snow-100 scroll-mt-28">
       <Container>
         <div className="grid grid-cols-12 gap-8 items-start">
           <div className="col-span-12 md:col-span-5">

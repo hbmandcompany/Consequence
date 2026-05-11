@@ -44,7 +44,7 @@ function SwHero() {
             <div className="flex items-center gap-3 mb-8">
               <Pill tone="gold">Treasury</Pill>
               <span className="text-[11px] tabular tracking-[0.2em] uppercase text-ink/45">
-                Reserve Bank · v 1.0
+                Creator Reserve · v 1.0
               </span>
             </div>
             <Display as="h2">
@@ -55,14 +55,15 @@ function SwHero() {
               <span className="italic text-ink/85">everything.</span>
             </Display>
             <Lede className="mt-10 max-w-[60ch]">
-              A single banking core that ingests balances, rails, risk, policy and treasury positions — and
-              answers, in continuous time and at institutional scale, the only question that matters:{" "}
+              A single royalty core that ingests composition sales, marketplace transactions, collaborator splits,
+              USDC settlement, creator balances, and capital movement patterns — and answers, in continuous time and
+              at institutional scale, the only question that matters:{" "}
               <em>what happens next?</em>
             </Lede>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
-                href="#architecture"
+                href="/how-the-rails-connect"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-ink text-snow-50 text-[13px] hover:bg-ink/90 transition-colors"
               >
                 How the rails connect
@@ -94,22 +95,22 @@ function SwOverview() {
     {
       k: "Ingest",
       v: "Writes",
-      d: "Entity-shaped records with atomic updates to one document at a time. Each change fans out to multiple replicas; nothing is admitted until enough copies acknowledge. Indexes warm asynchronously so ingestion stays ahead of reads.",
+      d: "Composition events, marketplace transactions, collaboration actions, settlement confirmations, and streaming capital data — entity-shaped, atomically written, fan-out replicated until quorum. Indexes warm async so ingestion stays ahead of reads.",
     },
     {
       k: "Predict",
       v: "Ledger",
-      d: "Balances live in accounts; movement is packaged as debits and credits that succeed entirely or roll back together. Executors process in parallel yet agree on a single ordering. Confirmations arrive quickly for operations; stronger finality gates exist when policy requires them.",
+      d: "Predict next engagement, creator trajectory, composition quality signal, royalty magnitude, and capital-flow direction from live twins and models — with debits and credits that commit or roll back together and a single agreed ordering.",
     },
     {
       k: "Forecast",
       v: "Batch",
-      d: "Coordinated work spreads across fleets of ephemeral workers, then collapses into summarized outcomes pushed back into durable state—for stress paths, scenario libraries, and rehearsals beyond what an interactive API can carry.",
+      d: "Horizon forecasts for long-term earnings, style evolution, market demand, creator lifetime value, and capital velocity — fleet batch work that collapses into summarized outcomes for stress paths and scenario libraries beyond interactive API limits.",
     },
     {
       k: "Remember",
       v: "Reads",
-      d: "Projections fuse document writes and ledger movements into hot, queryable entity surfaces. Secondary indexes serve lookups; timestamps and lineage tie every snapshot to what produced it.",
+      d: "Projections fuse composition history, wallet movements, and settlement legs into hot, queryable surfaces. Secondary indexes serve lookups; timestamps and lineage tie every snapshot to the events that produced it.",
     },
   ];
   return (
@@ -153,12 +154,12 @@ function Pillars() {
       n: "Inference",
       tag: "Presence · Shared context · Roles · Review queue",
       title: "The room sees the same picture updating, not a snapshot from yesterday.",
-      body: "Live presence on shared workspaces, comments anchored to specific records and policy lines, and controlled invites so partners only infer what they are allowed to see. Proposals queue as reviewable diffs before they land in production; attribution rides every change so teams reconcile intent from the trail—not from side e‑mail.",
+      body: "Live studio presence on shared compositions, comments anchored to stems and arrangement lanes, and controlled invites so collaborators only see what policy allows. Proposals queue as reviewable diffs before they land; a real-time earnings ticker shows pending sales and royalties alongside the edit. Composer A and B arrange “Velvet Clip” live while Composer C (10%) watches +$1.35 per sale move toward settlement — shadow-compare AI suggestions before commit, with twin-predicted marketplace impact on every merge.",
       bullets: [
-        "Sub‑second presence across shared canvases and ledgers",
-        "Threads pinned to objects, balances, and wire instructions",
-        "Reviewer‑gated proposals with shadow comparison to live state",
-        "Exportable attribution log for internal and external audit",
+        "Sub‑second presence across shared pianos, timelines, and earnings rails",
+        "Threads pinned to stems, splits, and settlement lines",
+        "Reviewer‑gated proposals with shadow comparison to live composition + twin state",
+        "Exportable attribution log for contribution lineage and earnings distribution",
       ],
     },
     {
@@ -166,12 +167,12 @@ function Pillars() {
       n: "Simulation",
       tag: "Argo Workflows · Ray · 10k-pod parallelism",
       title: "Rehearse the future, then act on it.",
-      body: "Monte Carlo for distributions of outcomes, agent-based for emergent behavior, discrete-event for trajectories, RL for policy improvement. Ten thousand pods on demand, results aggregated and emitted back into the bus as new state.",
+      body: "Monte Carlo for distributions of marketplace and revenue outcomes, agent-based models for how a creator’s style and earning potential evolve, discrete-event trajectories as remixes stack and capital flows upstream, RL for arrangement and pricing policies that maximize engagement and creator earnings — ten thousand pods on demand, results aggregated and emitted back into the bus as new state.",
       bullets: [
-        "10,000-scenario Monte Carlo runs",
-        "Agent-based models with Ray actors",
-        "Tiered priority scheduling on spot",
-        "Outputs feed back into the live system",
+        "10,000-scenario Monte Carlo: release Friday vs Monday — performance and revenue bands",
+        "Agent-based creator trajectories — style, audience, and capital accumulation over 30d",
+        "Discrete-event remix and upstream capital consequence paths",
+        "RL search for arrangement and pricing moves that lift engagement and payouts",
       ],
     },
     {
@@ -179,12 +180,12 @@ function Pillars() {
       n: "Digital Twins",
       tag: "Mongo · Qdrant · ClickHouse · Redis",
       title: "Every modeled thing, continuously alive.",
-      body: "Twins are not records — they are continuously-updated probabilistic models. Sharded by entity, queryable through a sub-10ms API, historical to the second, with explicit uncertainty so consumers can treat them as distributions, not point estimates.",
+      body: "Twins are not records — they are continuously-updated probabilistic models of compositions, creators, marketplace demand, and treasury legs. Sharded by entity, sub-10ms reads on hot paths, historical to the second, with explicit uncertainty so downstream systems treat forecasts as distributions — engagement vs predicted performance vs revenue realization.",
       bullets: [
         "8.6M live twins, sub-second update lag",
-        "Probabilistic representation, not a record",
+        "Composition, creator, marketplace, and capital/treasury twin families",
         "Sub-10ms median read for hot twins",
-        "Time-travel queries via ClickHouse",
+        "Time-travel queries via ClickHouse — creator statements: gross, fees, net, settled vs pending",
       ],
     },
   ];
@@ -201,10 +202,11 @@ function Pillars() {
             </Display>
           </div>
           <div className="col-span-12 md:col-span-5 text-[15px] text-ink/65 leading-[1.7]">
-            Inference is the collaboration layer: shared context, presence, and
-            review before anything ships. Simulation says what will happen if we
-            let it. Twins remember everything that has happened. Each scales
-            independently. Each fails independently. None of them block the
+            Inference is the collaboration layer: shared studio context, presence,
+            and review before anything ships — with earnings visible in the same
+            frame. Simulation says what will happen if we release, price, or route
+            capital. Twins remember every play, sale, split, and settlement. Each
+            scales independently. Each fails independently. None of them block the
             others.
           </div>
         </div>
@@ -295,9 +297,10 @@ function Architecture() {
           <div className="col-span-12 md:col-span-5 text-[15px] text-ink/65 leading-[1.7]">
             Bottom to top: bare-metal Hetzner with mixed NVIDIA H100 / L40S
             pools, Kubernetes orchestration with regional clusters, a Kafka
-            streaming substrate, the data layer, the inference fleet, the
-            simulation orchestrator, the twin layer, and finally the application
-            surfaces. Each layer scales and fails on its own clock.
+            stream for plays, sales, and settlements, the data layer, the inference
+            fleet, the simulation orchestrator, the twin layer for compositions
+            creators and capital, and finally Trending and WorkSpace. Each layer
+            scales and fails on its own clock.
           </div>
         </div>
         <ArchitectureDiagram />
@@ -319,8 +322,10 @@ function CodeAndMetrics() {
             <Lede className="mt-8">
               Every cluster change is a Git commit. Every deployment is an
               Argo&nbsp;CD sync. Every model is a registered version with shadow
-              comparison and an automatic rollback path. Prometheus, Grafana,
-              Loki and Tempo are wired from day one — because retrofitting
+              comparison and an automatic rollback path — composition ranking,
+              earnings forecasts, and fraud signals alike. Prometheus, Grafana,
+              Loki and Tempo are wired from day one so composition events and
+              capital events share one operator-grade spine — because retrofitting
               observability is much harder than building it in.
             </Lede>
             <div className="mt-12">
@@ -353,24 +358,25 @@ function Scaling() {
             </Display>
           </div>
           <div className="hidden md:block max-w-md text-[14px] text-ink/65">
-            The architectural shape persists. The implementations underneath
-            evolve at every order of magnitude.
+            The architectural shape persists. At 1M users you clear $1.84M/day in
+            settlements on one mesh; at 100M, edge inference ranks feeds and
+            capital velocity across regions while the same twin contracts hold.
           </div>
         </div>
         <ScalePath />
 
         <div className="mt-20 grid grid-cols-12 gap-y-12 gap-x-8">
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="6" unit="brokers" label="Kafka cluster size at the 1M-user MVP scale." />
+            <NumberStat value="6" unit="brokers" label="Kafka cluster size at the 1M-user MVP scale — plays, sales, settlements." />
           </div>
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="24" unit="brokers" label="Kafka at 10M; partitioning per-entity preserved." />
+            <NumberStat value="24" unit="brokers" label="Kafka at 10M; per-composition and per-creator partitions preserved." />
           </div>
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="3" unit="AZ" label="Replication across availability zones, fault tolerant by default." />
+            <NumberStat value="3" unit="AZ" label="Replication across availability zones — catalog twins and settlement ledger alike." />
           </div>
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="100M" unit="users" label="Multi-region active-active, edge inference caches, dedicated platform team." />
+            <NumberStat value="100M" unit="users" label="Multi-region active-active, edge inference for feeds and live capital monitoring." />
           </div>
         </div>
       </Container>
@@ -382,32 +388,32 @@ function Resilience() {
   const modes = [
     {
       t: "Inference fleet degradation",
-      d: "Circuit breakers in the mesh trip on elevated error rate. Callers fall back to cached predictions or simpler heuristics.",
+      d: "If composition ranking fails, the mesh falls back to simpler ranking; earnings and risk models keep running on cached paths.",
       tag: "Graceful",
     },
     {
       t: "Kafka broker failure",
-      d: "Three-replica, ISR ≥ 2. Partition leaders re-elect. Zero data loss. Cluster operates degraded.",
+      d: "Royalty transaction stream and play stream share ISR ≥ 2; leaders re-elect; zero loss; settlement consumers resume degraded.",
       tag: "Tolerated",
     },
     {
       t: "Database primary loss",
-      d: "Mongo replica sets, Qdrant cluster, ClickHouse replicated tables, PG streaming replication — all auto-failover.",
+      d: "Creator twins, capital twins, and ledger shards — Mongo, Qdrant, ClickHouse, PG — auto-failover without splitting payout truth.",
       tag: "Automatic",
     },
     {
       t: "Bad model deployment",
-      d: "Shadow comparison detects regression on candidate. Traffic snaps back to incumbent. Owning team paged.",
+      d: "Shadow comparison catches regressions in AI stems suggestions or earnings forecasts; traffic returns to incumbent; owners paged.",
       tag: "Reversed",
     },
     {
       t: "Region partition",
-      d: "Each region runs a complete stack. Local users continue to be served from local data. Cross-region replication catches up on heal.",
+      d: "Local producers keep arranging; USDC settles against local ledger views; cross-region replication reconciles capital on heal.",
       tag: "Local-first",
     },
     {
       t: "Compound failure",
-      d: "Documented runbooks. Bounded recovery time. GitOps-restorable cluster state.",
+      d: "Runbooks bound recovery to minutes; capital in flight protected by Solana finality and Circle custody; GitOps restores mesh state.",
       tag: "Bounded",
     },
   ];

@@ -16,7 +16,7 @@ import { Wallet } from "@/components/cc/wallet";
 export const metadata: Metadata = {
   title: "consequence.cc — Trending · For You",
   description:
-    "Producer-first studio, marketplace and wallet at consequence.cc. Tuned to who you are — and who you&rsquo;re about to become.",
+    "Producer-first studio, marketplace, and royalty ledger at consequence.cc — capital flows as legible as the mix. Tuned to who you are — and who you&rsquo;re about to become.",
 };
 
 export default function CCPage() {

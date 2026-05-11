@@ -26,10 +26,10 @@ type Tile = {
 };
 
 const tiles: Tile[] = [
-  { initials: "MR", label: "M. Reyes · Risk", tint: "slate", activeSpeaker: true },
-  { initials: "AK", label: "A. Kim · Treasury", tint: "teal", muted: true },
-  { initials: "You", label: "You (internal)", tint: "violet" },
-  { initials: "TP", label: "T. Patel · Partner", tint: "amber", muted: true },
+  { initials: "CA", label: "Composer A · Velvet Clip", tint: "slate", activeSpeaker: true },
+  { initials: "CB", label: "Composer B · Arrange", tint: "teal", muted: true },
+  { initials: "CC", label: "Composer C · 10% · earnings", tint: "violet" },
+  { initials: "PB", label: "Publisher desk", tint: "amber", muted: true },
 ];
 
 const tintClass: Record<Tile["tint"], string> = {
@@ -50,7 +50,7 @@ export function InferenceMeetIllustration() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1e8e3e]" />
           </span>
           <span className="truncate font-medium tracking-tight text-white/95">
-            Treasury & ledger review — Inference
+            Velvet Clip session — Inference
           </span>
         </div>
         <div className="flex items-center gap-3 text-white/50">
@@ -123,7 +123,7 @@ export function InferenceMeetIllustration() {
 
       <div className="flex items-center justify-center gap-2 border-t border-white/[0.05] bg-[#2d2e30] px-3 py-1.5 text-[10px] text-white/45">
         <Square className="h-3 w-3 shrink-0 text-white/35" strokeWidth={2} />
-        <span>Wallet view is shared · comments sync to ledger line L‑204</span>
+        <span>Composition + earnings view is shared · comments sync to stem lane S‑12</span>
       </div>
     </div>
   );

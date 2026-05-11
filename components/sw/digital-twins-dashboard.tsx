@@ -25,7 +25,7 @@ export function DigitalTwinsDashboard() {
       <header className="flex flex-wrap items-center justify-between gap-2 border-b border-ink/10 bg-white px-3 py-2 sm:px-4">
         <div className="flex min-w-0 flex-col">
           <span className="truncate text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">Twin intelligence</span>
-          <span className="truncate text-[12px] font-medium tracking-tight text-ink">Stream & accrual · Production workbook</span>
+          <span className="truncate text-[12px] font-medium tracking-tight text-ink">Composition & capital · Production workbook</span>
         </div>
         <div className="flex shrink-0 items-center gap-1.5">
           <button
@@ -102,9 +102,9 @@ export function DigitalTwinsDashboard() {
           <div className="rounded-md border border-ink/10 bg-white p-3 shadow-sm lg:col-span-3">
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div>
-                <div className="text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/45">Streams vs. accrual envelope</div>
+                <div className="text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/45">Engagement vs. revenue realization</div>
                 <div className="mt-0.5 text-[11px] font-medium text-ink">
-                  Cumulative streams (line) · 90% earnings band from twin posterior
+                  Cumulative engagement (line) · 90% revenue band from twin posterior
                 </div>
               </div>
               <span className="rounded bg-tiff/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-tiff-600">

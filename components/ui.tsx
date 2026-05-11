@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
 export function Section({
@@ -176,12 +176,17 @@ export function FadeUp({
   delay?: number;
   className?: string;
 }) {
+  const reduceMotion = useReducedMotion() === true;
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, amount: 0.08, margin: "0px 0px -24px 0px" }}
+      transition={{
+        duration: reduceMotion ? 0.01 : 0.9,
+        delay: reduceMotion ? 0 : delay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       className={className}
     >
       {children}

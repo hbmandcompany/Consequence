@@ -50,7 +50,7 @@ export function TwinNetDawIllustration({ className }: { className?: string }) {
         <circle cx="40" cy="22" r="5" fill="#febc2e" opacity="0.95" />
         <circle cx="58" cy="22" r="5" fill="#28c840" opacity="0.95" />
         <text x="200" y="24" textAnchor="middle" fill={LP_TEXT} fontSize="11" fontFamily="ui-monospace, monospace">
-          Twin Net · Live — Consequence
+          Twin Net · Velvet Clip — sales +$15 pending
         </text>
         <text x="368" y="24" textAnchor="end" fill={LP_MUTE} fontSize="9" fontFamily="ui-monospace, monospace">
           NL 53.21°N
@@ -81,7 +81,7 @@ export function TwinNetDawIllustration({ className }: { className?: string }) {
 
         {/* Track headers + arrange */}
         <rect x="4" y="84" width="88" height="360" fill="#262628" />
-        {["Velvet Room", "MIDI · Twin", "Audio — NL", "Bus · Glue"].map((name, i) => {
+        {["Velvet Clip", "MIDI · Twin", "Audio — NL", "Bus · Glue"].map((name, i) => {
           const y = 92 + i * 72;
           return (
             <g key={name}>

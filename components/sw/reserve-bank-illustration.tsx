@@ -1,5 +1,5 @@
 /**
- * Three-device banking workflow — compact phone frames, HTML/CSS only, no raster images.
+ * Three-device creator settlement workflow — compact phone frames, HTML/CSS only, no raster images.
  */
 
 import {
@@ -22,10 +22,10 @@ export function ReserveBankIllustration() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/45">
-            Private banking · Mobile
+            Treasury rail · Mobile
           </div>
           <p className="mt-2 max-w-[40ch] text-[11px] leading-snug text-ink/55">
-            Home → wire → settlement in three phone-sized surfaces. Same glass stack, scaled for the hero rail.
+            Create → Sell → Settle in three phone-sized surfaces. Same glass stack — catalog, USDC in flight, Solana-confirmed splits.
           </p>
         </div>
         <span className="inline-flex shrink-0 items-center gap-2 self-start text-[10px] tabular uppercase tracking-[0.18em] text-ink/50">
@@ -127,9 +127,9 @@ function BankingHomeCompact() {
         <div className="min-w-0">
           <p className="text-[7px] font-medium uppercase tracking-[0.18em] text-white/36">Portfolio</p>
           <p className="mt-0.5 truncate font-display text-[15px] leading-none tracking-[-0.02em] text-white">
-            $128,430
+            Velvet Clip
           </p>
-          <p className="mt-0.5 text-[8px] text-emerald-400/90">+2.1k · 24h</p>
+          <p className="mt-0.5 text-[8px] text-emerald-400/90">+$15 · pending split</p>
         </div>
         <button
           type="button"
@@ -148,7 +148,7 @@ function BankingHomeCompact() {
                 <Building2 className="h-3 w-3 text-ink" strokeWidth={2} />
               </div>
               <div className="min-w-0">
-                <p className="truncate text-[8px] font-semibold text-white">Treasury · USD</p>
+                <p className="truncate text-[8px] font-semibold text-white">Treasury · USDC</p>
                 <p className="text-[7px] text-white/38">···· 4921</p>
               </div>
             </div>
@@ -178,8 +178,8 @@ function BankingHomeCompact() {
       <div className="mx-2.5 mt-2 flex-1 rounded-lg bg-black/25 p-1.5 ring-1 ring-white/[0.06]">
         <p className="mb-1 px-0.5 text-[7px] font-semibold uppercase tracking-[0.14em] text-white/32">Activity</p>
         {[
-          { t: "Atlas Mfg", s: "Wire", a: "−$12.4k" },
-          { t: "NYC Ops", s: "ACH", a: "+$48k" },
+          { t: "Velvet Clip", s: "Sale", a: "+$15.00" },
+          { t: "Halls of Linen", s: "Split", a: "+$4.05" },
         ].map((row) => (
           <div key={row.t} className="flex items-center gap-1.5 rounded-md px-1 py-1">
             <div className="h-5 w-5 shrink-0 rounded-full bg-white/[0.08] ring-1 ring-white/[0.06]" />
@@ -210,22 +210,22 @@ function WireFlowCompact() {
         <button type="button" className="text-white/40" aria-label="Back">
           <ChevronRight className="h-3.5 w-3.5 rotate-180" strokeWidth={1.5} />
         </button>
-        <span className="text-[9px] font-semibold tracking-wide text-white">Wire out · USD</span>
+        <span className="text-[9px] font-semibold tracking-wide text-white">Settlement · USDC</span>
       </div>
 
       <div className="flex flex-1 flex-col gap-2 px-2.5 py-2.5">
         <div>
           <p className="text-[7px] uppercase tracking-[0.14em] text-white/35">Amount</p>
-          <p className="mt-0.5 font-display text-[18px] leading-none text-white">$12,400.00</p>
+          <p className="mt-0.5 font-display text-[18px] leading-none text-white">$15.00</p>
         </div>
         <div className="rounded-xl bg-white/[0.05] p-2 ring-1 ring-white/[0.08]">
-          <p className="text-[7px] uppercase tracking-[0.12em] text-white/32">To</p>
-          <p className="mt-0.5 text-[9px] font-medium text-white">Atlas Manufacturing LLP</p>
-          <p className="mt-0.5 text-[7px] text-white/38">ABA ·····281 · Checking</p>
+          <p className="text-[7px] uppercase tracking-[0.12em] text-white/32">Splits (net $13.50)</p>
+          <p className="mt-0.5 text-[9px] font-medium text-white">A 60% · B 30% · C 10%</p>
+          <p className="mt-0.5 text-[7px] text-white/38">Platform fee 10% (−$1.50) deducted</p>
         </div>
         <div className="rounded-xl bg-white/[0.04] p-2 ring-1 ring-white/[0.06]">
-          <p className="text-[7px] uppercase tracking-[0.12em] text-white/32">Memo</p>
-          <p className="mt-1 text-[8px] leading-snug text-white/55">INV-2044 · steel shipment</p>
+          <p className="text-[7px] uppercase tracking-[0.12em] text-white/32">Route</p>
+          <p className="mt-1 text-[8px] leading-snug text-white/55">Circle → Solana · 3 legs · buyer USDC</p>
         </div>
         <button
           type="button"
@@ -247,10 +247,10 @@ function SettledCompact() {
           <Check className="h-6 w-6 text-emerald-300" strokeWidth={2} />
         </div>
         <p className="mt-3 font-display text-[16px] leading-tight text-white">Settled</p>
-        <p className="mt-1 text-[8px] leading-snug text-white/45">FedWire · Atlas Manufacturing</p>
-        <p className="mt-2 font-display text-[13px] tabular-nums text-white/90">−$12,400.00</p>
+        <p className="mt-1 text-[8px] leading-snug text-white/45">Circle · 3 × USDC · Solana</p>
+        <p className="mt-2 font-display text-[13px] tabular-nums text-white/90">$15.00 gross · $13.50 net</p>
         <p className="mt-2 rounded-lg bg-white/[0.06] px-2 py-1.5 text-[7px] leading-relaxed text-white/50 ring-1 ring-white/[0.08]">
-          Ref FW-9C2‑88104
+          SOL:5xK…q8m · Circle py‑884x
           <br />
           May 2, 2026 · 9:41 AM ET
         </p>

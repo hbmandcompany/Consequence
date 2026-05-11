@@ -7,7 +7,7 @@ import clsx from "clsx";
 const tiles = [
   {
     kind: "session",
-    title: "Velvet Room — V12",
+    title: "Velvet Clip — V12",
     sub: "Resume from bar 47 · 02:14 left to mix",
     bpm: 92,
     key: "D♭ minor",
@@ -41,7 +41,7 @@ const tiles = [
   {
     kind: "collab",
     title: "Lou Marsden wants in",
-    sub: "On Velvet Room — adding a vocal sketch",
+    sub: "On Velvet Clip — adding a vocal sketch",
     bpm: 92,
     key: "D♭ minor",
     tag: "Collab",
@@ -52,7 +52,7 @@ const tiles = [
   {
     kind: "forecast",
     title: "If released Friday → 9.2k plays / 7d",
-    sub: "Monte Carlo · Velvet Room — V11 mix",
+    sub: "Monte Carlo · Velvet Clip — V11 mix",
     bpm: 92,
     key: "D♭ minor",
     tag: "Forecast",

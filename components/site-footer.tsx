@@ -13,7 +13,7 @@ export function SiteFooter() {
               <span className="font-display text-2xl tracking-tight">Consequence</span>
             </div>
             <p className="mt-6 max-w-md font-display text-2xl leading-[1.15] tracking-tight text-ink/80">
-              Every action has consequences. We built the apparatus that lets you see them — at the speed they actually arrive.
+              Every arrangement, sale, split, and payout has consequences. We built the apparatus that lets you see them — from the DAW to the chain — at the speed they actually arrive.
             </p>
             <div className="mt-8 flex items-center gap-3">
               <input
@@ -61,6 +61,7 @@ export function SiteFooter() {
                 title="Site"
                 items={[
                   { label: "Home", href: "/#hero" },
+                  { label: "Rails", href: "/how-the-rails-connect", note: "Architecture" },
                   { label: "Manifesto", href: "/#manifesto" },
                   { label: "Surfaces", href: "/#surfaces" },
                   { label: "Scale", href: "/#scale" },

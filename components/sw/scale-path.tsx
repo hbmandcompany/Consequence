@@ -5,20 +5,20 @@ const stops = [
     n: "1M",
     sub: "MVP · Q3 2026",
     bullets: [
-      "1 primary cluster · 20-40 nodes",
-      "Kafka 6 brokers · sub-100k ev/s",
-      "Behavioral model live, single class",
-      "Mongo at 10 shards",
+      "1 primary cluster · 20-40 nodes · composers, listeners, $1.84M/day settlements",
+      "Kafka 6 brokers · sub-100k ev/s — plays + carts + splits",
+      "Behavioral + earnings models live, single rollout plane",
+      "Mongo at 10 shards — catalog twins + ledger projections",
     ],
   },
   {
     n: "10M",
     sub: "Plateau · 2027",
     bullets: [
-      "Kafka 12-24 brokers, repartitioned",
-      "Multi-cluster, regional split begins",
-      "Inference at hundreds of GPU pods",
-      "ClickHouse cluster broadens",
+      "Kafka 12-24 brokers, repartitioned per composition and creator",
+      "Multi-cluster, regional split — ranking + fraud + payout paths",
+      "Inference at hundreds of GPU pods — feed, stems, royalty risk",
+      "ClickHouse cluster broadens — time-travel earnings + A/B experiments",
     ],
   },
   {
@@ -26,9 +26,9 @@ const stops = [
     sub: "Industrial · 2028+",
     bullets: [
       "Multi-region active-active",
-      "Edge inference caches",
-      "Federated databases, graph store added",
-      "Dedicated platform team per pillar",
+      "Edge inference for marketplace feed + real-time capital flow monitoring",
+      "Federated databases, graph for collaboration + ownership lineage",
+      "Dedicated platform team per pillar — creative, capital, safety",
     ],
   },
 ];

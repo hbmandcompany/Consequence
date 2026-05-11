@@ -39,11 +39,12 @@ function Hero() {
   return (
     <Section
       id="hero"
-      className="pt-28 md:pt-32 lg:pt-36 pb-20 lg:pb-28 overflow-hidden scroll-mt-24"
+      className="pt-28 md:pt-32 lg:pt-36 pb-20 lg:pb-28 scroll-mt-24"
     >
       <Container>
         {/* items-start: with a tall map, items-end pushed the headline below the fold */}
-        <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-start">
+        {/* overflow only on grid — not on section — so full-bleed LiveTicker is not clipped */}
+        <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-start overflow-x-clip">
           <div className="col-span-12 lg:col-span-8 space-y-10">
             <div className="flex flex-wrap items-center gap-4">
               <Eyebrow index="01 / 04" label="An HBM & Company House Product" />
@@ -64,11 +65,11 @@ function Hero() {
             <div className="grid grid-cols-12 gap-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
                 <Lede>
-                  Consequence is a real-time consequence engine. It ingests
-                  behavior, decisions, performance and capital as a single stream,
-                  models every modeled thing as a living digital twin, and
-                  answers — continuously, at industrial scale — the only question
-                  that matters.
+                  Consequence is a real-time consequence engine for music production,
+                  the marketplace, and creator royalties. It ingests composition, collaboration,
+                  play, and capital events as one stream, keeps twins of every composition,
+                  creator, transaction, and payout leg, and answers — continuously, at
+                  industrial scale — the only question that matters.
                 </Lede>
               </div>
               <div className="col-span-12 md:col-span-5 md:pl-8 md:border-l border-ink/10">
@@ -128,7 +129,8 @@ function Manifesto() {
             <FadeUp>
               <p className="font-display text-[clamp(28px,3.6vw,52px)] leading-[1.1] tracking-tight text-ink/95">
                 Most platforms wait for you to ask. We watch the world move,
-                update twins of every actor inside it, and answer{" "}
+                update twins of every composition, creator, transaction, and capital flow
+                inside it, and answer{" "}
                 <span className="italic text-tiff-500">before the question forms</span>.
                 The result is a quiet kind of luxury — software that already
                 knows.
@@ -144,7 +146,10 @@ function Manifesto() {
                 <p>
                   Built on Kubernetes-native compute, Kafka as the nervous
                   system, GPU inference at the millisecond, and parallel
-                  Monte&nbsp;Carlo at ten thousand pods on demand.
+                  Monte&nbsp;Carlo at ten thousand pods on demand — predicting
+                  compositional outcomes, marketplace performance, creator
+                  trajectories, and the consequences of every royalty and
+                  settlement through the stack.
                 </p>
               </div>
             </FadeUp>
@@ -181,11 +186,11 @@ function Surfaces() {
             tag="For You"
             sub="Trending"
             title="The studio you live inside."
-            body="Producer-first feed, stems, sessions, the marketplace, your wallet. Tuned to the way you actually work — and to whoever you're about to become."
+            body="Producer-first feed, stems, sessions, the marketplace, and wallet — piano roll to payouts. Tuned to the way you actually work — with AI that asks what happens next for this stem, session state you can trust, and earnings that update as the room listens."
             stats={[
               { k: "Daily plays", v: "84.2M" },
               { k: "Active producers", v: "11,402" },
-              { k: "Median split settled", v: "9.4s" },
+              { k: "Settlements / day", v: "$1.84M" },
             ]}
             tone="cc"
             visual="llm"
@@ -195,7 +200,7 @@ function Surfaces() {
             tag="WorkSpace"
             sub="Engine"
             title="The substrate everything runs on."
-            body="Inference, simulation and digital twin services exposed as a Kubernetes-native, event-driven platform. For partners, integrators and the verticals we haven't built yet."
+            body="Inference, simulation, and digital twin services for creative prediction and financial consequence — same Kubernetes-native, event-driven platform. Partners plug into ranking, Monte Carlo earnings bands, and twin APIs that watch capital as carefully as audio."
             stats={[
               { k: "Events / sec", v: "12.4k" },
               { k: "p99 inference", v: "47ms" },
@@ -302,23 +307,23 @@ function Numbers() {
 
         <div className="grid grid-cols-12 gap-y-12 gap-x-8 border-t border-ink/15 pt-12">
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="12.4k" unit="ev / s" label="Sustained event ingestion across the bus." />
+            <NumberStat value="12.4k" unit="ev / s" label="Sustained event ingestion — plays, carts, splits, settlements — across the bus." />
           </div>
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="47" unit="ms p99" label="Inference latency at the production fleet edge." />
+            <NumberStat value="47" unit="ms p99" label="Inference latency at the production fleet edge — ranking, stems, earnings models." />
           </div>
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="8.6M" unit="twins" label="Living digital twins continuously updated." />
+            <NumberStat value="8.6M" unit="twins" label="Composition, creator, marketplace, and capital twins — continuously updated." />
           </div>
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="10k" unit="pods" label="Monte Carlo workers spawned per simulation burst." />
+            <NumberStat value="10k" unit="pods" label="Monte Carlo workers spawned per simulation burst — revenue and engagement paths." />
           </div>
         </div>
 
         <div className="mt-20">
           <HairlineRow
             left="Throughput SLA"
-            right="200ms median · 500ms p99 — ingest to twin update"
+            right="200ms median · 500ms p99 — ingest to twin update (plays + settlements)"
           />
           <HairlineRow
             left="Storage substrate"
@@ -350,7 +355,7 @@ function Press() {
       r: "Berlin",
     },
     {
-      q: "Tiffany blue, Mondrian bones, Apple restraint. The first time enterprise software has been allowed to be beautiful.",
+      q: "Tiffany blue, Mondrian bones, Apple restraint. The first time a creator platform watched capital flow as carefully as it watched creativity.",
       a: "Form / Field",
       r: "Amsterdam",
     },

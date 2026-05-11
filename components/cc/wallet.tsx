@@ -4,7 +4,7 @@ import { Container, Eyebrow, HairlineRow, Pill, Section } from "@/components/ui"
 import { ArrowDownRight, ArrowUpRight, ChevronRight } from "lucide-react";
 
 const flows = [
-  { t: "Velvet Room — split", who: "Lou Marsden + Eos Veil", v: "+ $1,242.18", k: "in" },
+  { t: "Velvet Clip — split", who: "Lou Marsden + Eos Veil", v: "+ $1,242.18", k: "in" },
   { t: "Antwerp Brushed Rhodes", who: "Sólveig Tinde — pack purchased", v: "− $38.00", k: "out" },
   { t: "Halls of Linen — pre-save royalties", who: "Network share, 412 listeners", v: "+ $84.40", k: "in" },
   { t: "Ownership transfer · Quiet Hours", who: "Solana mint — 0xA9…1F2", v: "+ $220.00", k: "in" },
@@ -22,9 +22,8 @@ export function Wallet() {
               Settled in seconds. Read like a magazine.
             </h2>
             <p className="mt-6 text-[15px] text-ink/65 leading-[1.7] max-w-[44ch]">
-              Splits are computed by the engine, signed on Solana, settled in
-              USDC. The ledger updates in real time and reads the way you
-              actually think about money.
+              Marketplace sales, collaborator splits, and sample packs are computed by the engine, signed on Solana,
+              settled in USDC. The ledger updates in real time — every line ties to a play, cart, or on-chain leg.
             </p>
 
             <div className="mt-10 bg-snow-0 border border-ink/10 p-6">

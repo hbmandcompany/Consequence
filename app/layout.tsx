@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { HashScroll } from "@/components/hash-scroll";
@@ -27,7 +28,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Consequence — Studio, marketplace & engine",
   description:
-    "Consequence Software: real-time consequence engine, Trending (studio & marketplace), and WorkSpace infrastructure — one experience. Built by HBM & Company.",
+    "Consequence: real-time music production, marketplace, and creator royalty consequence engine — composition to USDC settlement. Built by HBM & Company.",
   metadataBase: new URL("https://consequence.software"),
   openGraph: {
     title: "Consequence",
@@ -48,6 +49,7 @@ export default function RootLayout({
         <HashScroll />
         <main className="relative">{children}</main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );

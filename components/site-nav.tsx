@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import clsx from "clsx";
 import { Mark } from "./mark";
+import { useScrollHideHeader } from "@/hooks/use-scroll-hide-header";
 
 const links = [
   { href: "/", label: "Home", suffix: undefined as string | undefined, active: (p: string, h: string) => p === "/" && h !== "#software" },
@@ -12,10 +13,24 @@ const links = [
   { href: "/#software", label: "WorkSpace", suffix: "Engine", active: (p: string, h: string) => p === "/" && h === "#software" },
 ] as const;
 
+const BAR_TRANSITION = "background-color 350ms cubic-bezier(0.4, 0, 0.2, 1), border-color 350ms cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 350ms cubic-bezier(0.4, 0, 0.2, 1)";
+
 export function SiteNav() {
   const pathname = usePathname();
   const [hash, setHash] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const { hidden, prefersReducedMotion, transitionStyle } = useScrollHideHeader({
+    hideAfterPx: 120,
+    topTolerance: 8,
+  });
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    if (hidden) el.setAttribute("inert", "");
+    else el.removeAttribute("inert");
+  }, [hidden]);
 
   useEffect(() => {
     setHash(typeof window !== "undefined" ? window.location.hash : "");
@@ -31,16 +46,29 @@ export function SiteNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const shellMotion: CSSProperties = {
+    ...transitionStyle,
+    transform: hidden ? "translateY(calc(-100% - 20px))" : "translateY(0)",
+    opacity: hidden ? 0 : 1,
+    pointerEvents: hidden ? "none" : "auto",
+    willChange: prefersReducedMotion ? undefined : "transform, opacity",
+  };
+
+  const barMotion: CSSProperties = prefersReducedMotion
+    ? {}
+    : { transition: BAR_TRANSITION };
+
   return (
-    <header
-      className={clsx(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-out-expo",
-        scrolled
-          ? "glass border-b border-ink/[0.06]"
-          : "bg-transparent border-b border-transparent"
-      )}
-    >
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-10 h-16 flex items-center justify-between">
+    <header ref={headerRef} className="fixed top-0 inset-x-0 z-50" style={shellMotion}>
+      <div
+        className={clsx(
+          "mx-auto max-w-[1480px] px-6 lg:px-10 h-16 flex items-center justify-between border-b",
+          scrolled
+            ? "glass border-ink/[0.06]"
+            : "bg-transparent border-transparent"
+        )}
+        style={barMotion}
+      >
         <Link href="/" className="flex items-center gap-3 group">
           <Mark className="w-6 h-6 text-ink transition-transform duration-700 ease-out-expo group-hover:rotate-180" />
           <span className="font-display text-[20px] leading-none tracking-tight">
@@ -51,7 +79,7 @@ export function SiteNav() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
           {links.map((l) => {
             const active = l.active(pathname, hash);
             return (

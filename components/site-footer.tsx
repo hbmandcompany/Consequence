@@ -31,12 +31,13 @@ export function SiteFooter() {
               <FooterCol
                 title="Surfaces"
                 items={[
-                  { label: "Trending", href: "/cc", note: "For You" },
-                  { label: "WorkSpace", href: "/#software", note: "Engine" },
-                  { label: "Studio", href: "/cc#studio" },
-                  { label: "Marketplace", href: "/cc#market" },
-                  { label: "Feed", href: "/cc#feed" },
-                  { label: "Wallet", href: "/cc#wallet" },
+                  { label: "Shop", href: "/shop" },
+                  { label: "Treasury", href: "/treasury" },
+                  { label: "Marketplace", href: "/shop#market" },
+                  { label: "Feed", href: "/shop#feed" },
+                  { label: "Wallet", href: "/shop#wallet" },
+                  { label: "Client login", href: "/login" },
+                  { label: "Sign up", href: "/signup" },
                 ]}
               />
               <FooterCol

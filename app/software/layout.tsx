@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "WorkSpace — The engine",
+  title: "Treasury — Consequence",
   description:
     "Inference, simulation, and digital twins — full narrative on the Consequence homepage.",
 };

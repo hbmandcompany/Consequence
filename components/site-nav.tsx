@@ -8,9 +8,24 @@ import { Mark } from "./mark";
 import { useScrollHideHeader } from "@/hooks/use-scroll-hide-header";
 
 const links = [
-  { href: "/", label: "Home", suffix: undefined as string | undefined, active: (p: string, h: string) => p === "/" && h !== "#software" },
-  { href: "/cc", label: "Trending", suffix: "For You", active: (p: string) => p === "/cc" },
-  { href: "/#software", label: "WorkSpace", suffix: "Engine", active: (p: string, h: string) => p === "/" && h === "#software" },
+  {
+    href: "/",
+    label: "Home",
+    suffix: undefined as string | undefined,
+    active: (p: string) => p === "/",
+  },
+  {
+    href: "/shop",
+    label: "Shop",
+    suffix: "Marketplace",
+    active: (p: string) => p === "/shop" || p === "/cc",
+  },
+  {
+    href: "/treasury",
+    label: "Treasury",
+    suffix: "Governance",
+    active: (p: string) => p === "/treasury" || p === "/software",
+  },
 ] as const;
 
 const BAR_TRANSITION = "background-color 350ms cubic-bezier(0.4, 0, 0.2, 1), border-color 350ms cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 350ms cubic-bezier(0.4, 0, 0.2, 1)";
@@ -81,7 +96,7 @@ export function SiteNav() {
 
         <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
           {links.map((l) => {
-            const active = l.active(pathname, hash);
+            const active = l.active(pathname);
             return (
               <Link
                 key={l.href}
@@ -109,17 +124,17 @@ export function SiteNav() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/cc"
+            href="/signup"
             className="hidden sm:inline-flex items-center gap-2 text-[12px] tracking-tight text-ink/60 hover:text-ink uline"
           >
-            Sign in
+            Sign up
           </Link>
           <Link
-            href="/#contact"
+            href="/login"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink text-snow-50 text-[12px] tracking-tight hover:bg-ink/90 transition-colors"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-tiff animate-breathe" />
-            Request access
+            Client login
           </Link>
         </div>
       </div>

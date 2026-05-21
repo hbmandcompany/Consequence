@@ -14,10 +14,10 @@ import {
 import { LiveTicker } from "@/components/live-ticker";
 import { TwinNetDawIllustration } from "@/components/illustrations/daw-suite";
 import {
-  DropboxStyleDarkIllustration,
   LlmChatSurfaceIllustration,
   SynthPluginDesktopIllustration,
 } from "@/components/illustrations/home-visuals";
+import { ManifestoStepped } from "@/components/manifesto/manifesto-stepped";
 import { PartnerStackMarquee } from "@/components/partner-stack-marquee";
 import { EngineDeepDive } from "@/components/sw/engine-sections";
 
@@ -45,7 +45,7 @@ function Hero() {
         {/* items-start: with a tall map, items-end pushed the headline below the fold */}
         {/* overflow only on grid — not on section — so full-bleed LiveTicker is not clipped */}
         <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-start overflow-x-clip">
-          <div className="col-span-12 lg:col-span-8 space-y-10">
+          <div className="col-span-12 space-y-10">
             <div className="flex flex-wrap items-center gap-4">
               <Eyebrow index="01 / 04" label="An HBM & Company House Product" />
               <span className="inline-flex items-center gap-2 text-[11px] tabular text-ink/55">
@@ -65,11 +65,11 @@ function Hero() {
             <div className="grid grid-cols-12 gap-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
                 <Lede>
-                  Consequence is a real-time consequence engine for music production,
-                  the marketplace, and creator royalties. It ingests composition, collaboration,
-                  play, and capital events as one stream, keeps twins of every composition,
-                  creator, transaction, and payout leg, and answers — continuously, at
-                  industrial scale — the only question that matters.
+                  Consequence is the real-time consequence layer for music production,
+                  marketplace operations, and creator royalty settlement. Composition,
+                  collaboration, playback, and capital events flow through a single stream;
+                  authoritative ledgers maintain state for every work, contributor,
+                  transaction, and payout.
                 </Lede>
               </div>
               <div className="col-span-12 md:col-span-5 md:pl-8 md:border-l border-ink/10">
@@ -101,12 +101,6 @@ function Hero() {
               </div>
             </div>
           </div>
-
-          <div className="col-span-12 lg:col-span-4 lg:pl-6 xl:pl-10">
-            <div className="relative aspect-[100/130] w-full rounded-2xl border border-ink/15 bg-[#0a0c10] shadow-[0_24px_60px_-12px_rgba(0,0,0,0.22)] overflow-hidden">
-              <DropboxStyleDarkIllustration variant="hero" className="w-full h-full block" />
-            </div>
-          </div>
         </div>
       </Container>
 
@@ -118,51 +112,7 @@ function Hero() {
 }
 
 function Manifesto() {
-  return (
-    <Section id="manifesto" className="py-32 scroll-mt-28">
-      <Container>
-        <div className="grid grid-cols-12 gap-y-10 gap-x-8">
-          <div className="col-span-12 md:col-span-4">
-            <Eyebrow index="02 / 04" label="Manifesto" />
-          </div>
-          <div className="col-span-12 md:col-span-8">
-            <FadeUp>
-              <p className="font-display text-[clamp(28px,3.6vw,52px)] leading-[1.1] tracking-tight text-ink/95">
-                Most platforms wait for you to ask. We watch the world move,
-                update twins of every composition, creator, transaction, and capital flow
-                inside it, and answer{" "}
-                <span className="italic text-tiff-500">before the question forms</span>.
-                The result is a quiet kind of luxury — software that already
-                knows.
-              </p>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 text-[14px] text-ink/70">
-                <p>
-                  Inference predicts the present. Simulation rehearses the
-                  future. Twins remember it all. Three subsystems, one shape:
-                  layered, event-driven, twin-centric.
-                </p>
-                <p>
-                  Built on Kubernetes-native compute, Kafka as the nervous
-                  system, GPU inference at the millisecond, and parallel
-                  Monte&nbsp;Carlo at ten thousand pods on demand — predicting
-                  compositional outcomes, marketplace performance, creator
-                  trajectories, and the consequences of every royalty and
-                  settlement through the stack.
-                </p>
-              </div>
-            </FadeUp>
-            <FadeUp delay={0.12}>
-              <div className="mt-14 rounded-xl overflow-hidden border border-ink/15 shadow-lg bg-[#0a0c10]">
-                <DropboxStyleDarkIllustration variant="wide" className="w-full h-auto block" />
-              </div>
-            </FadeUp>
-          </div>
-        </div>
-      </Container>
-    </Section>
-  );
+  return <ManifestoStepped />;
 }
 
 function Surfaces() {
@@ -197,8 +147,8 @@ function Surfaces() {
           />
           <SurfaceCard
             href="/#software"
-            tag="WorkSpace"
-            sub="Engine"
+            tag="Engine"
+            sub="WorkSpace"
             title="The substrate everything runs on."
             body="Inference, simulation, and digital twin services for creative prediction and financial consequence — same Kubernetes-native, event-driven platform. Partners plug into ranking, Monte Carlo earnings bands, and twin APIs that watch capital as carefully as audio."
             stats={[

@@ -654,6 +654,132 @@ export function LlmChatSurfaceIllustration({ className }: { className?: string }
   );
 }
 
+/** Tall portrait Agent / chat panel for manifesto and side columns. */
+export function LlmChatTallIllustration({ className }: { className?: string }) {
+  const w = 300;
+  const h = 520;
+  const mono = "ui-monospace, SF Mono, Monaco, monospace";
+  const sans = "ui-sans-serif, system-ui, sans-serif";
+  return (
+    <svg
+      viewBox={`0 0 ${w} ${h}`}
+      className={className}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <defs>
+        <linearGradient id="llmTallShell" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#232326" />
+          <stop offset="100%" stopColor="#18181a" />
+        </linearGradient>
+        <linearGradient id="llmTallChat" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#1c1c1f" />
+          <stop offset="100%" stopColor="#141416" />
+        </linearGradient>
+      </defs>
+      <rect width={w} height={h} rx="10" fill="url(#llmTallShell)" />
+      <rect x="0" y="0" width={w} height="24" fill="#2b2b30" />
+      <circle cx="14" cy="12" r="3.5" fill="#ff5f57" />
+      <circle cx="26" cy="12" r="3.5" fill="#febc2e" />
+      <circle cx="38" cy="12" r="3.5" fill="#28c840" />
+      <text x="52" y="16" fill="#8c8c8e" fontSize="8" fontFamily={mono} letterSpacing="0.04em">
+        Consequence
+      </text>
+      <text x={w - 12} y="16" textAnchor="end" fill="#6a6a6e" fontSize="7" fontFamily={mono}>
+        velvet_clip.mid
+      </text>
+
+      <rect x="0" y="24" width={w} height={h - 24} fill="url(#llmTallChat)" />
+      <rect x="12" y="36" width="56" height="16" rx="8" fill="#27272a" stroke="#3f3f46" strokeWidth="0.6" />
+      <text x="22" y="47" fill="#e4e4e7" fontSize="8" fontFamily={sans} fontWeight="600">
+        Agent
+      </text>
+      <rect x="74" y="38" width="44" height="12" rx="6" fill="#2a2a2e" stroke="#3f3f46" strokeWidth="0.5" />
+      <text x="82" y="47" fill="#a1a1aa" fontSize="6" fontFamily={mono}>
+        GPT-5
+      </text>
+      <rect x={w - 52} y="38" width="40" height="12" rx="4" fill="#27272a" />
+      <text x={w - 44} y="47" fill="#71717a" fontSize="6" fontFamily={mono}>
+        @twin
+      </text>
+
+      <rect x="16" y="64" width={w - 32} height="40" rx="8" fill="#27272a" stroke="#3f3f46" strokeWidth="0.6" />
+      <text x="28" y="82" fill="#d4d4d8" fontSize="9" fontFamily={sans}>
+        What happens next for this stem?
+      </text>
+      <text x={w - 28} y="98" textAnchor="end" fill="#52525b" fontSize="6" fontFamily={mono}>
+        You
+      </text>
+
+      <rect x="12" y="116" width={w - 24} height="88" rx="8" fill="#1f1f24" stroke="#333338" strokeWidth="0.6" />
+      <rect x="20" y="124" width="10" height="10" rx="2" fill="#7FD4CC" opacity="0.35" />
+      <text x="36" y="133" fill="#a1a1aa" fontSize="7" fontFamily={mono}>
+        Assistant
+      </text>
+      <rect x="20" y="142" width={w - 40} height="52" rx="4" fill="#121214" stroke="#2d2d32" strokeWidth="0.5" />
+      <text x="26" y="156" fill="#7FD4CC" fontSize="7" fontFamily={mono}>
+        Notes out · 8 · vel 72–102
+      </text>
+      <text x="26" y="170" fill="#d4d4d8" fontSize="7" fontFamily={mono}>
+        C4 E4 G4 · harmonic lift +12%
+      </text>
+      <text x="26" y="184" fill="#6b9955" fontSize="7" fontFamily={mono}>
+        Twin forecast · engagement ↑
+      </text>
+
+      <rect x="16" y="216" width={w - 32} height="36" rx="8" fill="#27272a" stroke="#3f3f46" strokeWidth="0.6" />
+      <text x="28" y="238" fill="#d4d4d8" fontSize="8" fontFamily={sans}>
+        Rehearse the bridge in D minor?
+      </text>
+
+      <rect x="12" y="264" width={w - 24} height="96" rx="8" fill="#1f1f24" stroke="#333338" strokeWidth="0.6" />
+      <rect x="20" y="272" width="10" height="10" rx="2" fill="#7FD4CC" opacity="0.35" />
+      <text x="36" y="281" fill="#a1a1aa" fontSize="7" fontFamily={mono}>
+        Assistant
+      </text>
+      <rect x="20" y="290" width={w - 40} height="60" rx="4" fill="#121214" stroke="#2d2d32" strokeWidth="0.5" />
+      <text x="26" y="304" fill="#8b8b90" fontSize="7" fontFamily={mono}>
+        10k paths · Monte Carlo
+      </text>
+      <text x="26" y="318" fill="#d4d4d8" fontSize="7" fontFamily={mono}>
+        Median lift +18% if bridge lands bar 17
+      </text>
+      <text x="26" y="332" fill="#c4a574" fontSize="7" fontFamily={mono}>
+        Harmony: i–VI–III–VII resolved
+      </text>
+      <text x="26" y="346" fill="#7FD4CC" fontSize="7" fontFamily={mono}>
+        Ledger · split preview ready
+      </text>
+
+      <rect x="12" y="372" width={w - 24} height="56" rx="8" fill="#1a1a1e" stroke="#2d2d32" strokeWidth="0.5" />
+      <text x="20" y="388" fill="#5c6370" fontSize="6" fontFamily={mono} letterSpacing="0.06em">
+        LIVE COMPOSITION
+      </text>
+      <rect x="20" y="396" width={w - 40} height="6" rx="2" fill="#7FD4CC" opacity="0.25" />
+      <rect x="20" y="396" width={(w - 40) * 0.62} height="6" rx="2" fill="#7FD4CC" opacity="0.7" />
+      <text x="20" y="418" fill="#71717a" fontSize="6" fontFamily={mono}>
+        Composer A · B · C in session
+      </text>
+
+      <rect x="12" y={h - 52} width={w - 24} height="40" rx="10" fill="#252528" stroke="#3f3f46" strokeWidth="0.8" />
+      <text x="24" y={h - 28} fill="#71717a" fontSize="9" fontFamily={sans}>
+        Ask what happens next…
+      </text>
+      <rect x={w - 44} y={h - 42} width="24" height="24" rx="6" fill="#3f3f46" />
+      <path
+        d={`M${w - 38} ${h - 32} L${w - 30} ${h - 30} L${w - 38} ${h - 28}`}
+        stroke="#e4e4e7"
+        strokeWidth="1.2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 /** Square glazed window + grand piano (plan view) on top; synth rack below. */
 export function SynthPluginDesktopIllustration({ className }: { className?: string }) {
   const W = 320;

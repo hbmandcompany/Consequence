@@ -93,24 +93,24 @@ function SwHero() {
 function SwOverview() {
   const items = [
     {
-      k: "Ingest",
+      k: "Compose",
       v: "Writes",
-      d: "Composition events, marketplace transactions, collaboration actions, settlement confirmations, and streaming capital data — entity-shaped, atomically written, fan-out replicated until quorum. Indexes warm async so ingestion stays ahead of reads.",
+      d: "Every compositional act captured as it happens — melodic note entries, harmonic chord progressions, rhythmic pattern decisions, collaborator contributions — entity-shaped, atomically written to the ledger, fan-out replicated until quorum. Indexes warm async so writes stay ahead of reads while the room keeps composing.",
     },
     {
-      k: "Predict",
-      v: "Ledger",
-      d: "Predict next engagement, creator trajectory, composition quality signal, royalty magnitude, and capital-flow direction from live twins and models — with debits and credits that commit or roll back together and a single agreed ordering.",
+      k: "Analyze",
+      v: "Memory",
+      d: "Analyze live works for melodic patterns, harmonic tension, rhythmic structure, originality scores, and how a composition will evolve — with ownership splits and musical decisions as debits and credits that commit or roll back together under a single agreed ordering.",
     },
     {
-      k: "Forecast",
-      v: "Batch",
-      d: "Horizon forecasts for long-term earnings, style evolution, market demand, creator lifetime value, and capital velocity — fleet batch work that collapses into summarized outcomes for stress paths and scenario libraries beyond interactive API limits.",
+      k: "Rehearse",
+      v: "Simulation",
+      d: "Rehearse compositional futures at fleet scale — Monte Carlo over melodic variations, harmonic progressions, and rhythmic arrangements — batch work that collapses into summarized paths so creators see what their music could become before they finalize it, beyond interactive limits.",
     },
     {
       k: "Remember",
-      v: "Reads",
-      d: "Projections fuse composition history, wallet movements, and settlement legs into hot, queryable surfaces. Secondary indexes serve lookups; timestamps and lineage tie every snapshot to the events that produced it.",
+      v: "Ledger",
+      d: "The ledger as immutable creative memory — who wrote the melody, who added the harmony, who shaped the rhythm, what every creator owns — projected into hot, queryable surfaces. Secondary indexes serve attribution lookups; timestamps and lineage tie every read to the compositional events that produced it.",
     },
   ];
   return (
@@ -151,41 +151,41 @@ function Pillars() {
   const pillars: Pillar[] = [
     {
       id: "inference",
-      n: "Inference",
-      tag: "Presence · Shared context · Roles · Review queue",
-      title: "The room sees the same picture updating, not a snapshot from yesterday.",
-      body: "Live studio presence on shared compositions, comments anchored to stems and arrangement lanes, and controlled invites so collaborators only see what policy allows. Proposals queue as reviewable diffs before they land; a real-time earnings ticker shows pending sales and royalties alongside the edit. Composer A and B arrange “Velvet Clip” live while Composer C (10%) watches +$1.35 per sale move toward settlement — shadow-compare AI suggestions before commit, with twin-predicted marketplace impact on every merge.",
+      n: "Live Composition",
+      tag: "Real-time · Collaborative · Presence · Attribution",
+      title: "Composition happens together, instantly.",
+      body: "Live melodic, harmonic, and rhythmic composition in one shared canvas — every voice, chord change, and groove edit synchronized in sub-second time. Collaborators see the same evolving score, not a stale export; presence and attribution track who shaped which line as the piece grows. A live earnings rail runs beside the music so splits stay honest while you write. Composer A sketches the hook, Composer B answers with harmony, and Composer C (10%) watches each melodic decision accrue — +$1.35 per sale toward settlement as the motif lands — with every note change logged for split and review before it commits.",
       bullets: [
-        "Sub‑second presence across shared pianos, timelines, and earnings rails",
-        "Threads pinned to stems, splits, and settlement lines",
-        "Reviewer‑gated proposals with shadow comparison to live composition + twin state",
-        "Exportable attribution log for contribution lineage and earnings distribution",
+        "Sub‑second sync on shared melodic lines, harmonic voicings, and rhythm grids",
+        "Presence and cursors anchored to the phrase, bar, and beat — not static files",
+        "Per-decision attribution: who wrote the motif, who voiced the harmony, who locked the groove",
+        "Reviewer‑gated merges with live split preview before a compositional choice ships",
       ],
     },
     {
       id: "simulation",
-      n: "Simulation",
-      tag: "Argo Workflows · Ray · 10k-pod parallelism",
-      title: "Rehearse the future, then act on it.",
-      body: "Monte Carlo for distributions of marketplace and revenue outcomes, agent-based models for how a creator’s style and earning potential evolve, discrete-event trajectories as remixes stack and capital flows upstream, RL for arrangement and pricing policies that maximize engagement and creator earnings — ten thousand pods on demand, results aggregated and emitted back into the bus as new state.",
+      n: "Outcome Rehearsal",
+      tag: "Monte Carlo · Agent-based · RL · Prediction",
+      title: "Test every musical choice before you commit.",
+      body: "Monte Carlo over compositional futures — how a harmonic pivot performs, how a melodic motif evolves across keys and arrangements, what happens if you tighten the rhythm or open the meter. Agent-based models trace how a creator’s voice and earning path shift as choices stack; discrete-event paths follow remix chains and upstream capital; RL searches policies for voicing, pacing, and release timing that lift engagement and payouts. Ten thousand pods on demand, outcomes aggregated and written back into the bus as rehearsed state you can act on.",
       bullets: [
-        "10,000-scenario Monte Carlo: release Friday vs Monday — performance and revenue bands",
-        "Agent-based creator trajectories — style, audience, and capital accumulation over 30d",
-        "Discrete-event remix and upstream capital consequence paths",
-        "RL search for arrangement and pricing moves that lift engagement and payouts",
+        "10,000-scenario Monte Carlo: this cadence vs that resolution — performance and revenue bands",
+        "Agent-based melodic trajectories — motif evolution, audience pull, and capital over 30d",
+        "Discrete-event paths for harmonic reharmonization and rhythmic consequence chains",
+        "RL search for voicing, tempo, and release moves that lift engagement and creator earnings",
       ],
     },
     {
       id: "twins",
-      n: "Digital Twins",
-      tag: "Mongo · Qdrant · ClickHouse · Redis",
-      title: "Every modeled thing, continuously alive.",
-      body: "Twins are not records — they are continuously-updated probabilistic models of compositions, creators, marketplace demand, and treasury legs. Sharded by entity, sub-10ms reads on hot paths, historical to the second, with explicit uncertainty so downstream systems treat forecasts as distributions — engagement vs predicted performance vs revenue realization.",
+      n: "Creative Ledger",
+      tag: "Ownership · Memory · Attribution · Capital",
+      title: "Every note belongs to someone. The ledger remembers.",
+      body: "A ledger of creative ownership — who originated the melody, who contributed the harmony, who owns the rhythm pattern — with immutable memory of every compositional act, not just a probabilistic snapshot. Sharded by work and contributor, sub-10ms reads on hot attribution paths, history to the second, with capital legs tied to creative lineage so downstream systems treat ownership as fact: this phrase, this split, this settlement. The ledger remembers what twins predict; capital follows the notes that earned it.",
       bullets: [
-        "8.6M live twins, sub-second update lag",
-        "Composition, creator, marketplace, and capital/treasury twin families",
-        "Sub-10ms median read for hot twins",
-        "Time-travel queries via ClickHouse — creator statements: gross, fees, net, settled vs pending",
+        "Immutable creative memory: melody, harmony, and rhythm lineage per work",
+        "Ownership graph — composer, co-writer, and contributor shares on every phrase",
+        "Attribution tracking from first motif to final master, linked to settlement legs",
+        "Time-travel queries — who owned what when, gross, fees, net, settled vs pending",
       ],
     },
   ];
@@ -299,7 +299,7 @@ function Architecture() {
             pools, Kubernetes orchestration with regional clusters, a Kafka
             stream for plays, sales, and settlements, the data layer, the inference
             fleet, the simulation orchestrator, the twin layer for compositions
-            creators and capital, and finally Trending and WorkSpace. Each layer
+            creators and capital, and finally Shop and Treasury. Each layer
             scales and fails on its own clock.
           </div>
         </div>
@@ -480,26 +480,27 @@ function CTA() {
           </div>
           <div className="col-span-12 md:col-span-4 bg-ink text-snow-50 p-8">
             <div className="text-[10px] tabular uppercase tracking-[0.22em] text-snow-50/55">
-              Request access
+              Client login
             </div>
-            <div className="font-display text-3xl mt-2">WorkSpace</div>
-            <div className="mt-6 space-y-4">
-              <input
-                placeholder="Name"
-                className="w-full bg-transparent border-b border-snow-50/20 focus:border-snow-50/60 outline-none py-2 text-[14px] placeholder:text-snow-50/40"
-              />
-              <input
-                placeholder="Work email"
-                className="w-full bg-transparent border-b border-snow-50/20 focus:border-snow-50/60 outline-none py-2 text-[14px] placeholder:text-snow-50/40"
-              />
-              <input
-                placeholder="Vertical or use case"
-                className="w-full bg-transparent border-b border-snow-50/20 focus:border-snow-50/60 outline-none py-2 text-[14px] placeholder:text-snow-50/40"
-              />
-              <button className="mt-4 w-full inline-flex items-center justify-center gap-2 bg-snow-50 text-ink py-3 rounded-full text-[12px] tracking-tight hover:bg-snow-50/90 transition-colors">
+            <div className="font-display text-3xl mt-2">Treasury</div>
+            <p className="mt-4 text-[13px] text-snow-50/60 leading-relaxed">
+              Partner and operator access to settlement rails, ledger APIs, and
+              deployment consoles.
+            </p>
+            <div className="mt-8 flex flex-col gap-3">
+              <Link
+                href="/login"
+                className="w-full inline-flex items-center justify-center gap-2 bg-snow-50 text-ink py-3 rounded-full text-[12px] tracking-tight hover:bg-snow-50/90 transition-colors"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-tiff animate-breathe" />
-                Send request
-              </button>
+                Client login
+              </Link>
+              <Link
+                href="/signup"
+                className="w-full inline-flex items-center justify-center py-3 rounded-full text-[12px] tracking-tight border border-snow-50/25 text-snow-50/90 hover:border-snow-50/50 transition-colors"
+              >
+                Sign up
+              </Link>
             </div>
           </div>
         </div>

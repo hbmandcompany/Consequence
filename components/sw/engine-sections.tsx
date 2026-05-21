@@ -15,6 +15,7 @@ import {
 import { ArchitectureDiagram } from "@/components/sw/architecture";
 import { RoyaltyTransactionPanel } from "@/components/sw/royalty-transaction";
 import { CollaborationSessionIllustration } from "@/components/sw/collaboration-session-illustration";
+import { COLLABORATION_FEATURES } from "@/lib/collaboration-features";
 import { DigitalTwinsDashboard } from "@/components/sw/digital-twins-dashboard";
 import { InferenceMeetIllustration } from "@/components/sw/inference-meet-illustration";
 import { SimulationMpcIllustration } from "@/components/sw/simulation-mpc-illustration";
@@ -374,9 +375,21 @@ function Collaboration() {
               state, attribution signals, and equity revisions stay synchronized.
             </Lede>
             <div className="mt-12">
-              <HairlineRow left="Live session" right="FaceTime-grade video · screen share · captions" />
-              <HairlineRow left="Shared workspace" right="Piano roll · stems · arrangement notes" />
-              <HairlineRow left="Split proposals" right="Negotiated % · algorithmic fallback · audit trail" />
+              <HairlineRow
+                left={COLLABORATION_FEATURES["live-session"].label}
+                right={COLLABORATION_FEATURES["live-session"].tagline}
+                href={COLLABORATION_FEATURES["live-session"].href}
+              />
+              <HairlineRow
+                left={COLLABORATION_FEATURES["shared-workspace"].label}
+                right={COLLABORATION_FEATURES["shared-workspace"].tagline}
+                href={COLLABORATION_FEATURES["shared-workspace"].href}
+              />
+              <HairlineRow
+                left={COLLABORATION_FEATURES["split-proposals"].label}
+                right={COLLABORATION_FEATURES["split-proposals"].tagline}
+                href={COLLABORATION_FEATURES["split-proposals"].href}
+              />
             </div>
           </div>
           <div className="col-span-12 md:col-span-7">

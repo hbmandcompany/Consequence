@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import clsx from "clsx";
+import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
@@ -105,11 +107,43 @@ export function HairlineRow({
   left,
   right,
   className,
+  href,
 }: {
   left: ReactNode;
   right?: ReactNode;
   className?: string;
+  href?: string;
 }) {
+  const inner = (
+    <>
+      <div className="text-[13px] text-ink/85 group-hover:text-ink transition-colors">{left}</div>
+      <div className="flex items-center gap-3 shrink-0 ml-4">
+        {right && (
+          <div className="text-[12px] text-ink/55 tabular text-right group-hover:text-ink/70 transition-colors">
+            {right}
+          </div>
+        )}
+        {href ? (
+          <ArrowUpRight className="w-3.5 h-3.5 text-ink/30 group-hover:text-ink transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        ) : null}
+      </div>
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={clsx(
+          "group flex items-center justify-between py-5 border-t border-ink/10 hover:bg-snow-100/80 -mx-2 px-2 transition-colors",
+          className
+        )}
+      >
+        {inner}
+      </Link>
+    );
+  }
+
   return (
     <div className={clsx("flex items-center justify-between py-5 border-t border-ink/10", className)}>
       <div className="text-[13px] text-ink/85">{left}</div>

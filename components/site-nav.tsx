@@ -34,6 +34,9 @@ export function SiteNav() {
   const pathname = usePathname();
   const [hash, setHash] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const immersiveHero =
+    pathname === "/session-protocol" || pathname === "/how-the-rails-connect";
+  const [onImmersiveHero, setOnImmersiveHero] = useState(immersiveHero);
   const { hidden, prefersReducedMotion, transitionStyle } = useScrollHideHeader({
     hideAfterPx: 120,
     topTolerance: 8,
@@ -55,11 +58,22 @@ export function SiteNav() {
   }, [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12);
+      if (immersiveHero) {
+        setOnImmersiveHero(window.scrollY < window.innerHeight * 0.5);
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [immersiveHero]);
+
+  useEffect(() => {
+    setOnImmersiveHero(immersiveHero);
+  }, [immersiveHero, pathname]);
+
+  const lightOnDark = immersiveHero && onImmersiveHero && !scrolled;
 
   const shellMotion: CSSProperties = {
     ...transitionStyle,
@@ -77,19 +91,36 @@ export function SiteNav() {
     <header ref={headerRef} className="fixed top-0 inset-x-0 z-50" style={shellMotion}>
       <div
         className={clsx(
-          "mx-auto max-w-[1480px] px-6 lg:px-10 h-16 flex items-center justify-between border-b",
+          "mx-auto max-w-[1480px] px-6 lg:px-10 h-16 flex items-center justify-between border-b transition-colors",
           scrolled
             ? "glass border-ink/[0.06]"
-            : "bg-transparent border-transparent"
+            : lightOnDark
+              ? "bg-transparent border-snow-0/10"
+              : "bg-transparent border-transparent"
         )}
         style={barMotion}
       >
         <Link href="/" className="flex items-center gap-3 group">
-          <Mark className="w-6 h-6 text-ink transition-transform duration-700 ease-out-expo group-hover:rotate-180" />
-          <span className="font-display text-[20px] leading-none tracking-tight">
+          <Mark
+            className={clsx(
+              "w-6 h-6 transition-transform duration-700 ease-out-expo group-hover:rotate-180",
+              lightOnDark ? "text-snow-0" : "text-ink"
+            )}
+          />
+          <span
+            className={clsx(
+              "font-display text-[20px] leading-none tracking-tight",
+              lightOnDark ? "text-snow-0" : "text-ink"
+            )}
+          >
             Consequence
           </span>
-          <span className="hidden md:inline-block text-[10px] tabular tracking-[0.18em] uppercase text-ink/40 ml-2 pl-3 border-l border-ink/10">
+          <span
+            className={clsx(
+              "hidden md:inline-block text-[10px] tabular tracking-[0.18em] uppercase ml-2 pl-3 border-l",
+              lightOnDark ? "text-snow-0/45 border-snow-0/15" : "text-ink/40 border-ink/10"
+            )}
+          >
             HBM & Company
           </span>
         </Link>
@@ -103,19 +134,37 @@ export function SiteNav() {
                 href={l.href}
                 className={clsx(
                   "group relative px-4 py-2 rounded-full text-[13px] tracking-tight transition-colors",
-                  active ? "text-ink" : "text-ink/55 hover:text-ink"
+                  lightOnDark
+                    ? active
+                      ? "text-snow-0"
+                      : "text-snow-0/55 hover:text-snow-0"
+                    : active
+                      ? "text-ink"
+                      : "text-ink/55 hover:text-ink"
                 )}
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <span>{l.label}</span>
                   {l.suffix && (
-                    <span className="text-[9px] tabular tracking-[0.16em] uppercase text-ink/35">
+                    <span
+                      className={clsx(
+                        "text-[9px] tabular tracking-[0.16em] uppercase",
+                        lightOnDark ? "text-snow-0/35" : "text-ink/35"
+                      )}
+                    >
                       {l.suffix}
                     </span>
                   )}
                 </span>
                 {active && (
-                  <span className="absolute inset-0 rounded-full bg-ink/[0.04] border border-ink/[0.08]" />
+                  <span
+                    className={clsx(
+                      "absolute inset-0 rounded-full border",
+                      lightOnDark
+                        ? "bg-snow-0/[0.08] border-snow-0/15"
+                        : "bg-ink/[0.04] border-ink/[0.08]"
+                    )}
+                  />
                 )}
               </Link>
             );
@@ -125,13 +174,21 @@ export function SiteNav() {
         <div className="flex items-center gap-3">
           <Link
             href="/signup"
-            className="hidden sm:inline-flex items-center gap-2 text-[12px] tracking-tight text-ink/60 hover:text-ink uline"
+            className={clsx(
+              "hidden sm:inline-flex items-center gap-2 text-[12px] tracking-tight uline",
+              lightOnDark ? "text-snow-0/60 hover:text-snow-0" : "text-ink/60 hover:text-ink"
+            )}
           >
             Sign up
           </Link>
           <Link
             href="/login"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink text-snow-50 text-[12px] tracking-tight hover:bg-ink/90 transition-colors"
+            className={clsx(
+              "inline-flex items-center gap-2 px-4 py-2 rounded-full text-[12px] tracking-tight transition-colors",
+              lightOnDark
+                ? "bg-snow-0 text-ink hover:bg-snow-100"
+                : "bg-ink text-snow-50 hover:bg-ink/90"
+            )}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-tiff animate-breathe" />
             Client login

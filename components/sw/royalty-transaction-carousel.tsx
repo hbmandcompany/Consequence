@@ -6,7 +6,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { royaltyFlow, RoyaltyTxRow } from "@/components/sw/royalty-transaction";
 
-export function RoyaltyTransactionCarousel() {
+export function RoyaltyTransactionCarousel({
+  compact,
+  className,
+}: {
+  compact?: boolean;
+  className?: string;
+}) {
   const [index, setIndex] = useState(0);
   const total = royaltyFlow.length;
   const step = royaltyFlow[index];
@@ -19,16 +25,27 @@ export function RoyaltyTransactionCarousel() {
   );
 
   return (
-    <div className="bg-snow-0 border border-ink/10 p-7 lg:p-8 min-w-0">
+    <div
+      className={clsx(
+        "bg-snow-0 border border-ink/10 min-w-0 h-full flex flex-col",
+        compact ? "p-5 lg:p-6" : "p-7 lg:p-8",
+        className
+      )}
+    >
       <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/45">
         Royalty transaction
       </div>
 
-      <p className="mt-2 text-[11px] leading-[1.55] text-ink/60">
+      <p
+        className={clsx(
+          "leading-[1.55] text-ink/60",
+          compact ? "mt-1.5 text-[10px]" : "mt-2 text-[11px]"
+        )}
+      >
         End-to-end trace from purchase to settlement — step through the bus, twins, chain, and payout legs.
       </p>
 
-      <div className="mt-5 border border-ink/10">
+      <div className={clsx("border border-ink/10 flex-1 flex flex-col min-h-0", compact ? "mt-3" : "mt-5")}>
         <div className="flex items-stretch">
           <button
             type="button"
@@ -39,7 +56,12 @@ export function RoyaltyTransactionCarousel() {
             <ChevronLeft className="w-4 h-4" strokeWidth={1.5} />
           </button>
 
-          <div className="relative h-[16rem] flex-1 overflow-hidden bg-snow-0">
+          <div
+            className={clsx(
+              "relative flex-1 overflow-hidden bg-snow-0 min-h-0",
+              compact ? "min-h-[10rem]" : "h-[16rem]"
+            )}
+          >
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={step.n}

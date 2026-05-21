@@ -6,7 +6,6 @@ import {
   Activity,
   Calculator,
   CircleCheck,
-  Cpu,
   Database,
   Layers,
   Link2,
@@ -59,14 +58,6 @@ export const royaltyFlow = [
   },
   {
     n: "06",
-    t: "Inference trigger",
-    d: "Marketplace model +0.3 engagement; creator style drift +0.1; buyer preference vector shift. GPU batch p99 <500ms.",
-    status: "Complete",
-    txRef: "INF:batch‑v3 · GPU pool eu‑ams",
-    Icon: Cpu,
-  },
-  {
-    n: "07",
     t: "Simulation trigger",
     d: "10k-scenario Monte Carlo — 30d revenue if trajectory holds: median $145 · p90 $340 · p10 $52. Wall ~8s · 0.8ms/scenario.",
     status: "Complete",
@@ -74,7 +65,7 @@ export const royaltyFlow = [
     Icon: Sparkles,
   },
   {
-    n: "08",
+    n: "07",
     t: "Settlement pending",
     d: "Circle Payouts API staged: 3 legs vs on-chain ownership. Awaiting execution.",
     status: "Pending",
@@ -82,7 +73,7 @@ export const royaltyFlow = [
     Icon: Timer,
   },
   {
-    n: "09",
+    n: "08",
     t: "Settlement executed",
     d: "Parallel USDC on Solana: A $8.10 · B $4.05 · C $1.35. Confirmed <2s. Circle + Solana refs written.",
     status: "Complete",
@@ -90,7 +81,7 @@ export const royaltyFlow = [
     Icon: CircleCheck,
   },
   {
-    n: "10",
+    n: "09",
     t: "Settled & recorded",
     d: "Twins refreshed: lifetime revenue, available earnings, fee accrual +$1.50. Mongo + Solana CVS snapshot. Auditable end-to-end.",
     status: "Complete",
@@ -182,18 +173,30 @@ export function RoyaltyTransactionPanel({
   className,
   compact,
   showFooter,
+  fillHeight,
 }: {
   className?: string;
   compact?: boolean;
   showFooter?: boolean;
+  /** Treasury illustration — scrollable steps fill the column */
+  fillHeight?: boolean;
 }) {
   return (
     <div
-      className={clsx("bg-snow-0 text-ink", className)}
+      className={clsx(
+        "bg-snow-0 text-ink",
+        fillHeight && "flex h-full min-h-0 flex-col",
+        className
+      )}
       onClick={(e) => e.stopPropagation()}
       onPointerDown={(e) => e.stopPropagation()}
     >
-      <div className={clsx("flex items-baseline justify-between gap-3", compact ? "px-4 pt-4" : "")}>
+      <div
+        className={clsx(
+          "flex shrink-0 items-baseline justify-between gap-3",
+          compact || fillHeight ? "px-4 pt-4 lg:px-5 lg:pt-5" : ""
+        )}
+      >
         <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/45">
           Royalty transaction
         </div>
@@ -202,7 +205,9 @@ export function RoyaltyTransactionPanel({
       <div
         className={clsx(
           "divide-y divide-ink/10 border-y border-ink/10",
-          compact ? "mx-4 mt-3 max-h-[min(320px,50vh)] overflow-y-auto overscroll-contain" : "mt-4"
+          compact && !fillHeight && "mx-4 mt-3 max-h-[min(320px,50vh)] overflow-y-auto overscroll-contain",
+          fillHeight && "mx-4 mt-3 lg:mx-5 flex-1 min-h-0 overflow-y-auto overscroll-contain",
+          !compact && !fillHeight && "mt-4"
         )}
       >
         {royaltyFlow.map((row) => (
@@ -212,8 +217,8 @@ export function RoyaltyTransactionPanel({
       {showFooter !== false && (
         <div
           className={clsx(
-            "grid grid-cols-2 gap-3 text-[11px] tabular uppercase tracking-[0.16em] text-ink/55 border-t border-ink/10",
-            compact ? "mx-4 mt-4 mb-4 pt-4" : "mt-6 pt-5"
+            "grid shrink-0 grid-cols-2 gap-3 text-[11px] tabular uppercase tracking-[0.16em] text-ink/55 border-t border-ink/10",
+            compact || fillHeight ? "mx-4 mt-4 mb-4 pt-4 lg:mx-5 lg:mb-5" : "mt-6 pt-5"
           )}
         >
           <div>

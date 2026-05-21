@@ -2,7 +2,6 @@
 
 import clsx from "clsx";
 import { useState } from "react";
-import { RoyaltyTransactionPanel } from "@/components/sw/royalty-transaction";
 
 const layers = [
   {
@@ -104,8 +103,26 @@ export function ArchitectureDiagram() {
       </div>
 
       <div className="col-span-12 md:col-span-4 order-1 md:order-2">
-        <div className="md:sticky md:top-24 border border-ink/10">
-          <RoyaltyTransactionPanel className="p-6" />
+        <div className="md:sticky md:top-24 border border-ink/10 bg-snow-0 p-6 lg:p-8 min-h-[12rem]">
+          {hover !== null ? (
+            <>
+              <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/40">
+                Layer {layers[hover].id}
+              </div>
+              <div className="font-display text-[clamp(28px,3vw,40px)] leading-none tracking-tight mt-3">
+                {layers[hover].n}
+              </div>
+              <div className="text-[11px] tabular uppercase tracking-[0.18em] text-ink/45 mt-2">
+                {layers[hover].tag}
+              </div>
+              <p className="mt-5 text-[14px] text-ink/65 leading-[1.65]">{layers[hover].desc}</p>
+            </>
+          ) : (
+            <p className="text-[14px] text-ink/50 leading-[1.65]">
+              Hover a layer to inspect its role in the stack — compute, orchestration, data, inference,
+              simulation, twins, and surfaces.
+            </p>
+          )}
         </div>
       </div>
     </div>

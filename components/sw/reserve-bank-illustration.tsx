@@ -1,1 +1,1 @@
-export { RoyaltyTransactionCarousel as ReserveBankIllustration } from "@/components/sw/royalty-transaction-carousel";
+export { RoyaltyTransactionPanel as ReserveBankIllustration } from "@/components/sw/royalty-transaction";

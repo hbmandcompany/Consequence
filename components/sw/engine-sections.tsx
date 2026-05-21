@@ -1,4 +1,5 @@
 import Link from "next/link";
+import clsx from "clsx";
 import { ArrowUpRight, ChevronRight, Zap } from "lucide-react";
 import {
   Container,
@@ -12,7 +13,7 @@ import {
   Section,
 } from "@/components/ui";
 import { ArchitectureDiagram } from "@/components/sw/architecture";
-import { LiveMetrics } from "@/components/sw/live-metrics";
+import { RoyaltyTransactionPanel } from "@/components/sw/royalty-transaction";
 import { CollaborationSessionIllustration } from "@/components/sw/collaboration-session-illustration";
 import { DigitalTwinsDashboard } from "@/components/sw/digital-twins-dashboard";
 import { InferenceMeetIllustration } from "@/components/sw/inference-meet-illustration";
@@ -24,7 +25,6 @@ export function EngineDeepDive() {
   return (
     <>
       <SwHero />
-      <SwOverview />
       <Pillars />
       <Architecture />
       <Collaboration />
@@ -35,34 +35,82 @@ export function EngineDeepDive() {
   );
 }
 
+const RESERVE_ENGINES = [
+  {
+    k: "Compose",
+    v: "Writes",
+    accent: "tiff" as const,
+    d: "Every compositional act captured as it happens — melodic note entries, harmonic chord progressions, rhythmic pattern decisions, collaborator contributions — entity-shaped, atomically written to the ledger, fan-out replicated until quorum. Indexes warm async so writes stay ahead of reads while the room keeps composing.",
+  },
+  {
+    k: "Analyze",
+    v: "Memory",
+    accent: "ink" as const,
+    d: "Analyze live works for melodic patterns, harmonic tension, rhythmic structure, originality scores, and how a composition will evolve — with ownership splits and musical decisions as debits and credits that commit or roll back together under a single agreed ordering.",
+  },
+  {
+    k: "Rehearse",
+    v: "Simulation",
+    accent: "gold" as const,
+    d: "Rehearse compositional futures at fleet scale — Monte Carlo over melodic variations, harmonic progressions, and rhythmic arrangements — batch work that collapses into summarized paths so creators see what their music could become before they finalize it, beyond interactive limits.",
+  },
+  {
+    k: "Remember",
+    v: "Ledger",
+    accent: "tiff" as const,
+    d: "The ledger as immutable creative memory — who wrote the melody, who added the harmony, who shaped the rhythm, what every creator owns — projected into hot, queryable surfaces. Secondary indexes serve attribution lookups; timestamps and lineage tie every read to the compositional events that produced it.",
+  },
+] as const;
+
 function SwHero() {
   return (
-    <Section id="software" className="scroll-mt-28 border-t border-ink/10 pt-20 pb-24 lg:pt-28 lg:pb-24 overflow-hidden">
-      <Container>
-        <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-end">
-          <div className="col-span-12 lg:col-span-8">
-            <div className="flex items-center gap-3 mb-8">
+    <Section
+      id="software"
+      className="scroll-mt-28 border-t border-ink/10 bg-snow-0 overflow-hidden lg:min-h-[100svh] lg:flex lg:flex-col"
+    >
+      <Container className="py-12 md:py-14 lg:py-16 lg:flex-1 lg:flex lg:flex-col lg:min-h-0">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-10 lg:gap-x-8 lg:flex-1 lg:min-h-0 lg:items-stretch">
+          {/* Left: headline + engine rail */}
+          <div className="col-span-12 lg:col-span-7 flex flex-col lg:min-h-0 lg:justify-between lg:pr-2">
+            <div className="flex flex-wrap items-center gap-3 mb-5 lg:mb-6">
               <Pill tone="gold">Treasury</Pill>
               <span className="text-[11px] tabular tracking-[0.2em] uppercase text-ink/45">
                 The Reserve · v 1.0
               </span>
             </div>
-            <Display as="h2">
+
+            <Display as="h2" className="text-[clamp(40px,5.2vw,72px)] leading-[0.95] tracking-tightest-2">
               Ledger
               <br />
               <span className="italic text-ink/85">Branch.</span>
             </Display>
-            <Lede className="mt-10 max-w-[60ch]">
-              A single royalty core that ingests composition sales, marketplace transactions, collaborator splits,
-              USDC settlement, creator balances, and capital movement patterns — and answers, in continuous time and
-              at institutional scale, the only question that matters:{" "}
-              <em>what happens next?</em>
-            </Lede>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-5 lg:mt-6 space-y-4 max-w-[62ch]">
+              <Lede className="max-w-none text-[14px] lg:text-[15px] leading-[1.68]">
+                A single royalty core that ingests composition sales, marketplace transactions, collaborator splits,
+                USDC settlement, creator balances, and capital movement patterns — and answers, in continuous time and
+                at institutional scale, the only question that matters:{" "}
+                <em>what happens next?</em>
+              </Lede>
+              <Lede className="max-w-none text-[14px] lg:text-[15px] leading-[1.68] text-ink/65">
+                The Ledger Branch is that answer made operational: every purchase, split revision, and payout leg
+                enters the same partitioned bus, is enriched against composition and creator twins, and is checked
+                against on-chain ownership before settlement executes. Studio sessions, governance actions, and
+                treasury policy all converge here — one authoritative graph for gross, fees, net, pending, and
+                settled, with lineage back to the note, the vote, and the transaction that produced each balance.
+              </Lede>
+              <Lede className="max-w-none text-[14px] lg:text-[15px] leading-[1.68] text-ink/65">
+                Operators see end-to-end trace in real time; creators see earnings bands and available balance without
+                waiting for batch close; publishers see attribution and audit refs tied to every leg. Whether the
+                surface is WorkSpace, Trending, or the reserve itself, the core does not fork — it projects the same
+                state, enforces the same ordering, and closes the loop when USDC lands on Solana and the twins refresh.
+              </Lede>
+            </div>
+
+            <div className="mt-5 lg:mt-6 flex flex-wrap items-center gap-3">
               <Link
                 href="/session-protocol"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-ink text-snow-50 text-[13px] hover:bg-ink/90 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink text-snow-50 text-[13px] hover:bg-ink/90 transition-colors"
               >
                 Session Protocol
                 <ChevronRight className="w-4 h-4" />
@@ -75,61 +123,60 @@ function SwHero() {
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
+
+            <div className="mt-8 lg:mt-0 lg:pt-8 border-t border-ink/10">
+              <p className="hidden lg:block mb-3 text-[10px] tabular uppercase tracking-[0.22em] text-ink/40">
+                Four surfaces · one core
+              </p>
+              <div className="hidden lg:grid lg:grid-cols-4 lg:divide-x lg:divide-ink/10 lg:border lg:border-ink/10 bg-snow-100/50">
+                {RESERVE_ENGINES.map((it, i) => (
+                  <FadeUp
+                    key={it.k}
+                    delay={i * 0.04}
+                    className="px-4 py-4 xl:px-5 xl:py-5 flex flex-col min-h-0"
+                  >
+                    <div
+                      className={clsx(
+                        "text-[9px] tabular uppercase tracking-[0.22em]",
+                        it.accent === "tiff" ? "text-tiff-600" : it.accent === "gold" ? "text-gold-600" : "text-ink/45"
+                      )}
+                    >
+                      {it.k}
+                    </div>
+                    <div className="font-display text-[clamp(22px,2vw,36px)] leading-none tracking-tight mt-2">
+                      {it.v}
+                    </div>
+                    <p className="mt-3 text-[11px] xl:text-[12px] text-ink/60 leading-[1.55] flex-1">
+                      {it.d}
+                    </p>
+                  </FadeUp>
+                ))}
+              </div>
+
+              <div className="lg:hidden space-y-6">
+                {RESERVE_ENGINES.map((it, i) => (
+                  <FadeUp key={it.k} delay={i * 0.05}>
+                    <div className="border-t border-ink/15 pt-5">
+                      <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/45">{it.k}</div>
+                      <div className="font-display text-[clamp(32px,8vw,44px)] leading-none tracking-tight mt-2">
+                        {it.v}
+                      </div>
+                      <p className="mt-3 text-[13px] text-ink/60 leading-[1.6]">{it.d}</p>
+                    </div>
+                  </FadeUp>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-4 lg:mb-16">
-            <FadeUp>
-              <LiveMetrics />
-            </FadeUp>
-          </div>
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-function SwOverview() {
-  const items = [
-    {
-      k: "Compose",
-      v: "Writes",
-      d: "Every compositional act captured as it happens — melodic note entries, harmonic chord progressions, rhythmic pattern decisions, collaborator contributions — entity-shaped, atomically written to the ledger, fan-out replicated until quorum. Indexes warm async so writes stay ahead of reads while the room keeps composing.",
-    },
-    {
-      k: "Analyze",
-      v: "Memory",
-      d: "Analyze live works for melodic patterns, harmonic tension, rhythmic structure, originality scores, and how a composition will evolve — with ownership splits and musical decisions as debits and credits that commit or roll back together under a single agreed ordering.",
-    },
-    {
-      k: "Rehearse",
-      v: "Simulation",
-      d: "Rehearse compositional futures at fleet scale — Monte Carlo over melodic variations, harmonic progressions, and rhythmic arrangements — batch work that collapses into summarized paths so creators see what their music could become before they finalize it, beyond interactive limits.",
-    },
-    {
-      k: "Remember",
-      v: "Ledger",
-      d: "The ledger as immutable creative memory — who wrote the melody, who added the harmony, who shaped the rhythm, what every creator owns — projected into hot, queryable surfaces. Secondary indexes serve attribution lookups; timestamps and lineage tie every read to the compositional events that produced it.",
-    },
-  ];
-  return (
-    <Section className="py-20 border-t border-ink/10">
-      <Container>
-        <div className="grid grid-cols-12 gap-y-10 gap-x-8">
-          {items.map((it, i) => (
-            <FadeUp key={it.k} delay={i * 0.05} className="col-span-12 md:col-span-3">
-              <div className="border-t border-ink/15 pt-6 h-full flex flex-col">
-                <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/45">
-                  {it.k}
-                </div>
-                <div className="font-display text-[clamp(36px,3.6vw,56px)] leading-none tracking-tight mt-3">
-                  {it.v}
-                </div>
-                <p className="mt-5 text-[13px] text-ink/60 leading-[1.6]">
-                  {it.d}
-                </p>
+          {/* Right: royalty transaction illustration */}
+          <div className="col-span-12 lg:col-span-5 min-h-[22rem] lg:min-h-0 flex flex-col lg:border-l lg:border-ink/10 lg:pl-8">
+            <FadeUp className="flex-1 min-h-0 flex flex-col h-full">
+              <div className="flex-1 min-h-0 border border-ink/10 bg-snow-0">
+                <RoyaltyTransactionPanel compact fillHeight />
               </div>
             </FadeUp>
-          ))}
+          </div>
         </div>
       </Container>
     </Section>
@@ -330,9 +377,6 @@ function Collaboration() {
               <HairlineRow left="Live session" right="FaceTime-grade video · screen share · captions" />
               <HairlineRow left="Shared workspace" right="Piano roll · stems · arrangement notes" />
               <HairlineRow left="Split proposals" right="Negotiated % · algorithmic fallback · audit trail" />
-              <HairlineRow left="Presence signals" right="Session time · MIDI · AI acceptance → equity" />
-              <HairlineRow left="Twin in call" right="@twin forecasts · earnings bands · what happens next" />
-              <HairlineRow left="After hang-up" right="Session archived · twins updated · splits ready to settle" />
             </div>
           </div>
           <div className="col-span-12 md:col-span-7">

@@ -92,7 +92,7 @@ function ProtocolSection({
         className
       )}
     >
-      <Container>{children}</Container>
+      {children}
     </section>
   );
 }
@@ -210,58 +210,63 @@ export function SessionProtocolView() {
           }}
           aria-hidden
         />
-        <Container className="relative pb-16 lg:pb-24 pt-32">
-          <FadeUp>
-            <div className="flex items-center gap-3 text-[10px] tabular uppercase tracking-[0.22em] text-snow-0/55">
-              <span className="text-snow-0/40">Protocol</span>
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-tiff" />
-              <span>The Reserve</span>
-            </div>
-            <Display as="h1" className="mt-8 text-snow-0 max-w-[14ch]">
-              Session
-              <br />
-              <span className="italic text-snow-0/80">Protocol.</span>
-            </Display>
-            <p className="mt-10 max-w-[52ch] text-[clamp(16px,1.5vw,20px)] leading-[1.55] text-snow-0/65">
-              How royalties are calculated, how the ledger branches between compose-time equity and
-              sale-time settlement, and how every USDC leg stays auditable from Kafka through
-              Solana.
-            </p>
-            <div className="mt-12 flex flex-wrap gap-4">
-              <button
-                type="button"
-                onClick={() => scrollTo("royalty")}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-snow-0 text-ink text-[13px] hover:bg-snow-100 transition-colors"
-              >
-                Enter the protocol
-                <ChevronDown className="w-4 h-4" />
-              </button>
-              <Link
-                href="/treasury"
-                className="inline-flex items-center gap-2 text-[13px] text-snow-0/70 hover:text-snow-0 uline"
-              >
-                Governance
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </FadeUp>
-          <motion.div
-            className="mt-16 lg:mt-20 max-w-md ml-auto hidden md:block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: heroReady ? 1 : 0 }}
-            transition={{ duration: reducedMotion ? 0 : 0.8 }}
-          >
-            <HeroPillarsDiagram started={heroReady} reducedMotion={reducedMotion ?? false} />
-          </motion.div>
+        <Container className="relative pb-16 lg:pb-24 pt-28 lg:pt-32">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-12 items-end">
+            <FadeUp className="col-span-12 lg:col-span-7">
+              <div className="flex items-center gap-3 text-[10px] tabular uppercase tracking-[0.22em] text-snow-0/55">
+                <span className="text-snow-0/40">Protocol</span>
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-tiff" />
+                <span>The Reserve</span>
+              </div>
+              <Display as="h1" className="!text-snow-0 mt-8 max-w-[14ch]">
+                Session
+                <br />
+                <span className="italic text-snow-0/80">Protocol.</span>
+              </Display>
+              <p className="mt-10 max-w-[52ch] text-[clamp(16px,1.5vw,20px)] leading-[1.55] text-snow-0/65">
+                How royalties are calculated, how the ledger branches between compose-time equity and
+                sale-time settlement, and how every USDC leg stays auditable from Kafka through
+                Solana.
+              </p>
+              <div className="mt-12 flex flex-wrap gap-4">
+                <button
+                  type="button"
+                  onClick={() => scrollTo("royalty")}
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-snow-0 text-ink text-[13px] hover:bg-snow-100 transition-colors"
+                >
+                  Enter the protocol
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+                <Link
+                  href="/treasury"
+                  className="inline-flex items-center gap-2 text-[13px] text-snow-0/70 hover:text-snow-0 uline"
+                >
+                  Governance
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </FadeUp>
+            <motion.div
+              className="col-span-12 lg:col-span-5 text-snow-0/90 hidden md:block"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: heroReady ? 1 : 0 }}
+              transition={{ duration: reducedMotion ? 0 : 0.8 }}
+            >
+              <HeroPillarsDiagram started={heroReady} reducedMotion={reducedMotion ?? false} />
+            </motion.div>
+          </div>
         </Container>
       </section>
 
-      <div className="flex gap-12 xl:gap-16">
-        <div className="hidden xl:block w-44 shrink-0 pl-6 lg:pl-10 pt-12">
-          <ChapterNav active={active} onSelect={scrollTo} />
-        </div>
+      <Container>
+        <div className="grid grid-cols-12 gap-x-8 xl:gap-x-12">
+          <aside className="hidden xl:block col-span-2 relative">
+            <div className="sticky top-28 pt-12 pb-12">
+              <ChapterNav active={active} onSelect={scrollTo} />
+            </div>
+          </aside>
 
-        <div className="flex-1 min-w-0">
+          <div className="col-span-12 xl:col-span-10 min-w-0">
           <ProtocolSection id="overview">
             <FadeUp>
               <p className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/45 mb-4">
@@ -358,10 +363,12 @@ export function SessionProtocolView() {
                 drift; settlement never proceeds on stale equity.
               </p>
               <div className="mt-12 grid lg:grid-cols-2 gap-10 items-start">
-                <SolanaAccountTreeSvg
-                  active={ledgerRef.active}
-                  reducedMotion={motionOff}
-                />
+                <div className="text-snow-0">
+                  <SolanaAccountTreeSvg
+                    active={ledgerRef.active}
+                    reducedMotion={motionOff}
+                  />
+                </div>
                 <ul className="space-y-6 text-[14px] text-snow-0/70 leading-relaxed">
                   <li>
                     <strong className="text-snow-0">Composition PDA</strong> — stores normalized
@@ -480,8 +487,9 @@ export function SessionProtocolView() {
               </Link>
             </div>
           </ProtocolSection>
+          </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

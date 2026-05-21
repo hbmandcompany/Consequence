@@ -28,7 +28,7 @@ export function HeroPillarsDiagram({ started, reducedMotion }: { started: boolea
   return (
     <svg
       viewBox="0 0 420 280"
-      className="w-full h-auto text-ink dark:text-snow-200 max-w-md mx-auto"
+      className="w-full h-auto text-current max-w-md mx-auto"
       aria-hidden
     >
       <rect x="24" y="40" width="100" height="72" rx="4" fill="none" stroke={STROKE} strokeWidth="1.2" />
@@ -87,7 +87,7 @@ export function EquityTimelineSvg({ active, reducedMotion }: ActiveProps) {
   return (
     <svg
       viewBox="0 0 320 360"
-      className="w-full h-auto text-ink dark:text-snow-200 lg:sticky lg:top-28"
+      className="w-full h-auto text-current lg:sticky lg:top-28"
       aria-hidden
     >
       {[0, 1, 2].map((i) => (
@@ -216,7 +216,7 @@ export function SolanaAccountTreeSvg({ active, reducedMotion }: ActiveProps) {
   return (
     <svg
       viewBox="0 0 480 260"
-      className="w-full h-auto max-h-[400px] text-ink dark:text-snow-200 mx-auto"
+      className="w-full h-auto max-h-[400px] text-current mx-auto"
       aria-hidden
     >
       {nodes.map((n, i) => (
@@ -482,7 +482,7 @@ export function SettlementBarsSvg({ active, reducedMotion }: ActiveProps) {
   ];
   let x = 4;
   return (
-    <svg viewBox="0 0 400 48" className="w-full text-ink dark:text-snow-200 mt-4" aria-hidden>
+    <svg viewBox="0 0 400 48" className="w-full text-current mt-4" aria-hidden>
       <rect x="4" y="4" width="392" height="20" fill="none" stroke={STROKE} strokeWidth="1" opacity="0.4" />
       {parts.map((p, i) => {
         const start = x;
@@ -526,7 +526,7 @@ export function FullFlowDiagram({
   const on = reducedMotion || active;
   return (
     <div
-      className="rounded-[10px] border border-[#E8E8E8] dark:border-[#4A4A4A] bg-[#F5F5F5]/70 dark:bg-[#1F1F1F]/60 p-5 md:p-8 overflow-x-auto"
+      className="rounded-lg border border-ink/10 bg-snow-100 p-5 md:p-8 overflow-x-auto"
       role="img"
       aria-label="End-to-end flow from composition to settlement"
     >
@@ -547,21 +547,21 @@ export function FullFlowDiagram({
                 transitionDelay: reducedMotion ? undefined : `${i * 55}ms`,
               }}
             >
-              <div className="rounded-lg border border-[#E8E8E8] dark:border-[#4A4A4A] bg-white/80 dark:bg-[#0A0A0A]/80 px-4 py-3 min-h-[72px] min-w-[240px] md:min-w-[300px]">
-                <div className="font-mono text-[12px] text-ink dark:text-snow-100">{s.title}</div>
+              <div className="rounded-lg border border-ink/10 bg-snow-0 px-4 py-3 min-h-[72px] min-w-[240px] md:min-w-[300px]">
+                <div className="font-mono text-[12px] text-ink">{s.title}</div>
                 {s.ms && (
-                  <div className="md:hidden mt-1 text-[11px] font-mono text-[#8A8A8A] dark:text-[#9A9A9A]">{s.ms}</div>
+                  <div className="md:hidden mt-1 text-[11px] font-mono text-ink/45">{s.ms}</div>
                 )}
-                <div className="mt-1 text-[13px] text-[#4A4A4A] dark:text-[#C4C4C4] leading-relaxed">{s.detail}</div>
+                <div className="mt-1 text-[13px] text-ink/65 leading-relaxed">{s.detail}</div>
                 {s.note && (
-                  <div className="mt-2 text-[11px] text-[#8A8A8A] dark:text-[#9A9A9A] border-l-4 border-ink/25 dark:border-snow-200/50 pl-3">
+                  <div className="mt-2 text-[11px] text-ink/45 border-l-4 border-ink/20 pl-3">
                     {s.note}
                   </div>
                 )}
               </div>
             </div>
             <div
-              className={`hidden md:block w-24 shrink-0 text-[11px] font-mono font-semibold tabular-nums text-[#4A4A4A] dark:text-[#B0B0B0] pt-3 ${
+              className={`hidden md:block w-24 shrink-0 text-[11px] font-mono font-semibold tabular-nums text-ink/50 pt-3 ${
                 s.side === "R" ? "text-left" : "text-right"
               }`}
               style={{

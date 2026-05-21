@@ -367,12 +367,15 @@ function Collaboration() {
               <br />
               <span className="italic text-ink/80">on the record.</span>
             </Display>
-            <Lede className="mt-8">
-              Studio sessions bring composers, publishers, and agents into one
-              live surface — video, shared piano roll, stem lanes, and split
-              proposals that write back to the ledger as the conversation
-              happens. Nothing is lost between the call and the contract: session
-              state, attribution signals, and equity revisions stay synchronized.
+            <Lede className="mt-8 text-[15px] leading-[1.65]">
+              Live melodic, harmonic, and rhythmic composition in one shared canvas — every voice,
+              chord change, and groove edit synchronized in sub-second time. Collaborators see the
+              same evolving score, not a stale export; presence and attribution track who shaped
+              which line as the piece grows. A live earnings rail runs beside the music so splits stay
+              honest while you write. Composer A sketches the hook, Composer B answers with harmony,
+              and Composer C (10%) watches each melodic decision accrue — +$1.35 per sale toward
+              settlement as the motif lands — with every note change logged for split and review before
+              it commits.
             </Lede>
             <div className="mt-12">
               <HairlineRow
@@ -392,8 +395,21 @@ function Collaboration() {
               />
             </div>
           </div>
-          <div className="col-span-12 md:col-span-7">
+          <div className="col-span-12 md:col-span-7 flex flex-col">
             <CollaborationSessionIllustration />
+            <ul className="mt-8 lg:mt-10 grid sm:grid-cols-2 gap-x-8 gap-y-3 border-t border-ink/10 pt-8 lg:pt-10">
+              {[
+                "Sub‑second sync on shared melodic lines, harmonic voicings, and rhythm grids",
+                "Presence and cursors anchored to the phrase, bar, and beat — not static files",
+                "Per-decision attribution: who wrote the motif, who voiced the harmony, who locked the groove",
+                "Reviewer‑gated merges with live split preview before a compositional choice ships",
+              ].map((b) => (
+                <li key={b} className="flex items-start gap-2.5 text-[13px] text-ink/70 leading-[1.5]">
+                  <Zap className="mt-1 h-3 w-3 shrink-0 text-tiff-500" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </Container>

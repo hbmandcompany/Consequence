@@ -2,6 +2,7 @@
 
 /**
  * Studio session — FaceTime-style spotlight + Meet-style controls (HTML/CSS only).
+ * Card grid and shared bar are static; optional ambient glow parallax on the shell only.
  */
 
 import {
@@ -14,7 +15,8 @@ import {
   Users,
   Video,
 } from "lucide-react";
-import type { ReactNode } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useRef, type ReactNode } from "react";
 
 type Participant = {
   initials: string;
@@ -72,7 +74,9 @@ function VideoTile({
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
       <div
         className={`absolute flex items-center justify-center rounded-full bg-white/10 font-semibold uppercase text-white/90 ring-1 ring-white/20 ${
-          large ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-20 w-20 text-2xl" : "bottom-8 right-2 h-8 w-8 text-[10px]"
+          large
+            ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-20 w-20 text-2xl"
+            : "bottom-8 right-2 h-8 w-8 text-[10px]"
         }`}
       >
         {p.initials}
@@ -139,51 +143,65 @@ function ControlButton({
 
 export function CollaborationSessionIllustration() {
   const [lead, ...sidebar] = participants;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+  const glowY = useTransform(scrollYProgress, [0, 1], [24, -24]);
 
   return (
-    <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-[#1c1c1e] text-white shadow-[0_20px_56px_-14px_rgba(0,0,0,0.45)] ring-1 ring-black/10">
-      {/* FaceTime-style title bar */}
-      <header className="flex items-center justify-between gap-3 border-b border-white/[0.08] bg-[#2c2c2e]/90 px-4 py-2.5 backdrop-blur-sm">
-        <div className="flex min-w-0 items-center gap-2">
-          <span className="relative flex h-2 w-2 shrink-0">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/35 opacity-75" />
-            <span className="relative h-2 w-2 rounded-full bg-[#30d158]" />
-          </span>
-          <span className="truncate text-[13px] font-medium tracking-tight">
-            Velvet Clip · Studio session
+    <div ref={containerRef} className="relative">
+      <motion.div
+        className="pointer-events-none absolute -inset-6 rounded-[2.25rem] bg-gradient-to-br from-tiff/20 via-transparent to-gold/10 blur-2xl opacity-70"
+        style={reduceMotion ? undefined : { y: glowY }}
+        aria-hidden
+      />
+
+      <div className="relative overflow-hidden rounded-[1.75rem] border border-ink/10 bg-[#1c1c1e] text-white shadow-[0_20px_56px_-14px_rgba(0,0,0,0.45)] ring-1 ring-black/10">
+        <header className="flex items-center justify-between gap-3 border-b border-white/[0.08] bg-[#2c2c2e]/90 px-4 py-2.5 backdrop-blur-sm">
+          <div className="flex min-w-0 items-center gap-2">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/35 opacity-75" />
+              <span className="relative h-2 w-2 rounded-full bg-[#30d158]" />
+            </span>
+            <span className="truncate text-[13px] font-medium tracking-tight">
+              Velvet Clip · Studio session
+            </span>
+          </div>
+          <span className="shrink-0 text-[11px] tabular text-white/45">9:41 · 4 in room</span>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_minmax(0,34%)] gap-2 p-2.5 md:p-3 min-h-[240px]">
+          <div className="min-h-[200px] md:min-h-0">
+            <VideoTile p={lead} large />
+          </div>
+          <div className="grid grid-cols-3 md:grid-cols-1 gap-2 md:gap-2">
+            {sidebar.map((p) => (
+              <VideoTile key={p.initials} p={p} />
+            ))}
+          </div>
+        </div>
+
+        <div className="mx-3 mb-2 flex items-center gap-2 rounded-lg border border-white/[0.08] bg-black/30 px-3 py-2 text-[10px] text-white/55">
+          <MonitorUp className="h-3.5 w-3.5 shrink-0 text-tiff-300/80" strokeWidth={1.5} />
+          <span className="truncate">
+            Shared: piano roll · stem S‑12 · split proposal 60 / 30 / 10 under review
           </span>
         </div>
-        <span className="shrink-0 text-[11px] tabular text-white/45">9:41 · 4 in room</span>
-      </header>
 
-      {/* FaceTime group layout: spotlight + filmstrip */}
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_minmax(0,34%)] gap-2 p-2.5 md:p-3 min-h-[240px]">
-        <VideoTile p={lead} large />
-        <div className="grid grid-cols-3 md:grid-cols-1 gap-2 md:gap-2">
-          {sidebar.map((p) => (
-            <VideoTile key={p.initials} p={p} />
-          ))}
-        </div>
+        <footer className="flex flex-wrap items-center justify-center gap-1.5 border-t border-white/[0.06] bg-[#2d2e30] px-3 py-3">
+          <ControlButton label="Mute" icon={<Mic className="h-5 w-5" />} highlight />
+          <ControlButton label="Video" icon={<Video className="h-5 w-5" />} />
+          <ControlButton label="Share screen" icon={<MonitorUp className="h-5 w-5" />} />
+          <ControlButton label="Captions" icon={<Captions className="h-5 w-5" />} />
+          <ControlButton label="Raise hand" icon={<Hand className="h-5 w-5" />} />
+          <ControlButton label="Participants" icon={<Users className="h-5 w-5" />} />
+          <ControlButton label="Leave" icon={<PhoneOff className="h-5 w-5" strokeWidth={2} />} danger />
+        </footer>
       </div>
-
-      {/* Shared stem lane — studio context */}
-      <div className="mx-3 mb-2 flex items-center gap-2 rounded-lg border border-white/[0.08] bg-black/30 px-3 py-2 text-[10px] text-white/55">
-        <MonitorUp className="h-3.5 w-3.5 shrink-0 text-tiff-300/80" strokeWidth={1.5} />
-        <span className="truncate">
-          Shared: piano roll · stem S‑12 · split proposal 60 / 30 / 10 under review
-        </span>
-      </div>
-
-      {/* Meet-style control dock */}
-      <footer className="flex flex-wrap items-center justify-center gap-1.5 border-t border-white/[0.06] bg-[#2d2e30] px-3 py-3">
-        <ControlButton label="Mute" icon={<Mic className="h-5 w-5" />} highlight />
-        <ControlButton label="Video" icon={<Video className="h-5 w-5" />} />
-        <ControlButton label="Share screen" icon={<MonitorUp className="h-5 w-5" />} />
-        <ControlButton label="Captions" icon={<Captions className="h-5 w-5" />} />
-        <ControlButton label="Raise hand" icon={<Hand className="h-5 w-5" />} />
-        <ControlButton label="Participants" icon={<Users className="h-5 w-5" />} />
-        <ControlButton label="Leave" icon={<PhoneOff className="h-5 w-5" strokeWidth={2} />} danger />
-      </footer>
     </div>
   );
 }

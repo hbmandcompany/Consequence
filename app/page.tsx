@@ -18,7 +18,7 @@ import { ForYouPlaybackIllustration } from "@/components/surface-cards/for-you-p
 import { MonochromeAudioVisualizer } from "@/components/surface-cards/monochrome-audio-visualizer";
 import { ManifestoStepped } from "@/components/manifesto/manifesto-stepped";
 import { PartnerStackMarquee } from "@/components/partner-stack-marquee";
-import { HeroEngineVisual } from "@/components/hero/hero-engine-visual";
+import { HeroConsequenceVisual } from "@/components/hero/hero-consequence-visual";
 import { EngineDeepDive } from "@/components/sw/engine-sections";
 
 export default function HomePage() {
@@ -39,13 +39,13 @@ function Hero() {
   return (
     <Section
       id="hero"
-      className="pt-24 md:pt-28 lg:pt-32 pb-12 lg:pb-16 scroll-mt-24"
+      className="pt-28 md:pt-32 lg:pt-36 pb-20 lg:pb-28 scroll-mt-24"
     >
       <Container>
         {/* items-start: with a tall map, items-end pushed the headline below the fold */}
         {/* overflow only on grid — not on section — so full-bleed LiveTicker is not clipped */}
-        <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-start overflow-x-clip">
-          <div className="col-span-12 space-y-6 lg:space-y-7">
+        <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-start overflow-x-clip overflow-y-visible">
+          <div className="col-span-12 space-y-10">
             <div className="flex flex-wrap items-center gap-4">
               <Eyebrow index="01 / 04" label="An HBM & Company House Product" />
               <span className="inline-flex items-center gap-2 text-[11px] tabular text-ink/55">
@@ -54,19 +54,31 @@ function Hero() {
               </span>
             </div>
 
-            <div className="grid grid-cols-12 gap-x-8 gap-y-6 md:gap-y-8 items-start">
-              <div className="col-span-12 md:col-span-7">
-                <Display as="h1">
-                  What
-                  <br />
-                  happens
-                  <br />
-                  <span className="italic text-ink/85">next.</span>
-                </Display>
-              </div>
+            <Display as="h1">
+              What
+              <br />
+              happens
+              <br />
+              <span className="italic text-ink/85">next.</span>
+            </Display>
 
-              <div className="col-span-12 md:col-span-5 md:row-span-2 md:mt-[5.75rem] lg:mt-28 md:pl-8 md:border-l border-ink/10 flex flex-col md:self-start">
-                <HeroEngineVisual className="mb-5" />
+            <div className="grid grid-cols-12 gap-6 gap-y-8 items-start overflow-visible">
+              <div className="col-span-12 md:col-span-7">
+                <Lede>
+                  Consequence is the real-time consequence layer for music production,
+                  marketplace operations, and creator royalty settlement. Composition,
+                  collaboration, playback, and capital events flow through a single stream;
+                  authoritative ledgers maintain state for every work, contributor,
+                  transaction, and payout.
+                </Lede>
+              </div>
+              <div className="relative col-span-12 md:col-span-5 md:pl-8 md:border-l border-ink/10 overflow-visible">
+                <div
+                  className="hidden md:flex absolute inset-x-0 bottom-full mb-5 h-[300px] pointer-events-none items-center justify-center"
+                  aria-hidden
+                >
+                  <HeroConsequenceVisual className="h-full w-full max-w-[32rem] mx-auto" />
+                </div>
                 <div className="text-[11px] tabular uppercase tracking-[0.22em] text-ink/45 mb-3">
                   Two surfaces, one engine
                 </div>
@@ -92,24 +104,14 @@ function Hero() {
                   </Link>
                 </div>
               </div>
-
-              <div className="col-span-12 md:col-span-7">
-                <Lede>
-                  Consequence is the real-time consequence layer for music production,
-                  marketplace operations, and creator royalty settlement. Composition,
-                  collaboration, playback, and capital events flow through a single stream;
-                  authoritative ledgers maintain state for every work, contributor,
-                  transaction, and payout.
-                </Lede>
-              </div>
-            </div>
-
-            <div className="mt-8 lg:mt-10 border-y border-ink/10 -mx-6 px-6 lg:-mx-10 lg:px-10">
-              <LiveTicker />
             </div>
           </div>
         </div>
       </Container>
+
+      <div className="mt-16 lg:mt-24 border-y border-ink/10">
+        <LiveTicker />
+      </div>
     </Section>
   );
 }

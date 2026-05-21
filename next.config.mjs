@@ -5,6 +5,7 @@ const nextConfig = {
     return [
       { source: "/cc", destination: "/shop", permanent: true },
       { source: "/software", destination: "/treasury", permanent: true },
+      { source: "/how-the-rails-connect", destination: "/session-protocol", permanent: true },
     ];
   },
   images: {

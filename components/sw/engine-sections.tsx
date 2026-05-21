@@ -13,7 +13,7 @@ import {
 } from "@/components/ui";
 import { ArchitectureDiagram } from "@/components/sw/architecture";
 import { LiveMetrics } from "@/components/sw/live-metrics";
-import { CodeMonolith } from "@/components/sw/code-monolith";
+import { CollaborationSessionIllustration } from "@/components/sw/collaboration-session-illustration";
 import { DigitalTwinsDashboard } from "@/components/sw/digital-twins-dashboard";
 import { InferenceMeetIllustration } from "@/components/sw/inference-meet-illustration";
 import { SimulationMpcIllustration } from "@/components/sw/simulation-mpc-illustration";
@@ -27,7 +27,7 @@ export function EngineDeepDive() {
       <SwOverview />
       <Pillars />
       <Architecture />
-      <CodeAndMetrics />
+      <Collaboration />
       <Scaling />
       <Resilience />
       <CTA />
@@ -44,15 +44,13 @@ function SwHero() {
             <div className="flex items-center gap-3 mb-8">
               <Pill tone="gold">Treasury</Pill>
               <span className="text-[11px] tabular tracking-[0.2em] uppercase text-ink/45">
-                Creator Reserve · v 1.0
+                The Reserve · v 1.0
               </span>
             </div>
             <Display as="h2">
-              The ledger
+              Ledger
               <br />
-              underneath
-              <br />
-              <span className="italic text-ink/85">everything.</span>
+              <span className="italic text-ink/85">Branch.</span>
             </Display>
             <Lede className="mt-10 max-w-[60ch]">
               A single royalty core that ingests composition sales, marketplace transactions, collaborator splits,
@@ -63,23 +61,23 @@ function SwHero() {
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
-                href="/how-the-rails-connect"
+                href="/session-protocol"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-ink text-snow-50 text-[13px] hover:bg-ink/90 transition-colors"
               >
-                How the rails connect
+                Session Protocol
                 <ChevronRight className="w-4 h-4" />
               </Link>
               <Link
-                href="#contact"
+                href="/treasury"
                 className="inline-flex items-center gap-2 text-[13px] uline text-ink"
               >
-                Talk to treasury
+                Governance
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-4">
+          <div className="col-span-12 lg:col-span-4 lg:mb-16">
             <FadeUp>
               <LiveMetrics />
             </FadeUp>
@@ -309,36 +307,36 @@ function Architecture() {
   );
 }
 
-function CodeAndMetrics() {
+function Collaboration() {
   return (
-    <Section id="operators" className="py-32 border-t border-ink/10 scroll-mt-28">
+    <Section id="collaboration" className="py-32 border-t border-ink/10 scroll-mt-28">
       <Container>
         <div className="grid grid-cols-12 gap-y-12 gap-x-8">
           <div className="col-span-12 md:col-span-5">
-            <Eyebrow label="Operator-grade" />
-            <Display className="mt-6 max-w-[14ch]">
-              GitOps. Observability. <span className="italic text-ink/80">No surprises.</span>
+            <Eyebrow label="Collaboration" accent="tiff" />
+            <Display className="mt-6 max-w-[16ch]">
+              In the room,
+              <br />
+              <span className="italic text-ink/80">on the record.</span>
             </Display>
             <Lede className="mt-8">
-              Every cluster change is a Git commit. Every deployment is an
-              Argo&nbsp;CD sync. Every model is a registered version with shadow
-              comparison and an automatic rollback path — composition ranking,
-              earnings forecasts, and fraud signals alike. Prometheus, Grafana,
-              Loki and Tempo are wired from day one so composition events and
-              capital events share one operator-grade spine — because retrofitting
-              observability is much harder than building it in.
+              Studio sessions bring composers, publishers, and agents into one
+              live surface — video, shared piano roll, stem lanes, and split
+              proposals that write back to the ledger as the conversation
+              happens. Nothing is lost between the call and the contract: session
+              state, attribution signals, and equity revisions stay synchronized.
             </Lede>
             <div className="mt-12">
-              <HairlineRow left="Service mesh" right="Istio · mTLS · canary traffic shifting" />
-              <HairlineRow left="Streaming" right="Kafka 3-replica · ISR ≥ 2 · partitioned by entity" />
-              <HairlineRow left="Inference" right="Triton + KServe · MIG · MLflow versions" />
-              <HairlineRow left="Simulation" right="Argo Workflows + Ray · tiered priority" />
-              <HairlineRow left="Storage" right="Mongo · Qdrant · ClickHouse · PG · Redis" />
-              <HairlineRow left="Settlement" right="Solana · Circle USDC · sub-10s splits" />
+              <HairlineRow left="Live session" right="FaceTime-grade video · screen share · captions" />
+              <HairlineRow left="Shared workspace" right="Piano roll · stems · arrangement notes" />
+              <HairlineRow left="Split proposals" right="Negotiated % · algorithmic fallback · audit trail" />
+              <HairlineRow left="Presence signals" right="Session time · MIDI · AI acceptance → equity" />
+              <HairlineRow left="Twin in call" right="@twin forecasts · earnings bands · what happens next" />
+              <HairlineRow left="After hang-up" right="Session archived · twins updated · splits ready to settle" />
             </div>
           </div>
           <div className="col-span-12 md:col-span-7">
-            <CodeMonolith />
+            <CollaborationSessionIllustration />
           </div>
         </div>
       </Container>

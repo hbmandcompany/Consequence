@@ -1,4 +1,5 @@
 import Link from "next/link";
+import clsx from "clsx";
 import { ArrowUpRight } from "lucide-react";
 import {
   Container,
@@ -13,12 +14,11 @@ import {
 } from "@/components/ui";
 import { LiveTicker } from "@/components/live-ticker";
 import { TwinNetDawIllustration } from "@/components/illustrations/daw-suite";
-import {
-  LlmChatSurfaceIllustration,
-  SynthPluginDesktopIllustration,
-} from "@/components/illustrations/home-visuals";
+import { ForYouPlaybackIllustration } from "@/components/surface-cards/for-you-playback";
+import { MonochromeAudioVisualizer } from "@/components/surface-cards/monochrome-audio-visualizer";
 import { ManifestoStepped } from "@/components/manifesto/manifesto-stepped";
 import { PartnerStackMarquee } from "@/components/partner-stack-marquee";
+import { HeroEngineVisual } from "@/components/hero/hero-engine-visual";
 import { EngineDeepDive } from "@/components/sw/engine-sections";
 
 export default function HomePage() {
@@ -39,13 +39,13 @@ function Hero() {
   return (
     <Section
       id="hero"
-      className="pt-28 md:pt-32 lg:pt-36 pb-20 lg:pb-28 scroll-mt-24"
+      className="pt-24 md:pt-28 lg:pt-32 pb-12 lg:pb-16 scroll-mt-24"
     >
       <Container>
         {/* items-start: with a tall map, items-end pushed the headline below the fold */}
         {/* overflow only on grid — not on section — so full-bleed LiveTicker is not clipped */}
         <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-start overflow-x-clip">
-          <div className="col-span-12 space-y-10">
+          <div className="col-span-12 space-y-6 lg:space-y-7">
             <div className="flex flex-wrap items-center gap-4">
               <Eyebrow index="01 / 04" label="An HBM & Company House Product" />
               <span className="inline-flex items-center gap-2 text-[11px] tabular text-ink/55">
@@ -54,25 +54,19 @@ function Hero() {
               </span>
             </div>
 
-            <Display as="h1">
-              What
-              <br />
-              happens
-              <br />
-              <span className="italic text-ink/85">next.</span>
-            </Display>
-
-            <div className="grid grid-cols-12 gap-6 gap-y-8">
+            <div className="grid grid-cols-12 gap-x-8 gap-y-6 md:gap-y-8 items-start">
               <div className="col-span-12 md:col-span-7">
-                <Lede>
-                  Consequence is the real-time consequence layer for music production,
-                  marketplace operations, and creator royalty settlement. Composition,
-                  collaboration, playback, and capital events flow through a single stream;
-                  authoritative ledgers maintain state for every work, contributor,
-                  transaction, and payout.
-                </Lede>
+                <Display as="h1">
+                  What
+                  <br />
+                  happens
+                  <br />
+                  <span className="italic text-ink/85">next.</span>
+                </Display>
               </div>
-              <div className="col-span-12 md:col-span-5 md:pl-8 md:border-l border-ink/10">
+
+              <div className="col-span-12 md:col-span-5 md:row-span-2 md:mt-[5.75rem] lg:mt-28 md:pl-8 md:border-l border-ink/10 flex flex-col md:self-start">
+                <HeroEngineVisual className="mb-5" />
                 <div className="text-[11px] tabular uppercase tracking-[0.22em] text-ink/45 mb-3">
                   Two surfaces, one engine
                 </div>
@@ -91,22 +85,31 @@ function Hero() {
                     href="/#software"
                     className="group flex items-center justify-between border-b border-ink/10 pb-3 hover:border-ink/40 transition-colors"
                   >
-                    <span className="text-[15px] text-ink">WorkSpace</span>
-                    <span className="flex items-center gap-2 text-[11px] tabular text-ink/50 uppercase tracking-[0.16em]">
-                      Engine
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <span className="flex items-center gap-2 text-[15px] text-ink">
+                      WorkSpace
+                      <ArrowUpRight className="w-3.5 h-3.5 text-ink/50 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                   </Link>
                 </div>
               </div>
+
+              <div className="col-span-12 md:col-span-7">
+                <Lede>
+                  Consequence is the real-time consequence layer for music production,
+                  marketplace operations, and creator royalty settlement. Composition,
+                  collaboration, playback, and capital events flow through a single stream;
+                  authoritative ledgers maintain state for every work, contributor,
+                  transaction, and payout.
+                </Lede>
+              </div>
+            </div>
+
+            <div className="mt-8 lg:mt-10 border-y border-ink/10 -mx-6 px-6 lg:-mx-10 lg:px-10">
+              <LiveTicker />
             </div>
           </div>
         </div>
       </Container>
-
-      <div className="mt-16 lg:mt-24 border-y border-ink/10">
-        <LiveTicker />
-      </div>
     </Section>
   );
 }
@@ -133,31 +136,17 @@ function Surfaces() {
         <div className="grid grid-cols-12 gap-6">
           <SurfaceCard
             href="/cc"
-            tag="For You"
-            sub="Trending"
-            title="The studio you live inside."
-            body="Producer-first feed, stems, sessions, the marketplace, and wallet — piano roll to payouts. Tuned to the way you actually work — with AI that asks what happens next for this stem, session state you can trust, and earnings that update as the room listens."
-            stats={[
-              { k: "Daily plays", v: "84.2M" },
-              { k: "Active producers", v: "11,402" },
-              { k: "Settlements / day", v: "$1.84M" },
-            ]}
+            sub="Radio"
             tone="cc"
-            visual="llm"
+            visual="playback"
           />
           <SurfaceCard
             href="/#software"
-            tag="Engine"
             sub="WorkSpace"
-            title="The substrate everything runs on."
+            title="Creative Engine"
             body="Inference, simulation, and digital twin services for creative prediction and financial consequence — same Kubernetes-native, event-driven platform. Partners plug into ranking, Monte Carlo earnings bands, and twin APIs that watch capital as carefully as audio."
-            stats={[
-              { k: "Events / sec", v: "12.4k" },
-              { k: "p99 inference", v: "47ms" },
-              { k: "Twins online", v: "8.6M" },
-            ]}
             tone="sw"
-            visual="plugin"
+            visual="visualizer"
           />
         </div>
       </Container>
@@ -176,13 +165,13 @@ function SurfaceCard({
   visual,
 }: {
   href: string;
-  tag: string;
+  tag?: string;
   sub: string;
-  title: string;
-  body: string;
-  stats: { k: string; v: string }[];
+  title?: string;
+  body?: string;
+  stats?: { k: string; v: string }[];
   tone: "cc" | "sw";
-  visual: "llm" | "plugin";
+  visual: "playback" | "visualizer";
 }) {
   return (
     <FadeUp className="col-span-12 md:col-span-6">
@@ -197,44 +186,67 @@ function SurfaceCard({
                  : "radial-gradient(closest-side, #F6EFE2, transparent)"
              }}
         />
-        <div className="relative flex items-start justify-between mb-12">
+        <div
+          className={clsx(
+            "relative flex items-start justify-between",
+            title ? "mb-12" : "mb-6"
+          )}
+        >
           <div className="flex items-center gap-3">
             <Pill tone={tone === "cc" ? "tiff" : "gold"}>{sub}</Pill>
-            <span className="text-[11px] tabular tracking-[0.18em] uppercase text-ink/45">
-              {tag}
-            </span>
+            {tag && (
+              <span className="text-[11px] tabular tracking-[0.18em] uppercase text-ink/45">
+                {tag}
+              </span>
+            )}
           </div>
           <ArrowUpRight className="w-5 h-5 text-ink/40 group-hover:text-ink transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
         </div>
 
-        <div className="relative font-display text-[clamp(34px,4.4vw,64px)] leading-[1.02] tracking-tight max-w-[18ch]">
-          {title}
-        </div>
+        {title && (
+          <div className="relative font-display text-[clamp(34px,4.4vw,64px)] leading-[1.02] tracking-tight max-w-[18ch]">
+            {title}
+          </div>
+        )}
 
-        <div className="relative mt-6 rounded-lg overflow-hidden border border-ink/10 bg-[#161618]">
-          {visual === "llm" ? (
-            <LlmChatSurfaceIllustration className="w-full h-[min(280px,42vw)] min-h-[220px] max-h-[320px] block" />
+        <div
+          className={clsx(
+            visual === "playback"
+              ? "relative rounded-lg overflow-hidden border border-ink/10 bg-snow-0"
+              : "relative rounded-lg overflow-hidden border border-ink/10 bg-black",
+            title ? "mt-6" : "mt-0"
+          )}
+        >
+          {visual === "playback" ? (
+            <ForYouPlaybackIllustration className="min-h-[280px]" />
           ) : (
-            <SynthPluginDesktopIllustration className="w-full h-auto max-h-[min(400px,90vw)] block mx-auto" />
+            <MonochromeAudioVisualizer
+              mode="idle"
+              className="w-full h-[min(280px,42vw)] min-h-[220px] max-h-[320px]"
+            />
           )}
         </div>
 
-        <div className="relative mt-8 max-w-[44ch] text-[15px] text-ink/65 leading-[1.6]">
-          {body}
-        </div>
+        {body && (
+          <div className="relative mt-8 max-w-[44ch] text-[15px] text-ink/65 leading-[1.6]">
+            {body}
+          </div>
+        )}
 
-        <div className="relative mt-12 grid grid-cols-3 gap-6 pt-6 border-t border-ink/10">
-          {stats.map((s) => (
-            <div key={s.k}>
-              <div className="font-display text-2xl tabular leading-none">
-                {s.v}
+        {stats && stats.length > 0 && (
+          <div className="relative mt-12 grid grid-cols-3 gap-6 pt-6 border-t border-ink/10">
+            {stats.map((s) => (
+              <div key={s.k}>
+                <div className="font-display text-2xl tabular leading-none">
+                  {s.v}
+                </div>
+                <div className="text-[10px] tabular uppercase tracking-[0.18em] text-ink/45 mt-2">
+                  {s.k}
+                </div>
               </div>
-              <div className="text-[10px] tabular uppercase tracking-[0.18em] text-ink/45 mt-2">
-                {s.k}
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </Link>
     </FadeUp>
   );

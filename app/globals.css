@@ -141,7 +141,7 @@ html, body {
 }
 ::-webkit-scrollbar-thumb:hover { background: rgba(10,10,10,0.24); }
 
-/* Manifesto — stepped Figma-style interlock */
+/* Manifesto — Figma bento interlock (black gutters between slabs + media) */
 .manifesto-stage {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.07),
@@ -149,16 +149,51 @@ html, body {
 }
 
 @media (min-width: 1024px) {
-  .manifesto-panel {
-    clip-path: polygon(
-      36% 0%,
-      100% 0%,
-      100% 100%,
-      0% 100%,
-      0% 12%,
-      36% 12%,
-      36% 0%
-    );
+  .manifesto-bento {
+    grid-template-columns: 41% 1fr;
+    grid-template-rows: minmax(16rem, auto) auto;
+  }
+
+  /* One continuous L — right arm + bottom-left arm, flush at inner corner */
+  .manifesto-l-beige {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .manifesto-l-beige::before,
+  .manifesto-l-beige::after {
+    content: "";
+    position: absolute;
+    background: #f8f7f3; /* snow-100 */
+  }
+
+  /* Right / top arm (paragraphs + CTA) */
+  .manifesto-l-beige::before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: calc(41% + 1.25rem);
+    border-radius: 2.75rem 2.75rem 2.75rem 0;
+  }
+
+  /* Bottom-left arm (Three pillars) — overlaps 1px so no white seam */
+  .manifesto-l-beige::after {
+    left: 0;
+    bottom: 0;
+    width: calc(41% + 1.25rem + 1px);
+    height: 42%;
+    min-height: 10.5rem;
+    border-radius: 2.75rem 0 0 2.75rem;
+  }
+
+  .manifesto-slab-right {
+    align-self: stretch;
+  }
+
+  .manifesto-slab-left {
+    align-self: end;
   }
 }
 

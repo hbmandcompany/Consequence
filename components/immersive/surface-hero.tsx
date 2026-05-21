@@ -72,7 +72,7 @@ export function TreasuryHero() {
         <div className="grid grid-cols-12 gap-y-10 gap-x-8 items-end">
           <div className="col-span-12 lg:col-span-8">
             <div className="flex flex-wrap items-center gap-4 mb-8">
-              <Eyebrow index="Treasury" label="Creator Reserve" accent="gold" />
+              <Eyebrow index="Treasury" label="The Reserve" accent="gold" />
               <Pill tone="gold">Live ledger</Pill>
             </div>
             <Display as="h1">
@@ -98,10 +98,10 @@ export function TreasuryHero() {
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
             <Link
-              href="/how-the-rails-connect"
+              href="/session-protocol"
               className="group w-full lg:max-w-xs inline-flex items-center justify-between border border-ink/15 px-6 py-4 hover:border-ink/50 transition-colors"
             >
-              <span className="text-[13px] tracking-tight text-ink/80">How the rails connect</span>
+              <span className="text-[13px] tracking-tight text-ink/80">Session Protocol</span>
               <ArrowUpRight className="w-4 h-4 text-ink/40" />
             </Link>
           </div>

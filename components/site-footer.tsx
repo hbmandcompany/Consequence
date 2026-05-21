@@ -52,7 +52,7 @@ export function SiteFooter() {
               <FooterCol
                 title="Platform"
                 items={[
-                  { label: "Operators", href: "/#operators" },
+                  { label: "Collaboration", href: "/#collaboration" },
                   { label: "Scaling", href: "/#scaling" },
                   { label: "Resilience", href: "/#resilience" },
                   { label: "Contact", href: "/#contact" },
@@ -62,7 +62,7 @@ export function SiteFooter() {
                 title="Site"
                 items={[
                   { label: "Home", href: "/#hero" },
-                  { label: "Rails", href: "/how-the-rails-connect", note: "Architecture" },
+                  { label: "Protocol", href: "/session-protocol", note: "Session" },
                   { label: "Manifesto", href: "/#manifesto" },
                   { label: "Surfaces", href: "/#surfaces" },
                   { label: "Scale", href: "/#scale" },

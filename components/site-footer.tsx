@@ -53,7 +53,7 @@ export function SiteFooter() {
                 title="Platform"
                 items={[
                   { label: "Collaboration", href: "/#collaboration" },
-                  { label: "Scaling", href: "/#scaling" },
+                  { label: "Platform scale", href: "/#scale" },
                   { label: "Resilience", href: "/#resilience" },
                   { label: "Contact", href: "/#contact" },
                 ]}

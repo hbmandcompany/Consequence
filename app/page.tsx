@@ -9,12 +9,10 @@ import {
   HairlineRow,
   Lede,
   NumberStat,
-  Pill,
   Section,
 } from "@/components/ui";
 import { LiveTicker } from "@/components/live-ticker";
 import { TwinNetDawIllustration } from "@/components/illustrations/daw-suite";
-import { ForYouPlaybackIllustration } from "@/components/surface-cards/for-you-playback";
 import { MonochromeAudioVisualizer } from "@/components/surface-cards/monochrome-audio-visualizer";
 import { ManifestoStepped } from "@/components/manifesto/manifesto-stepped";
 import { PartnerStackMarquee } from "@/components/partner-stack-marquee";
@@ -84,7 +82,7 @@ function Hero() {
                 </div>
                 <div className="space-y-3">
                   <Link
-                    href="/cc"
+                    href="/trending"
                     className="group flex items-center justify-between border-b border-ink/10 pb-3 hover:border-ink/40 transition-colors"
                   >
                     <span className="text-[15px] text-ink">Trending</span>
@@ -94,7 +92,7 @@ function Hero() {
                     </span>
                   </Link>
                   <Link
-                    href="/#software"
+                    href="/#creative-engine"
                     className="group flex items-center justify-between border-b border-ink/10 pb-3 hover:border-ink/40 transition-colors"
                   >
                     <span className="flex items-center gap-2 text-[15px] text-ink">
@@ -122,135 +120,67 @@ function Manifesto() {
 
 function Surfaces() {
   return (
-    <Section id="surfaces" className="py-32 border-t border-ink/10">
-      <Container>
-        <div className="flex items-end justify-between gap-8 mb-16">
-          <div>
-            <Eyebrow index="03 / 04" label="The Two Surfaces" />
-            <Display className="mt-6 max-w-[14ch]">Two atriums. One house.</Display>
-          </div>
-          <div className="hidden md:block max-w-sm text-[14px] text-ink/65">
-            The engine is one thing. It wears two faces — the studio and the
-            stadium. Pick the door you came for.
-          </div>
-        </div>
-
-        <div className="grid grid-cols-12 gap-6">
-          <SurfaceCard
-            href="/cc"
-            sub="Radio"
-            tone="cc"
-            visual="playback"
-          />
-          <SurfaceCard
-            href="/#software"
-            sub="WorkSpace"
-            title="Creative Engine"
-            body="Inference, simulation, and digital twin services for creative prediction and financial consequence — same Kubernetes-native, event-driven platform. Partners plug into ranking, Monte Carlo earnings bands, and twin APIs that watch capital as carefully as audio."
-            tone="sw"
-            visual="visualizer"
-          />
-        </div>
-      </Container>
+    <Section id="surfaces" className="border-t border-ink/10 scroll-mt-28">
+      <CreativeEngineSection />
     </Section>
   );
 }
 
-function SurfaceCard({
-  href,
-  tag,
-  sub,
-  title,
-  body,
-  stats,
-  tone,
-  visual,
-}: {
-  href: string;
-  tag?: string;
-  sub: string;
-  title?: string;
-  body?: string;
-  stats?: { k: string; v: string }[];
-  tone: "cc" | "sw";
-  visual: "playback" | "visualizer";
-}) {
+function CreativeEngineSection() {
   return (
-    <FadeUp className="col-span-12 md:col-span-6">
-      <Link
-        href={href}
-        className="group relative block bg-snow-0 border border-ink/10 p-8 lg:p-12 hover:border-ink/40 transition-colors duration-700 ease-out-expo overflow-hidden"
-      >
-        <div className="absolute -right-24 -top-24 w-72 h-72 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-             style={{
-               background: tone === "cc"
-                 ? "radial-gradient(closest-side, #D8F5F0, transparent)"
-                 : "radial-gradient(closest-side, #F6EFE2, transparent)"
-             }}
-        />
-        <div
-          className={clsx(
-            "relative flex items-start justify-between",
-            title ? "mb-12" : "mb-6"
-          )}
-        >
-          <div className="flex items-center gap-3">
-            <Pill tone={tone === "cc" ? "tiff" : "gold"}>{sub}</Pill>
-            {tag && (
-              <span className="text-[11px] tabular tracking-[0.18em] uppercase text-ink/45">
-                {tag}
-              </span>
-            )}
-          </div>
-          <ArrowUpRight className="w-5 h-5 text-ink/40 group-hover:text-ink transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+    <div id="creative-engine" className="scroll-mt-28 py-24 lg:py-32 bg-snow-0">
+      <Container>
+        <div className="grid grid-cols-12 gap-y-8 gap-x-8 lg:gap-x-12 lg:gap-y-6 lg:items-start">
+          <FadeUp className="col-span-12 lg:col-span-5 lg:row-start-1 order-1">
+            <Eyebrow index="03 / 04" label="WorkSpace" />
+            <Display className="mt-4 max-w-[16ch]">
+              Creative
+              <br />
+              <span className="italic text-ink/85">Engine.</span>
+            </Display>
+          </FadeUp>
+
+          <FadeUp
+            delay={0.06}
+            className="col-span-12 lg:col-span-7 lg:row-start-1 lg:row-span-2 lg:self-start lg:mt-2 order-3 lg:order-2"
+          >
+            <div className="relative w-full min-h-[360px] sm:min-h-[min(52vh,520px)] lg:min-h-[min(62vh,580px)] lg:max-h-[min(68vh,640px)] rounded-xl overflow-hidden border border-ink/10 bg-snow-50 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9),0_20px_56px_-20px_rgba(10,10,10,0.1)]">
+              <MonochromeAudioVisualizer
+                mode="idle"
+                theme="light"
+                className="absolute inset-0 w-full h-full bg-snow-50"
+              />
+            </div>
+          </FadeUp>
+
+          <FadeUp className="col-span-12 lg:col-span-5 lg:row-start-2 flex flex-col justify-start order-2 lg:order-3">
+            <p className="text-[15px] lg:text-[16px] text-ink/65 leading-[1.65] max-w-[44ch]">
+              Inference, simulation, and digital twin services for creative prediction and financial
+              consequence — same Kubernetes-native, event-driven platform. Partners plug into ranking,
+              Monte Carlo earnings bands, and twin APIs that watch capital as carefully as audio.
+            </p>
+            <ul className="mt-5 space-y-3 border-l border-ink/15 pl-5">
+              {[
+                "Live composition with sub-second sync and per-note attribution",
+                "Monte Carlo rehearsal over melodic, harmonic, and rhythmic futures",
+                "Digital twins as immutable creative memory tied to settlement legs",
+              ].map((line) => (
+                <li key={line} className="text-[13px] text-ink/60 leading-snug">
+                  {line}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/#software"
+              className="mt-8 inline-flex w-fit items-center gap-2 px-5 py-3 rounded-full bg-ink text-snow-50 text-[13px] hover:bg-ink/90 transition-colors"
+            >
+              Explore the engine
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </FadeUp>
         </div>
-
-        {title && (
-          <div className="relative font-display text-[clamp(34px,4.4vw,64px)] leading-[1.02] tracking-tight max-w-[18ch]">
-            {title}
-          </div>
-        )}
-
-        <div
-          className={clsx(
-            visual === "playback"
-              ? "relative rounded-lg overflow-hidden border border-ink/10 bg-snow-0"
-              : "relative rounded-lg overflow-hidden border border-ink/10 bg-black",
-            title ? "mt-6" : "mt-0"
-          )}
-        >
-          {visual === "playback" ? (
-            <ForYouPlaybackIllustration className="min-h-[280px]" />
-          ) : (
-            <MonochromeAudioVisualizer
-              mode="idle"
-              className="w-full h-[min(280px,42vw)] min-h-[220px] max-h-[320px]"
-            />
-          )}
-        </div>
-
-        {body && (
-          <div className="relative mt-8 max-w-[44ch] text-[15px] text-ink/65 leading-[1.6]">
-            {body}
-          </div>
-        )}
-
-        {stats && stats.length > 0 && (
-          <div className="relative mt-12 grid grid-cols-3 gap-6 pt-6 border-t border-ink/10">
-            {stats.map((s) => (
-              <div key={s.k}>
-                <div className="font-display text-2xl tabular leading-none">
-                  {s.v}
-                </div>
-                <div className="text-[10px] tabular uppercase tracking-[0.18em] text-ink/45 mt-2">
-                  {s.k}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </Link>
-    </FadeUp>
+      </Container>
+    </div>
   );
 }
 
@@ -260,50 +190,68 @@ function Numbers() {
       <Container>
         <div className="flex items-end justify-between gap-8 mb-16">
           <Display className="max-w-[16ch]">
-            Industrial scale,
+            Built for the whole house,
             <br />
-            <span className="italic text-ink/75">domestic feel.</span>
+            <span className="italic text-ink/75">feels like one room.</span>
           </Display>
-          <div className="hidden md:block text-[10px] tabular uppercase tracking-[0.22em] text-ink/45">
-            Live · Q3 2026
+          <div className="hidden md:block max-w-[28ch] text-[14px] text-ink/65 leading-[1.65]">
+            WorkSpace, Trending, and the Ledger Branch share one engine — you compose with Genesis,
+            program drums, draft lyrics, and settle on Base with USDC through Circle without the UI
+            turning into datacenter jargon.
           </div>
         </div>
 
         <div className="grid grid-cols-12 gap-y-12 gap-x-8 border-t border-ink/15 pt-12">
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="12.4k" unit="ev / s" label="Sustained event ingestion — plays, carts, splits, settlements — across the bus." />
+            <NumberStat
+              value="12.4k"
+              unit="actions / sec"
+              label="How many music and money moments we record each second — a play, a purchase, a split edit, a payout step — so dashboards stay current."
+            />
           </div>
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="47" unit="ms p99" label="Inference latency at the production fleet edge — ranking, stems, earnings models." />
+            <NumberStat
+              value="47"
+              unit="ms typical"
+              label="How long AI helpers usually take to answer — feed ranking, stem ideas, lyric suggestions, and earnings estimates while you stay in session."
+            />
           </div>
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="8.6M" unit="twins" label="Composition, creator, marketplace, and capital twins — continuously updated." />
+            <NumberStat
+              value="8.6M"
+              unit="live records"
+              label="Always-fresh profiles for songs, creators, shops, and balances — the shared memory behind collaboration, royalties, and who owns what."
+            />
           </div>
           <div className="col-span-12 md:col-span-3">
-            <NumberStat value="10k" unit="pods" label="Monte Carlo workers spawned per simulation burst — revenue and engagement paths." />
+            <NumberStat
+              value="10k"
+              unit="workers"
+              label="Extra machines spun up for big jobs — drum pattern runs, lyric batches, royalty what-if paths — then released when the work finishes."
+            />
           </div>
         </div>
 
         <div className="mt-20">
           <HairlineRow
-            left="Throughput SLA"
-            right="200ms median · 500ms p99 — ingest to twin update (plays + settlements)"
+            left="Throughput"
+            right="Most activity shows in under half a second; heavier royalty and play totals stay under about one second"
           />
           <HairlineRow
-            left="Storage substrate"
-            right="MongoDB · Qdrant · ClickHouse · PostgreSQL · Redis"
+            left="Storage"
+            right="Song and session data, search indexes, analytics history, account ledgers, and quick cache — each stored where it fits best"
           />
           <HairlineRow
-            left="Compute substrate"
-            right="Hetzner bare-metal + hyperscaler burst, NVIDIA H100 / L40S"
+            left="Compute"
+            right="Dedicated servers for everyday load, cloud burst for busy days, GPUs for AI audio and text"
           />
           <HairlineRow
             left="Settlement"
-            right="Solana ownership · Circle USDC · sub-10s split"
+            right="Session Protocol logs who did what; when splits are final, Base runs the on-chain leg and Circle routes USDC"
           />
           <HairlineRow
             left="Resilience"
-            right="3 AZ replication · canary inference · auto-rollback"
+            right="Copies kept in three zones, careful AI rollouts, and quick rollback — you can keep writing while money catches up safely"
           />
         </div>
       </Container>
@@ -372,7 +320,7 @@ function Closing() {
           </div>
           <div className="col-span-12 md:col-span-4 flex flex-col gap-4">
             <Link
-              href="/cc"
+              href="/trending"
               className="group flex items-center justify-between bg-ink text-snow-50 px-6 py-5 hover:bg-ink/90 transition-colors"
             >
               <div>
@@ -384,7 +332,7 @@ function Closing() {
               <ArrowUpRight className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
             <Link
-              href="/#software"
+              href="/#creative-engine"
               className="group flex items-center justify-between border border-ink/15 px-6 py-5 hover:border-ink/60 transition-colors"
             >
               <div>

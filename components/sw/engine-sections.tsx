@@ -8,7 +8,6 @@ import {
   FadeUp,
   HairlineRow,
   Lede,
-  NumberStat,
   Pill,
   Section,
 } from "@/components/ui";
@@ -16,10 +15,9 @@ import { ArchitectureDiagram } from "@/components/sw/architecture";
 import { RoyaltyTransactionPanel } from "@/components/sw/royalty-transaction";
 import { CollaborationSessionIllustration } from "@/components/sw/collaboration-session-illustration";
 import { COLLABORATION_FEATURES } from "@/lib/collaboration-features";
-import { DigitalTwinsDashboard } from "@/components/sw/digital-twins-dashboard";
-import { InferenceMeetIllustration } from "@/components/sw/inference-meet-illustration";
+import { GenesisSynthCoverIllustration } from "@/components/sw/genesis-synth-cover-illustration";
+import { LyricsAcceleratorIllustration } from "@/components/sw/lyrics-accelerator-illustration";
 import { SimulationMpcIllustration } from "@/components/sw/simulation-mpc-illustration";
-import { ScalePath } from "@/components/sw/scale-path";
 
 /** WorkSpace / engine narrative — embedded on the homepage. */
 export function EngineDeepDive() {
@@ -29,7 +27,6 @@ export function EngineDeepDive() {
       <Pillars />
       <Architecture />
       <Collaboration />
-      <Scaling />
       <Resilience />
       <CTA />
     </>
@@ -197,41 +194,41 @@ function Pillars() {
   const pillars: Pillar[] = [
     {
       id: "inference",
-      n: "Live Composition",
-      tag: "Real-time · Collaborative · Presence · Attribution",
-      title: "Composition happens together, instantly.",
-      body: "Live melodic, harmonic, and rhythmic composition in one shared canvas — every voice, chord change, and groove edit synchronized in sub-second time. Collaborators see the same evolving score, not a stale export; presence and attribution track who shaped which line as the piece grows. A live earnings rail runs beside the music so splits stay honest while you write. Composer A sketches the hook, Composer B answers with harmony, and Composer C (10%) watches each melodic decision accrue — +$1.35 per sale toward settlement as the motif lands — with every note change logged for split and review before it commits.",
+      n: "Genesis",
+      tag: "Flagship synth · Neural timbre · Patch memory",
+      title: "The flagship instrument for WorkSpace.",
+      body: "Genesis is Consequence’s flagship synthesizer — a neural timbre engine built for composition in WorkSpace, not a full control surface on the marketing page. Patches evolve with context: harmonic tension, rhythmic lane, and twin-backed earnings bands inform how a sound develops before you commit a take. The instrument ships as identity and cover art here; the playable matrix, modulation matrix, and performance macros live inside the studio where attribution and splits already run beside the session.",
       bullets: [
-        "Sub‑second sync on shared melodic lines, harmonic voicings, and rhythm grids",
-        "Presence and cursors anchored to the phrase, bar, and beat — not static files",
-        "Per-decision attribution: who wrote the motif, who voiced the harmony, who locked the groove",
-        "Reviewer‑gated merges with live split preview before a compositional choice ships",
+        "Neural timbre core — continuous morphing between analog warmth and digital edge",
+        "Patch lineage tied to work, contributor, and session — not anonymous presets",
+        "Context-aware voicing: arrangement lane, key center, and groove grid inform the model",
+        "Studio-native surface: full synth UI opens in WorkSpace, not on this page",
       ],
     },
     {
       id: "simulation",
-      n: "Outcome Rehearsal",
-      tag: "Monte Carlo · Agent-based · RL · Prediction",
-      title: "Test every musical choice before you commit.",
-      body: "Monte Carlo over compositional futures — how a harmonic pivot performs, how a melodic motif evolves across keys and arrangements, what happens if you tighten the rhythm or open the meter. Agent-based models trace how a creator’s voice and earning path shift as choices stack; discrete-event paths follow remix chains and upstream capital; RL searches policies for voicing, pacing, and release timing that lift engagement and payouts. Ten thousand pods on demand, outcomes aggregated and written back into the bus as rehearsed state you can act on.",
+      n: "Drum & Sequence",
+      tag: "Step grid · Pattern memory · Swing · Export",
+      title: "Lock the groove before the arrangement moves.",
+      body: "A dedicated drum machine and step sequencer for pattern-first composition — sixteen steps, four lanes, swing and probability per cell, and pattern chains that export directly to the shared bus. Program kick, snare, hat, and open textures on a 4×4 performance grid, audition variations in place, and commit the winning pattern to the arrangement without leaving WorkSpace. Patterns carry attribution like any other compositional act: who programmed the groove, which take shipped, and how it routes to settlement.",
       bullets: [
-        "10,000-scenario Monte Carlo: this cadence vs that resolution — performance and revenue bands",
-        "Agent-based melodic trajectories — motif evolution, audience pull, and capital over 30d",
-        "Discrete-event paths for harmonic reharmonization and rhythmic consequence chains",
-        "RL search for voicing, tempo, and release moves that lift engagement and creator earnings",
+        "16-step grid with per-lane velocity, probability, and micro-timing offsets",
+        "4×4 pad surface for live performance and step entry — pattern A/B and chain mode",
+        "Swing, humanize, and lane mute written as first-class pattern metadata",
+        "One-click export to arrangement stem lanes with split preview intact",
       ],
     },
     {
       id: "twins",
-      n: "Creative Ledger",
-      tag: "Ownership · Memory · Attribution · Capital",
-      title: "Every note belongs to someone. The ledger remembers.",
-      body: "A ledger of creative ownership — who originated the melody, who contributed the harmony, who owns the rhythm pattern — with immutable memory of every compositional act, not just a probabilistic snapshot. Sharded by work and contributor, sub-10ms reads on hot attribution paths, history to the second, with capital legs tied to creative lineage so downstream systems treat ownership as fact: this phrase, this split, this settlement. The ledger remembers what twins predict; capital follows the notes that earned it.",
+      n: "Lyrics Accelerator",
+      tag: "LLM · Meter · Rhyme · Semantic fit",
+      title: "Words that keep pace with the music.",
+      body: "An LLM-native lyrics layer that respects meter, rhyme scheme, and semantic fit to the work already in flight — not a generic chat box pasted beside the DAW. Draft lines stream beside your hook motif; the model proposes near-rhymes, syllable stress fixes, and motif-consistent imagery while preserving attribution on every accepted stanza. Context pulls from the active work, tempo, key, and twin-backed themes so suggestions stay on-brand for Velvet Clip and the catalog around it.",
       bullets: [
-        "Immutable creative memory: melody, harmony, and rhythm lineage per work",
-        "Ownership graph — composer, co-writer, and contributor shares on every phrase",
-        "Attribution tracking from first motif to final master, linked to settlement legs",
-        "Time-travel queries — who owned what when, gross, fees, net, settled vs pending",
+        "Streaming completions with rhyme, meter, and stress annotations inline",
+        "Semantic guardrails: hook motif, narrative arc, and banned phrase lists per work",
+        "Rhyme and near-rhyme panels with syllable counts for 4/4 and compound meters",
+        "Governed export — accepted lines become attributed compositional events on the bus",
       ],
     },
   ];
@@ -242,18 +239,16 @@ function Pillars() {
           <div className="col-span-12 md:col-span-7">
             <Eyebrow label="Three pillars · One shape" />
             <Display className="mt-6 max-w-[16ch]">
-              Predict. Rehearse.
+              Sound. Groove.
               <br />
-              <span className="italic text-ink/80">Remember.</span>
+              <span className="italic text-ink/80">Language.</span>
             </Display>
           </div>
           <div className="col-span-12 md:col-span-5 text-[15px] text-ink/65 leading-[1.7]">
-            Inference is the collaboration layer: shared studio context, presence,
-            and review before anything ships — with earnings visible in the same
-            frame. Simulation says what will happen if we release, price, or route
-            capital. Twins remember every play, sale, split, and settlement. Each
-            scales independently. Each fails independently. None of them block the
-            others.
+            Genesis is the flagship synth identity — timbre and patch memory for the
+            room. Drum &amp; Sequence is the pattern engine: step grids, swing, and
+            export into the arrangement. Lyrics Accelerator is the LLM layer for meter,
+            rhyme, and semantic fit. Each scales independently; none blocks the others.
           </div>
         </div>
 
@@ -305,7 +300,7 @@ function PillarRow({ p, index }: { p: Pillar; index: number }) {
       {p.id === "inference" ? (
         <div className="mt-10 border-t border-ink/10 pt-10">
           <div className="mx-auto max-w-5xl">
-            <InferenceMeetIllustration />
+            <GenesisSynthCoverIllustration />
           </div>
         </div>
       ) : null}
@@ -319,7 +314,7 @@ function PillarRow({ p, index }: { p: Pillar; index: number }) {
       {p.id === "twins" ? (
         <div className="mt-10 border-t border-ink/10 pt-10">
           <div className="mx-auto max-w-6xl">
-            <DigitalTwinsDashboard />
+            <LyricsAcceleratorIllustration />
           </div>
         </div>
       ) : null}
@@ -417,74 +412,36 @@ function Collaboration() {
   );
 }
 
-function Scaling() {
-  return (
-    <Section id="scaling" className="py-32 border-t border-ink/10 scroll-mt-28">
-      <Container>
-        <div className="flex items-end justify-between gap-8 mb-12">
-          <div>
-            <Eyebrow label="Scale path" />
-            <Display className="mt-6 max-w-[18ch]">
-              1M → 10M → 100M users.
-            </Display>
-          </div>
-          <div className="hidden md:block max-w-md text-[14px] text-ink/65">
-            The architectural shape persists. At 1M users you clear $1.84M/day in
-            settlements on one mesh; at 100M, edge inference ranks feeds and
-            capital velocity across regions while the same twin contracts hold.
-          </div>
-        </div>
-        <ScalePath />
-
-        <div className="mt-20 grid grid-cols-12 gap-y-12 gap-x-8">
-          <div className="col-span-12 md:col-span-3">
-            <NumberStat value="6" unit="brokers" label="Kafka cluster size at the 1M-user MVP scale — plays, sales, settlements." />
-          </div>
-          <div className="col-span-12 md:col-span-3">
-            <NumberStat value="24" unit="brokers" label="Kafka at 10M; per-composition and per-creator partitions preserved." />
-          </div>
-          <div className="col-span-12 md:col-span-3">
-            <NumberStat value="3" unit="AZ" label="Replication across availability zones — catalog twins and settlement ledger alike." />
-          </div>
-          <div className="col-span-12 md:col-span-3">
-            <NumberStat value="100M" unit="users" label="Multi-region active-active, edge inference for feeds and live capital monitoring." />
-          </div>
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
 function Resilience() {
   const modes = [
     {
-      t: "Inference fleet degradation",
-      d: "If composition ranking fails, the mesh falls back to simpler ranking; earnings and risk models keep running on cached paths.",
-      tag: "Graceful",
+      t: "Base settlement continuity",
+      d: "Coinbase Base executes on-chain legs when splits finalize — ownership transfers, royalty batches, and payout commits run with deterministic ordering while composition, inference, and session traffic stay on the mesh.",
+      tag: "Settlement",
     },
     {
-      t: "Kafka broker failure",
-      d: "Royalty transaction stream and play stream share ISR ≥ 2; leaders re-elect; zero loss; settlement consumers resume degraded.",
-      tag: "Tolerated",
+      t: "Circle USDC custody & flow",
+      d: "Circle supplies USDC liquidity, wallet infrastructure, and programmable payments — creator balances route through custody policy and settlement velocity without blocking realtime collaboration or Session Protocol merges.",
+      tag: "Custody",
     },
     {
-      t: "Database primary loss",
-      d: "Creator twins, capital twins, and ledger shards — Mongo, Qdrant, ClickHouse, PG — auto-failover without splitting payout truth.",
-      tag: "Automatic",
+      t: "Session Protocol synchronization",
+      d: "Attribution, presence, and merge ordering are governed before capital moves — sub-second sync across collaborators; authorship events commit under protocol rules so settlement eligibility stays unambiguous.",
+      tag: "Deterministic",
     },
     {
-      t: "Bad model deployment",
-      d: "Shadow comparison catches regressions in AI stems suggestions or earnings forecasts; traffic returns to incumbent; owners paged.",
-      tag: "Reversed",
+      t: "Royalty reconciliation",
+      d: "Play and sale events reconcile to gross, fees, net, and split state on Consequence — pending and settled views stay aligned with programmable ownership until Base and USDC close the leg.",
+      tag: "Reconciled",
     },
     {
-      t: "Region partition",
-      d: "Local producers keep arranging; USDC settles against local ledger views; cross-region replication reconciles capital on heal.",
+      t: "Local-first creative operation",
+      d: "Most musical activity remains off-chain — arrangement, sequencing, and lyric drafts continue on local session state when links degrade; edits queue with bounded divergence until Session Protocol reconciles authorship on heal.",
       tag: "Local-first",
     },
     {
-      t: "Compound failure",
-      d: "Runbooks bound recovery to minutes; capital in flight protected by Solana finality and Circle custody; GitOps restores mesh state.",
+      t: "Cross-region ledger consistency",
+      d: "Regional partitions retain creative continuity; capital and attribution views replicate with eventual consistency — failover restores orchestration without splitting payout truth or breaking consensus across the ledger mesh.",
       tag: "Bounded",
     },
   ];
@@ -493,17 +450,21 @@ function Resilience() {
       <Container>
         <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-end mb-12">
           <div className="col-span-12 md:col-span-7">
-            <Eyebrow label="Resilience" />
+            <Eyebrow label="Infrastructure" />
             <Display className="mt-6 max-w-[14ch]">
-              No single failure
+              Settlement
               <br />
-              <span className="italic text-ink/80">takes the room.</span>
+              <span className="italic text-ink/80">without pause.</span>
             </Display>
           </div>
           <div className="col-span-12 md:col-span-5 text-[15px] text-ink/65 leading-[1.7]">
-            Resilience is not luck. Every failure mode is anticipated, every
-            recovery path is rehearsed in simulation, every blast radius is
-            bounded. Graceful degradation is the default.
+            Consequence holds creative state, WorkSpace collaboration, and attribution in a
+            replicated mesh — realtime music stays off-chain. Session Protocol governs
+            synchronization and authorship ordering before commits ship. Coinbase Base handles
+            settlement and on-chain execution; Circle handles USDC liquidity, custody, and
+            programmable payments. Blockchain is the settlement plane — ownership, royalties,
+            and creator attribution — not the composition plane. Graceful degradation is the
+            default; every blast radius is bounded.
           </div>
         </div>
         <div className="grid grid-cols-12 gap-4">

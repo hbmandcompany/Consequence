@@ -12,7 +12,6 @@ import {
   Section,
 } from "@/components/ui";
 import { LiveTicker } from "@/components/live-ticker";
-import { TwinNetDawIllustration } from "@/components/illustrations/daw-suite";
 import { MonochromeAudioVisualizer } from "@/components/surface-cards/monochrome-audio-visualizer";
 import { ManifestoStepped } from "@/components/manifesto/manifesto-stepped";
 import { PartnerStackMarquee } from "@/components/partner-stack-marquee";
@@ -27,7 +26,6 @@ export default function HomePage() {
       <Surfaces />
       <EngineDeepDive />
       <Numbers />
-      <Press />
       <Closing />
     </>
   );
@@ -253,53 +251,6 @@ function Numbers() {
             left="Resilience"
             right="Copies kept in three zones, careful AI rollouts, and quick rollback — you can keep writing while money catches up safely"
           />
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-function Press() {
-  const quotes = [
-    {
-      q: "It feels less like a tool and more like a fast, quiet collaborator that already knows what I'm about to do.",
-      a: "Studio Notes",
-      r: "Berlin",
-    },
-    {
-      q: "Tiffany blue, Mondrian bones, Apple restraint. The first time a creator platform watched capital flow as carefully as it watched creativity.",
-      a: "Form / Field",
-      r: "Amsterdam",
-    },
-    {
-      q: "HBM & Company built the consequence engine the rest of us were too timid to imagine.",
-      a: "The Bench",
-      r: "Brooklyn",
-    },
-  ];
-  return (
-    <Section id="press" className="py-32 border-t border-ink/10 scroll-mt-28">
-      <Container>
-        <Eyebrow label="In the Room" />
-        <FadeUp className="mt-10">
-          <div className="rounded-2xl border border-ink/15 bg-[#1c1c1e] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.2)] overflow-hidden max-w-4xl mx-auto">
-            <TwinNetDawIllustration className="w-full h-auto max-h-[min(420px,52vw)] block mx-auto" />
-          </div>
-        </FadeUp>
-        <div className="mt-14 grid grid-cols-12 gap-8">
-          {quotes.map((q, i) => (
-            <FadeUp key={i} delay={i * 0.06} className="col-span-12 md:col-span-4">
-              <div className="h-full flex flex-col justify-between border-t border-ink/15 pt-6">
-                <p className="font-display text-[clamp(20px,1.7vw,26px)] leading-[1.25] text-ink/90">
-                  &ldquo;{q.q}&rdquo;
-                </p>
-                <div className="mt-10 flex items-center justify-between text-[11px] tabular uppercase tracking-[0.18em] text-ink/55">
-                  <span>{q.a}</span>
-                  <span>{q.r}</span>
-                </div>
-              </div>
-            </FadeUp>
-          ))}
         </div>
       </Container>
     </Section>

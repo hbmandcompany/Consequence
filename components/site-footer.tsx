@@ -66,7 +66,6 @@ export function SiteFooter() {
                   { label: "Manifesto", href: "/#manifesto" },
                   { label: "Surfaces", href: "/#surfaces" },
                   { label: "Scale", href: "/#scale" },
-                  { label: "Press", href: "/#press" },
                   { label: "Closing", href: "/#closing" },
                 ]}
               />

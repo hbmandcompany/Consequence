@@ -272,7 +272,7 @@ function Closing() {
           <div className="col-span-12 md:col-span-4 flex flex-col gap-4">
             <Link
               href="/trending"
-              className="group flex items-center justify-between bg-ink text-snow-50 px-6 py-5 hover:bg-ink/90 transition-colors"
+              className="group flex items-center justify-between rounded-xl bg-ink text-snow-50 px-6 py-5 hover:bg-ink/90 transition-colors"
             >
               <div>
                 <div className="text-[10px] tabular uppercase tracking-[0.22em] text-snow-50/55">
@@ -284,7 +284,7 @@ function Closing() {
             </Link>
             <Link
               href="/#creative-engine"
-              className="group flex items-center justify-between border border-ink/15 px-6 py-5 hover:border-ink/60 transition-colors"
+              className="group flex items-center justify-between rounded-xl border border-ink/15 px-6 py-5 hover:border-ink/60 transition-colors"
             >
               <div>
                 <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/55">

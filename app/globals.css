@@ -217,3 +217,60 @@ html, body {
 .workspace-root input.font-mono {
   font-family: var(--font-mono), ui-monospace, monospace;
 }
+
+/* Masonry bento grid — fluid tiles, not rigid DAW rails */
+.workspace-masonry {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: 28px;
+  grid-auto-flow: dense;
+  gap: 10px;
+  align-content: start;
+}
+
+.masonry-span-transport {
+  grid-column: 1 / -1;
+  grid-row: span 2;
+  min-height: 3rem;
+}
+
+.masonry-span-tracks {
+  grid-column: span 3;
+  grid-row: span 16;
+  min-height: 22rem;
+}
+
+.masonry-span-timeline {
+  grid-column: span 6;
+  grid-row: span 11;
+  min-height: 18rem;
+}
+
+.masonry-span-collab {
+  grid-column: span 3;
+  grid-row: span 20;
+  min-height: 26rem;
+}
+
+.masonry-span-inspector {
+  grid-column: span 3;
+  grid-row: span 7;
+  min-height: 10rem;
+}
+
+.masonry-span-piano {
+  grid-column: span 6;
+  grid-row: span 9;
+  min-height: 16rem;
+}
+
+@media (max-width: 1280px) {
+  .masonry-span-tracks,
+  .masonry-span-timeline,
+  .masonry-span-collab,
+  .masonry-span-inspector,
+  .masonry-span-piano {
+    grid-column: 1 / -1;
+    grid-row: span 8;
+  }
+}

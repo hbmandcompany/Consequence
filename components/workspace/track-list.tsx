@@ -35,9 +35,6 @@ export function TrackList() {
       className="flex flex-col h-full min-h-0"
       onFocus={() => setUi({ focusedPanel: "tracks" })}
     >
-      <div className="shrink-0 px-3 py-2 border-b border-ws-border">
-        <span className="text-[10px] uppercase tracking-wider text-ws-text-muted">Tracks</span>
-      </div>
       <div className="flex-1 overflow-y-auto min-h-0">
         {tracks.map((track) => {
           const selected = selectedTrackIds.includes(track.id);
@@ -144,8 +141,7 @@ export function InspectorPanel() {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto min-h-0 border-t border-ws-border p-3 space-y-4">
-      <p className="text-[14px] text-ws-text-primary font-sans">Inspector</p>
+    <div className="flex-1 overflow-y-auto min-h-0 p-3 space-y-4">
       <label className="block">
         <span className="text-[10px] uppercase tracking-wider text-ws-text-muted">Name</span>
         <input

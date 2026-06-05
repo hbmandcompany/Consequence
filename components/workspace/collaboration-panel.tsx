@@ -149,12 +149,6 @@ export function CollaborationPanel() {
 
   return (
     <div className="flex flex-col h-full min-h-0 bg-ws-surface">
-      <div className="shrink-0 px-3 py-2 border-b border-ws-border">
-        <span className="text-[10px] uppercase tracking-wider text-ws-text-muted">
-          Collaborators
-        </span>
-      </div>
-
       <div className="shrink-0 p-3 flex flex-col gap-3 overflow-y-auto max-h-[280px]">
         {displayCollabs.map((c) => (
           <VideoTile

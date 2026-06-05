@@ -66,7 +66,7 @@ export function TransportBar() {
 
   return (
     <header
-      className="flex h-12 shrink-0 items-center gap-3 border-b border-ws-border bg-ws-surface px-3"
+      className="flex h-full min-h-[3rem] shrink-0 items-center gap-3 bg-ws-surface px-3"
       onFocus={() => setUi({ focusedPanel: "transport" })}
     >
       <div className="flex items-center gap-1">

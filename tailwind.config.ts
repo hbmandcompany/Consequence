@@ -5,6 +5,8 @@ const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
+    "./hooks/**/*.{ts,tsx}",
+    "./stores/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
@@ -45,6 +47,16 @@ const config: Config = {
           DEFAULT: "#B89968",
           light: "#D4B98C",
           dark: "#8C7048",
+        },
+        ws: {
+          bg: "#0A0A0A",
+          surface: "#141414",
+          elevated: "#1E1E1E",
+          border: "#2A2A2A",
+          "text-muted": "#6B6B6B",
+          "text-secondary": "#A0A0A0",
+          "text-primary": "#F0F0F0",
+          accent: "#FFFFFF",
         },
       },
       fontFamily: {

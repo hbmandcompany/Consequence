@@ -205,3 +205,15 @@ html, body {
   transform-origin: center;
   border-radius: 2px;
 }
+
+/* DAW workspace — isolated dark chrome */
+.workspace-root {
+  background: #0A0A0A;
+  color: #F0F0F0;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.workspace-root .font-mono,
+.workspace-root input.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}

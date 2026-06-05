@@ -31,7 +31,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
         return;
       }
       setSession(result.user);
-      router.push("/shop");
+      router.push("/workspace");
       router.refresh();
       return;
     }
@@ -49,7 +49,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
       return;
     }
     setSession(result.user);
-    router.push("/shop");
+    router.push("/workspace");
     router.refresh();
   }
 

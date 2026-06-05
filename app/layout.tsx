@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
-import { SiteNav } from "@/components/site-nav";
-import { SiteFooter } from "@/components/site-footer";
-import { HashScroll } from "@/components/hash-scroll";
+import { LayoutShell } from "@/components/layout-shell";
 
 const sans = Inter({
   subsets: ["latin"],
@@ -45,10 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
       <body className="paper min-h-screen text-ink antialiased">
-        <SiteNav />
-        <HashScroll />
-        <main className="relative">{children}</main>
-        <SiteFooter />
+        <LayoutShell>{children}</LayoutShell>
         <Analytics />
       </body>
     </html>

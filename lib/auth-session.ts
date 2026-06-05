@@ -86,20 +86,31 @@ export function registerUser(input: {
   return { ok: true, user };
 }
 
+function nameFromEmail(email: string): string {
+  const local = email.split("@")[0] ?? "Producer";
+  return local
+    .replace(/[._-]+/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase())
+    .trim() || "Producer";
+}
+
+/** Demo mode: any valid email + password signs in. Unknown emails auto-provision. */
 export function loginUser(input: {
   email: string;
   password: string;
 }): { ok: true; user: AuthUser } | { ok: false; error: string } {
+  void input.password;
   const email = input.email.trim().toLowerCase();
-  const users = getStoredUsers();
-  const user = users.find((u) => u.email === email);
-  if (!user) {
-    return { ok: false, error: "No account found for this email. Sign up first." };
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return { ok: false, error: "Enter a valid work email." };
   }
   if (!isBrowser()) return { ok: false, error: "Unavailable." };
-  const stored = localStorage.getItem(`consequence_pw_${email}`);
-  if (stored !== input.password) {
-    return { ok: false, error: "Incorrect password." };
-  }
+
+  const users = getStoredUsers();
+  const existing = users.find((u) => u.email === email);
+  if (existing) return { ok: true, user: existing };
+
+  const user: AuthUser = { email, name: nameFromEmail(email), createdAt: Date.now() };
+  saveUsers([...users, user]);
   return { ok: true, user };
 }

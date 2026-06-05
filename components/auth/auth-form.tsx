@@ -97,7 +97,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
           placeholder={isLogin ? "••••••••" : "At least 8 characters"}
           className="mt-2 w-full bg-transparent border-b border-ink/15 focus:border-ink/50 outline-none py-2.5 text-[15px] placeholder:text-ink/35"
           required
-          minLength={isLogin ? 1 : 8}
+          minLength={isLogin ? 0 : 8}
         />
       </label>
       {!isLogin && (

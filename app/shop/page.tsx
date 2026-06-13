@@ -3,15 +3,12 @@ import { ForYouFeed } from "@/components/cc/for-you";
 import { Marketplace } from "@/components/cc/marketplace";
 import { ProducerSpotlight } from "@/components/cc/spotlight";
 import { Wallet } from "@/components/cc/wallet";
-import { CCTopBar } from "@/components/cc/topbar";
 import { ShopHero } from "@/components/immersive/surface-hero";
-import { SessionBanner } from "@/components/auth/session-banner";
 import {
   Container,
   Display,
   Eyebrow,
   FadeUp,
-  Pill,
   Section,
 } from "@/components/ui";
 
@@ -19,33 +16,6 @@ export default function ShopPage() {
   return (
     <>
       <ShopHero />
-      <SessionBanner />
-      <Section className="pb-16 border-b border-ink/10">
-        <Container>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <Pill tone="tiff">Tonight</Pill>
-                <span className="text-[11px] tabular tracking-[0.2em] uppercase text-ink/45">
-                  Shop · Atelier 04
-                </span>
-              </div>
-              <Display as="h2" className="text-[clamp(32px,4vw,64px)] max-w-[14ch]">
-                Good evening,
-                <br />
-                <span className="italic text-ink/85">Margot.</span>
-              </Display>
-              <p className="mt-8 max-w-[52ch] text-[16px] text-ink/65 leading-[1.6]">
-                The room has been listening. Twelve sessions resumed in the
-                background, three collaborators noticed your last bounce, and the
-                marketplace surfaced two stems your model thinks you&rsquo;ll fall in
-                love with at 3:14 a.m.
-              </p>
-            </div>
-            <CCTopBar />
-          </div>
-        </Container>
-      </Section>
 
       <ForYouFeed />
       <Marketplace />

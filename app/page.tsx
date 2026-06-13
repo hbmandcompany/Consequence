@@ -11,7 +11,6 @@ import {
   NumberStat,
   Section,
 } from "@/components/ui";
-import { LiveTicker } from "@/components/live-ticker";
 import { MonochromeAudioVisualizer } from "@/components/surface-cards/monochrome-audio-visualizer";
 import { ManifestoStepped } from "@/components/manifesto/manifesto-stepped";
 import { PartnerStackMarquee } from "@/components/partner-stack-marquee";
@@ -39,75 +38,55 @@ function Hero() {
     >
       <Container>
         {/* items-start: with a tall map, items-end pushed the headline below the fold */}
-        {/* overflow only on grid — not on section — so full-bleed LiveTicker is not clipped */}
-        <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-start overflow-x-clip overflow-y-visible">
-          <div className="col-span-12 space-y-10">
+        {/* overflow only on grid — not on section */}
+        <div className="grid grid-cols-12 gap-x-8 gap-y-10 items-start overflow-x-clip overflow-y-visible">
+          <div className="col-span-12 md:col-span-7 space-y-10">
             <div className="flex flex-wrap items-center gap-4">
               <Eyebrow index="01 / 04" label="An HBM & Company House Product" />
               <span className="inline-flex items-center gap-2 text-[11px] tabular text-ink/55">
                 <span className="w-1.5 h-1.5 rounded-full bg-tiff animate-breathe" />
-                Live · 12,408 events / sec
+                Live · 2,847 users online
               </span>
             </div>
 
-            <Display as="h1">
-              What
-              <br />
-              happens
-              <br />
-              <span className="italic text-ink/85">next.</span>
+            <Display as="h1" className="leading-[1.06] max-w-[22ch] lg:max-w-[26ch]">
+              What happens next:{" "}
+              <span className="italic text-ink/85">Define. Compose</span>
             </Display>
 
-            <div className="grid grid-cols-12 gap-6 gap-y-8 items-start overflow-visible">
-              <div className="col-span-12 md:col-span-7">
-                <Lede>
-                  Consequence is the real-time consequence layer for music production,
-                  marketplace operations, and creator royalty settlement. Composition,
-                  collaboration, playback, and capital events flow through a single stream;
-                  authoritative ledgers maintain state for every work, contributor,
-                  transaction, and payout.
-                </Lede>
-              </div>
-              <div className="relative col-span-12 md:col-span-5 md:pl-8 md:border-l border-ink/10 overflow-visible">
-                <div
-                  className="hidden md:flex absolute inset-x-0 bottom-full mb-5 h-[300px] pointer-events-none items-center justify-center"
-                  aria-hidden
-                >
-                  <HeroConsequenceVisual className="h-full w-full max-w-[32rem] mx-auto" />
-                </div>
-                <div className="text-[11px] tabular uppercase tracking-[0.22em] text-ink/45 mb-3">
-                  Two surfaces, one engine
-                </div>
-                <div className="space-y-3">
-                  <Link
-                    href="/trending"
-                    className="group flex items-center justify-between border-b border-ink/10 pb-3 hover:border-ink/40 transition-colors"
-                  >
-                    <span className="text-[15px] text-ink">Trending</span>
-                    <span className="flex items-center gap-2 text-[11px] tabular text-ink/50 uppercase tracking-[0.16em]">
-                      For You
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </span>
-                  </Link>
-                  <Link
-                    href="/#creative-engine"
-                    className="group flex items-center justify-between border-b border-ink/10 pb-3 hover:border-ink/40 transition-colors"
-                  >
-                    <span className="flex items-center gap-2 text-[15px] text-ink">
-                      WorkSpace
-                      <ArrowUpRight className="w-3.5 h-3.5 text-ink/50 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </span>
-                  </Link>
-                </div>
-              </div>
+            <div className="space-y-5">
+              <Lede className="text-[clamp(16px,1.4vw,20px)]">
+                Consequence is the real-time consequence layer for music production,
+                marketplace operations, and creator royalty settlement — one environment where
+                you write, produce, release, and get paid without losing
+                context.
+              </Lede>
+              <Lede className="text-[clamp(16px,1.4vw,20px)]">
+                Composition, collaboration, playback, and capital events flow through a single
+                stream; authoritative ledgers maintain state for every work, contributor,
+                transaction, and payout. A note in the piano roll, a stem on the marketplace,
+                a collaborator in the room, a USDC settlement on-chain — you always know what
+                happens next.
+              </Lede>
             </div>
+          </div>
+
+          <div className="col-span-12 md:col-span-5 flex flex-col gap-5 md:mt-6">
+            <div
+              className="hidden md:block h-[382px] lg:h-[442px] w-full shrink-0"
+              aria-hidden
+            >
+              <HeroConsequenceVisual className="h-full w-full max-w-[28rem] mx-auto" />
+            </div>
+            <Link
+              href="/login"
+              className="group flex w-full h-11 shrink-0 items-center justify-center rounded-lg bg-snow-200 text-[15px] text-ink hover:bg-snow-300 active:bg-snow-300/90 transition-colors"
+            >
+              Download Consequence
+            </Link>
           </div>
         </div>
       </Container>
-
-      <div className="mt-16 lg:mt-24 border-y border-ink/10">
-        <LiveTicker />
-      </div>
     </Section>
   );
 }

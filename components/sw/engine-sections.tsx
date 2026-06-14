@@ -6,11 +6,14 @@ import {
   Display,
   Eyebrow,
   FadeUp,
+  HairlineRow,
   Lede,
   Pill,
   Section,
 } from "@/components/ui";
 import { RoyaltyTransactionPanel } from "@/components/sw/royalty-transaction";
+import { CollaborationSessionIllustration } from "@/components/sw/collaboration-session-illustration";
+import { COLLABORATION_FEATURES } from "@/lib/collaboration-features";
 import { GenesisSynthCoverIllustration } from "@/components/sw/genesis-synth-cover-illustration";
 import { LyricsAcceleratorIllustration } from "@/components/sw/lyrics-accelerator-illustration";
 import { SimulationMpcIllustration } from "@/components/sw/simulation-mpc-illustration";
@@ -301,6 +304,68 @@ function PillarRow({ p, index }: { p: Pillar; index: number }) {
         </div>
       ) : null}
     </div>
+  );
+}
+
+export function CollaborationSection() {
+  return (
+    <Section id="collaboration" className="py-32 border-t border-ink/10 scroll-mt-28">
+      <Container>
+        <div className="grid grid-cols-12 gap-y-12 gap-x-8">
+          <div className="col-span-12 md:col-span-5">
+            <Eyebrow label="Collaboration" accent="tiff" />
+            <Display className="mt-6 max-w-[16ch]">
+              In the room,
+              <br />
+              <span className="italic text-ink/80">on the record.</span>
+            </Display>
+            <Lede className="mt-8 text-[15px] leading-[1.65]">
+              Live melodic, harmonic, and rhythmic composition in one shared canvas — every voice,
+              chord change, and groove edit synchronized in sub-second time. Collaborators see the
+              same evolving score, not a stale export; presence and attribution track who shaped
+              which line as the piece grows. A live earnings rail runs beside the music so splits stay
+              honest while you write. Composer A sketches the hook, Composer B answers with harmony,
+              and Composer C (10%) watches each melodic decision accrue — +$1.35 per sale toward
+              settlement as the motif lands — with every note change logged for split and review before
+              it commits.
+            </Lede>
+            <div className="mt-12">
+              <HairlineRow
+                left={COLLABORATION_FEATURES["live-session"].label}
+                right={COLLABORATION_FEATURES["live-session"].tagline}
+                href={COLLABORATION_FEATURES["live-session"].href}
+              />
+              <HairlineRow
+                left={COLLABORATION_FEATURES["shared-workspace"].label}
+                right={COLLABORATION_FEATURES["shared-workspace"].tagline}
+                href={COLLABORATION_FEATURES["shared-workspace"].href}
+              />
+              <HairlineRow
+                left={COLLABORATION_FEATURES["split-proposals"].label}
+                right={COLLABORATION_FEATURES["split-proposals"].tagline}
+                href={COLLABORATION_FEATURES["split-proposals"].href}
+              />
+            </div>
+          </div>
+          <div className="col-span-12 md:col-span-7 flex flex-col">
+            <CollaborationSessionIllustration />
+            <ul className="mt-8 lg:mt-10 grid sm:grid-cols-2 gap-x-8 gap-y-3 border-t border-ink/10 pt-8 lg:pt-10">
+              {[
+                "Sub‑second sync on shared melodic lines, harmonic voicings, and rhythm grids",
+                "Presence and cursors anchored to the phrase, bar, and beat — not static files",
+                "Per-decision attribution: who wrote the motif, who voiced the harmony, who locked the groove",
+                "Reviewer‑gated merges with live split preview before a compositional choice ships",
+              ].map((b) => (
+                <li key={b} className="flex items-start gap-2.5 text-[13px] text-ink/70 leading-[1.5]">
+                  <Zap className="mt-1 h-3 w-3 shrink-0 text-tiff-500" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Container>
+    </Section>
   );
 }
 

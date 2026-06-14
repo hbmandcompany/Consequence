@@ -25,16 +25,24 @@ export function middleware(request: NextRequest) {
       return NextResponse.redirect(destination, 308);
     }
 
-    if (
-      process.env.NODE_ENV === "production" &&
-      (pathname === "/shop" || pathname === "/cc" || pathname.startsWith("/shop/"))
-    ) {
-      const shopBase = getShopUrl().replace(/\/$/, "");
-      const suffix =
-        pathname === "/shop" || pathname === "/cc"
-          ? ""
-          : pathname.replace(/^\/shop/, "") || "";
-      return NextResponse.redirect(`${shopBase}${suffix}${search}`, 308);
+    if (pathname === "/" || pathname === "") {
+      const rewriteUrl = request.nextUrl.clone();
+      rewriteUrl.pathname = "/shop";
+      const response = NextResponse.rewrite(rewriteUrl);
+      response.headers.set("x-consequence-surface", "shop");
+      return response;
+    }
+
+    if (pathname === "/shop" || pathname === "/cc") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/";
+      return NextResponse.redirect(url, 308);
+    }
+
+    if (pathname.startsWith("/shop/")) {
+      const url = request.nextUrl.clone();
+      url.pathname = pathname.replace(/^\/shop/, "") || "/";
+      return NextResponse.redirect(url, 308);
     }
 
     return NextResponse.next();
@@ -47,6 +55,18 @@ export function middleware(request: NextRequest) {
         getSoftwareOrigin() || "https://www.consequence.software"
       );
       return NextResponse.redirect(destination, 308);
+    }
+
+    if (
+      process.env.NODE_ENV === "production" &&
+      (pathname === "/shop" || pathname === "/cc" || pathname.startsWith("/shop/"))
+    ) {
+      const shopBase = getShopUrl().replace(/\/$/, "");
+      const suffix =
+        pathname === "/shop" || pathname === "/cc"
+          ? "/"
+          : pathname.replace(/^\/shop/, "") || "/";
+      return NextResponse.redirect(`${shopBase}${suffix}${search}`, 308);
     }
 
     return NextResponse.next();

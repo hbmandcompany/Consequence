@@ -1,7 +1,7 @@
-/** Primary home — marketing homepage at `/`. */
+/** Primary entry — marketplace / shop at `/` on consequence.cc. */
 export const HOME_HOSTS = ["consequence.cc", "www.consequence.cc"] as const;
 
-/** Software surface — studio, shop, treasury paths. */
+/** Software marketing site — consequence.software. */
 export const SOFTWARE_HOSTS = [
   "consequence.software",
   "www.consequence.software",
@@ -38,7 +38,7 @@ export function isSoftwareHostname(host: string): boolean {
 /** @deprecated Use isHomeHostname */
 export const isShopHostname = isHomeHostname;
 
-/** Canonical home origin — consequence.cc in production. */
+/** Canonical shop origin — consequence.cc in production. */
 export function getHomeOrigin(): string {
   if (process.env.NEXT_PUBLIC_HOME_URL) {
     return process.env.NEXT_PUBLIC_HOME_URL.replace(/\/$/, "");
@@ -88,14 +88,14 @@ export function getMainSiteOrigin(): string {
   return getSoftwareOrigin();
 }
 
-/** Marketplace — lives on the software domain in production. */
+/** Marketplace on consequence.cc in production, /shop in dev. */
 export function getShopUrl(path = ""): string {
   const suffix = path ? (path.startsWith("/") ? path : `/${path}`) : "";
   if (process.env.NEXT_PUBLIC_SHOP_URL) {
     return `${process.env.NEXT_PUBLIC_SHOP_URL.replace(/\/$/, "")}${suffix || ""}`;
   }
   if (process.env.NODE_ENV === "production") {
-    return getSoftwareUrl(`/shop${suffix}`);
+    return getHomeUrl(suffix);
   }
   return `/shop${suffix}`;
 }

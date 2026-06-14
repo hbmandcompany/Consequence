@@ -4,9 +4,9 @@ import { Container, Display, Eyebrow, Lede, Section } from "@/components/ui";
 import { softwareMetadata } from "@/lib/seo/metadata";
 
 export const metadata = softwareMetadata({
-  title: "Book of Genesis",
+  title: "Book of Genesis — Music Production Instruments",
   description:
-    "Consequence.software — Genesis synth, Drum & Sequence, and Lyrics Accelerator, the three creative pillars of Conductor.",
+    "Consequence.software Book of Genesis — flagship music production instruments: Genesis synth, Drum & Sequence, and Lyrics Accelerator for Conductor studio.",
   path: "/book-of-genesis",
 });
 

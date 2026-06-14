@@ -4,7 +4,8 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { LayoutShell } from "@/components/layout-shell";
 import { SiteJsonLd } from "@/components/seo/json-ld";
-import { rootMetadata } from "@/lib/seo/metadata";
+import { ccMetadata, softwareMetadata } from "@/lib/seo/metadata";
+import { getRequestSeoSurface } from "@/lib/seo/surface";
 
 const sans = Inter({
   subsets: ["latin"],
@@ -25,7 +26,11 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = rootMetadata;
+export async function generateMetadata(): Promise<Metadata> {
+  const surface = getRequestSeoSurface();
+  if (surface === "software") return softwareMetadata();
+  return ccMetadata();
+}
 
 export default function RootLayout({
   children,

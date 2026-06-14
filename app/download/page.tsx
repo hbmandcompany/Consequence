@@ -6,9 +6,9 @@ import { Container, Display, Eyebrow, Lede, Pill, Section } from "@/components/u
 import { softwareMetadata } from "@/lib/seo/metadata";
 
 export const metadata = softwareMetadata({
-  title: "Download",
+  title: "Download Music Production Software",
   description:
-    "Download Consequence for macOS and Windows — Conductor studio, Monte Carlo rehearsal, and ledger-native settlement in one desktop client.",
+    "Download Consequence for macOS and Windows — music production software with Conductor DAW, piano roll, Monte Carlo rehearsal, AI assistant, and ledger-native settlement.",
   path: "/download",
 });
 

@@ -16,9 +16,9 @@ import { CollaborationSection } from "@/components/sw/engine-sections";
 import { softwareMetadata } from "@/lib/seo/metadata";
 
 export const metadata = softwareMetadata({
-  title: "Studio & consequence engine",
+  title: "Music Production Software & Consequence Engine",
   description:
-    "Consequence.software — real-time music production, Monte Carlo rehearsal, and creator royalty settlement from composition to USDC.",
+    "Music production software for real-time composing, live collaboration, Monte Carlo rehearsal, and royalty settlement — Conductor studio from composition to USDC.",
   path: "/",
 });
 

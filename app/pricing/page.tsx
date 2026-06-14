@@ -5,9 +5,9 @@ import { Container, Display, Eyebrow, Lede, Pill, Section } from "@/components/u
 import { softwareMetadata } from "@/lib/seo/metadata";
 
 export const metadata = softwareMetadata({
-  title: "Pricing",
+  title: "Pricing — Music Production Plans",
   description:
-    "Consequence.software pricing — Monte Carlo simulation, AI assistant usage, and Polygon-token metering on the decentralized ledger.",
+    "Consequence.software pricing for music producers — Monte Carlo simulation, AI assistant usage, and Polygon-token metering for studio and collaboration workflows.",
   path: "/pricing",
 });
 

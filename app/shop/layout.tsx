@@ -1,9 +1,9 @@
 import { ccMetadata } from "@/lib/seo/metadata";
 
 export const metadata = ccMetadata({
-  title: "Marketplace",
+  title: "Music Marketplace — Buy & Sell Stems, Beats & Sessions",
   description:
-    "Consequence.cc — personalized feed, stems, sessions, producer spotlight, and USDC wallet. Sourced from your network.",
+    "Shop stems, beats, and producer sessions on Consequence.cc — personalized For You discovery, marketplace listings, collaboration, and USDC creator wallet.",
   path: "/",
 });
 

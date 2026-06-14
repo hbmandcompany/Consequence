@@ -3,9 +3,9 @@ import { TrendingView } from "@/components/trending/trending-view";
 import { ccMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = ccMetadata({
-  title: "Trending · For You",
+  title: "Trending — Music Discovery & For You Feed",
   description:
-    "Consequence.cc Trending — personalized For You feed and Radio playback, ranked discovery tied to the consequence engine.",
+    "Discover trending stems, beats, and producer sessions on Consequence.cc — personalized For You radio, saves, and marketplace picks ranked for music creators.",
   path: "/trending",
 });
 

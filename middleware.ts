@@ -45,7 +45,9 @@ export function middleware(request: NextRequest) {
       return NextResponse.redirect(url, 308);
     }
 
-    return NextResponse.next();
+    const response = NextResponse.next();
+    response.headers.set("x-consequence-surface", "shop");
+    return response;
   }
 
   if (softwareHost) {
@@ -69,7 +71,9 @@ export function middleware(request: NextRequest) {
       return NextResponse.redirect(`${shopBase}${suffix}${search}`, 308);
     }
 
-    return NextResponse.next();
+    const response = NextResponse.next();
+    response.headers.set("x-consequence-surface", "software");
+    return response;
   }
 
   return NextResponse.next();

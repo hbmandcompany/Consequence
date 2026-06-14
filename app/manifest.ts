@@ -1,18 +1,25 @@
 import type { MetadataRoute } from "next";
-import { BRAND_CC } from "@/lib/seo/metadata";
-import { getHomeOrigin } from "@/lib/urls";
+import { BRAND_CC, BRAND_SOFTWARE } from "@/lib/seo/metadata";
+import { getRequestSeoSurface } from "@/lib/seo/surface";
+import { getHomeOrigin, getSoftwareOrigin } from "@/lib/urls";
 
 export default function manifest(): MetadataRoute.Manifest {
-  const origin = getHomeOrigin() || "https://www.consequence.cc";
+  const surface = getRequestSeoSurface();
+  const isSoftware = surface === "software";
+  const brand = isSoftware ? BRAND_SOFTWARE : BRAND_CC;
+  const origin = isSoftware
+    ? getSoftwareOrigin() || "https://www.consequence.software"
+    : getHomeOrigin() || "https://www.consequence.cc";
 
   return {
-    name: BRAND_CC.siteName,
+    name: brand.siteName,
     short_name: "Consequence",
-    description: BRAND_CC.description,
+    description: brand.description,
     start_url: "/",
     display: "standalone",
     background_color: "#F8F7F3",
     theme_color: "#0A0A0A",
+    categories: ["music", isSoftware ? "productivity" : "shopping"],
     icons: [
       {
         src: "/icon.svg",

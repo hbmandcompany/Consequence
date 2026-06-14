@@ -8,9 +8,10 @@ import { HashScroll } from "@/components/hash-scroll";
 
 export function LayoutShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const isWorkspace = pathname.startsWith("/workspace");
+  const isChromeless =
+    pathname.startsWith("/workspace") || pathname === "/download";
 
-  if (isWorkspace) {
+  if (isChromeless) {
     return <>{children}</>;
   }
 

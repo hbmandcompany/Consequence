@@ -5,6 +5,7 @@ import {
   LedgerBranchSection,
 } from "@/components/sw/engine-sections";
 import { Container, Section } from "@/components/ui";
+import { getShopUrl } from "@/lib/urls";
 
 export default function TreasuryPage() {
   return (
@@ -14,7 +15,7 @@ export default function TreasuryPage() {
         <Container>
           <p className="text-[13px] text-ink/55">
             Ledger narrative and settlement infrastructure — same substrate that powers{" "}
-            <Link href="/shop" className="uline text-ink">
+            <Link href={getShopUrl()} className="uline text-ink">
               Shop
             </Link>
             .

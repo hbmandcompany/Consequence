@@ -4,6 +4,7 @@ import { Marketplace } from "@/components/cc/marketplace";
 import { ProducerSpotlight } from "@/components/cc/spotlight";
 import { Wallet } from "@/components/cc/wallet";
 import { ShopHero } from "@/components/immersive/surface-hero";
+import { getMainSiteUrl } from "@/lib/urls";
 import {
   Container,
   Display,
@@ -41,7 +42,7 @@ export default function ShopPage() {
                   twice. The work moves with you.
                 </p>
                 <Link
-                  href="/treasury"
+                  href={getMainSiteUrl("/treasury")}
                   className="inline-block mt-6 text-[13px] uline text-ink"
                 >
                   Open Treasury →

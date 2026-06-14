@@ -6,35 +6,13 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import clsx from "clsx";
 import { Mark } from "./mark";
 import { useScrollHideHeader } from "@/hooks/use-scroll-hide-header";
-import { SHOP_URL } from "@/lib/urls";
-
-const links = [
-  {
-    href: "/",
-    label: "Home",
-    suffix: undefined as string | undefined,
-    active: (p: string) => p === "/",
-  },
-  {
-    href: SHOP_URL,
-    label: "Shop",
-    suffix: "Marketplace",
-    active: (p: string) => p === "/shop" || p === "/cc",
-  },
-  {
-    href: "/treasury",
-    label: "Treasury",
-    suffix: "Governance",
-    active: (p: string) => p === "/treasury" || p === "/software",
-  },
-] as const;
-
-const BAR_TRANSITION = "background-color 350ms cubic-bezier(0.4, 0, 0.2, 1), border-color 350ms cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 350ms cubic-bezier(0.4, 0, 0.2, 1)";
+import { getMainSiteUrl, getShopUrl, isShopHostname } from "@/lib/urls";
 
 export function SiteNav() {
   const pathname = usePathname();
   const [hash, setHash] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const [onShopHost, setOnShopHost] = useState(false);
   const immersiveHero =
     pathname === "/session-protocol" || pathname === "/how-the-rails-connect";
   const [onImmersiveHero, setOnImmersiveHero] = useState(immersiveHero);
@@ -43,6 +21,34 @@ export function SiteNav() {
     topTolerance: 8,
   });
   const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    setOnShopHost(isShopHostname(window.location.hostname));
+  }, []);
+
+  const links = [
+    {
+      href: onShopHost ? getMainSiteUrl() : "/",
+      label: "Home",
+      suffix: undefined as string | undefined,
+      active: (p: string) => !onShopHost && p === "/",
+    },
+    {
+      href: onShopHost ? "/" : getShopUrl(),
+      label: "Shop",
+      suffix: "Marketplace",
+      active: (p: string) =>
+        onShopHost ? p === "/" : p === "/shop" || p === "/cc",
+    },
+    {
+      href: onShopHost ? getMainSiteUrl("/treasury") : "/treasury",
+      label: "Treasury",
+      suffix: "Governance",
+      active: (p: string) => p === "/treasury" || p === "/software",
+    },
+  ] as const;
+
+  const BAR_TRANSITION = "background-color 350ms cubic-bezier(0.4, 0, 0.2, 1), border-color 350ms cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 350ms cubic-bezier(0.4, 0, 0.2, 1)";
 
   useEffect(() => {
     const el = headerRef.current;
@@ -101,7 +107,7 @@ export function SiteNav() {
         )}
         style={barMotion}
       >
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href={onShopHost ? getMainSiteUrl() : "/"} className="flex items-center gap-3 group">
           <Mark
             className={clsx(
               "w-6 h-6 transition-transform duration-700 ease-out-expo group-hover:rotate-180",

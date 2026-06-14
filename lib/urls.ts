@@ -1,8 +1,18 @@
 /** Hostnames that serve the shop/marketplace at `/`. */
 export const SHOP_HOSTS = ["consequence.cc", "www.consequence.cc"] as const;
 
+/** Hostnames that serve the marketing homepage at `/`. */
+export const MAIN_SITE_HOSTS = [
+  "consequence.software",
+  "www.consequence.software",
+] as const;
+
+export function normalizeHostname(host: string): string {
+  return host.split(":")[0]?.toLowerCase() ?? "";
+}
+
 export function isShopHostname(host: string): boolean {
-  const normalized = host.split(":")[0]?.toLowerCase() ?? "";
+  const normalized = normalizeHostname(host);
   const fromEnv = process.env.NEXT_PUBLIC_SHOP_HOSTS;
   if (fromEnv) {
     return fromEnv
@@ -13,14 +23,35 @@ export function isShopHostname(host: string): boolean {
   return (SHOP_HOSTS as readonly string[]).includes(normalized);
 }
 
+export function isMainSiteHostname(host: string): boolean {
+  const normalized = normalizeHostname(host);
+  const fromEnv = process.env.NEXT_PUBLIC_MAIN_SITE_HOSTS;
+  if (fromEnv) {
+    return fromEnv
+      .split(",")
+      .map((h) => h.trim().toLowerCase())
+      .includes(normalized);
+  }
+  return (MAIN_SITE_HOSTS as readonly string[]).includes(normalized);
+}
+
+/** Canonical marketing origin — www.consequence.software in production. */
+export function getMainSiteOrigin(): string {
+  if (process.env.NEXT_PUBLIC_MAIN_SITE_URL) {
+    return process.env.NEXT_PUBLIC_MAIN_SITE_URL.replace(/\/$/, "");
+  }
+  if (process.env.NODE_ENV === "production") {
+    return "https://www.consequence.software";
+  }
+  return "";
+}
+
 /** Marketing site — consequence.software in production. */
 export function getMainSiteUrl(path = ""): string {
   const suffix = path ? (path.startsWith("/") ? path : `/${path}`) : "";
-  if (process.env.NEXT_PUBLIC_MAIN_SITE_URL) {
-    return `${process.env.NEXT_PUBLIC_MAIN_SITE_URL.replace(/\/$/, "")}${suffix}`;
-  }
-  if (process.env.NODE_ENV === "production") {
-    return `https://consequence.software${suffix}`;
+  const origin = getMainSiteOrigin();
+  if (origin) {
+    return `${origin}${suffix}`;
   }
   return suffix || "/";
 }

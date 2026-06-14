@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "consequence.software" }],
+      "destination": "https://www.consequence.software/:path*",
+      "permanent": true
+    }
+  ]
+}

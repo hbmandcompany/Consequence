@@ -1,9 +1,16 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getShopUrl, isShopHostname } from "@/lib/urls";
+import {
+  getMainSiteOrigin,
+  getShopUrl,
+  isMainSiteHostname,
+  isShopHostname,
+  normalizeHostname,
+} from "@/lib/urls";
 
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
+  const hostname = normalizeHostname(host);
   const shopHost = isShopHostname(host);
   const { pathname, search } = request.nextUrl;
 
@@ -31,8 +38,22 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Apex consequence.software often lands on GoDaddy until DNS is fixed; when it
+  // reaches Vercel, send traffic to the canonical www host (marketing homepage).
   if (
     process.env.NODE_ENV === "production" &&
+    hostname === "consequence.software"
+  ) {
+    const destination = new URL(
+      `${pathname}${search}`,
+      getMainSiteOrigin() || "https://www.consequence.software"
+    );
+    return NextResponse.redirect(destination, 308);
+  }
+
+  if (
+    process.env.NODE_ENV === "production" &&
+    isMainSiteHostname(host) &&
     (pathname === "/shop" || pathname === "/cc" || pathname.startsWith("/shop/"))
   ) {
     const shopBase = getShopUrl().replace(/\/$/, "");

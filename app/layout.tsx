@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   title: "Consequence — Studio, marketplace & engine",
   description:
     "Consequence: real-time music production, marketplace, and creator royalty consequence engine — composition to USDC settlement. Built by HBM & Company.",
-  metadataBase: new URL("https://consequence.software"),
+  metadataBase: new URL("https://www.consequence.software"),
   openGraph: {
     title: "Consequence",
     description: "What happens next.",

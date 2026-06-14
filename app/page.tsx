@@ -55,13 +55,13 @@ function Hero() {
             </Display>
 
             <div className="space-y-5">
-              <Lede className="text-[clamp(16px,1.4vw,20px)]">
+              <Lede className="text-[clamp(13px,1vw,15px)] leading-[1.6]">
                 Consequence is the real-time consequence layer for music production,
                 marketplace operations, and creator royalty settlement — one environment where
                 you write, produce, release, and get paid without losing
                 context.
               </Lede>
-              <Lede className="text-[clamp(16px,1.4vw,20px)]">
+              <Lede className="text-[clamp(13px,1vw,15px)] leading-[1.6]">
                 Composition, collaboration, playback, and capital events flow through a single
                 stream; authoritative ledgers maintain state for every work, contributor,
                 transaction, and payout. A note in the piano roll, a stem on the marketplace,

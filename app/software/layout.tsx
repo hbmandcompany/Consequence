@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import { softwareMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Treasury — Consequence",
-  description:
-    "Inference, simulation, and digital twins — full narrative on the Consequence homepage.",
-};
+export const metadata = softwareMetadata({
+  title: "Software",
+  description: "Consequence.software — inference, simulation, and digital twins.",
+  path: "/software",
+});
 
 export default function SoftwareLayout({
   children,

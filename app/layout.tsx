@@ -3,6 +3,8 @@ import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { LayoutShell } from "@/components/layout-shell";
+import { SiteJsonLd } from "@/components/seo/json-ld";
+import { rootMetadata } from "@/lib/seo/metadata";
 
 const sans = Inter({
   subsets: ["latin"],
@@ -23,17 +25,7 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Consequence — Studio, marketplace & engine",
-  description:
-    "Consequence: real-time music production, marketplace, and creator royalty consequence engine — composition to USDC settlement. Built by HBM & Company.",
-  metadataBase: new URL("https://www.consequence.cc"),
-  openGraph: {
-    title: "Consequence",
-    description: "What happens next.",
-    type: "website",
-  },
-};
+export const metadata: Metadata = rootMetadata;
 
 export default function RootLayout({
   children,
@@ -43,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
       <body className="paper min-h-screen text-ink antialiased">
+        <SiteJsonLd />
         <LayoutShell>{children}</LayoutShell>
         <Analytics />
       </body>

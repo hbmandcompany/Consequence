@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { softwareMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Treasury — Consequence",
+export const metadata = softwareMetadata({
+  title: "Treasury",
   description:
-    "The Reserve, royalty ledger, inference, simulation, and creative ledger on Consequence.",
-};
+    "Consequence.software Treasury — royalty ledger, settlement rails, and governance for creators and labels.",
+  path: "/treasury",
+});
 
 export default function TreasuryLayout({ children }: { children: React.ReactNode }) {
   return children;

@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { SessionProtocolView } from "@/components/session-protocol/session-protocol-view";
+import { softwareMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Session Protocol — Consequence",
+export const metadata: Metadata = softwareMetadata({
+  title: "Session Protocol",
   description:
-    "How royalties are calculated, how the ledger branches, algorithmic equity, and USDC settlement — the full Session Protocol for Consequence.",
+    "Consequence.software Session Protocol — royalty calculation, ledger authority, algorithmic equity, and USDC settlement.",
+  path: "/session-protocol",
   openGraph: {
-    title: "Session Protocol",
-    description: "Royalty calculation, ledger authority, equity formulas, and settlement rails.",
     type: "article",
+    title: "Session Protocol · Consequence.software",
+    description: "Royalty calculation, ledger authority, equity formulas, and settlement rails.",
   },
-};
+});
 
 export default function SessionProtocolPage() {
   return <SessionProtocolView />;

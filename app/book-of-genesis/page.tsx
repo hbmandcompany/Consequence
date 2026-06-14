@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { GenesisPillarsSection } from "@/components/sw/engine-sections";
 import { Container, Display, Eyebrow, Lede, Section } from "@/components/ui";
+import { softwareMetadata } from "@/lib/seo/metadata";
 
-export const metadata = {
-  title: "Book of Genesis — Consequence",
+export const metadata = softwareMetadata({
+  title: "Book of Genesis",
   description:
-    "Genesis synth, Drum & Sequence, and Lyrics Accelerator — the three creative pillars of Conductor.",
-};
+    "Consequence.software — Genesis synth, Drum & Sequence, and Lyrics Accelerator, the three creative pillars of Conductor.",
+  path: "/book-of-genesis",
+});
 
 export default function BookOfGenesisPage() {
   return (

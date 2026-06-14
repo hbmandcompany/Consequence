@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { softwareMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Contact — Consequence",
-  description: "Request early access to Consequence.",
-};
+export const metadata: Metadata = softwareMetadata({
+  title: "Contact",
+  description: "Request early access to Consequence.software.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

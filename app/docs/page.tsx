@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { softwareMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Docs — Consequence",
-  description: "Consequence documentation index.",
-};
+export const metadata: Metadata = softwareMetadata({
+  title: "Documentation",
+  description: "Consequence.software documentation index.",
+  path: "/docs",
+});
 
 export default function DocsIndexPage() {
   return (

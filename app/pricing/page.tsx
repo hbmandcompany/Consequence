@@ -2,12 +2,14 @@ import Link from "next/link";
 import clsx from "clsx";
 import { Check } from "lucide-react";
 import { Container, Display, Eyebrow, Lede, Pill, Section } from "@/components/ui";
+import { softwareMetadata } from "@/lib/seo/metadata";
 
-export const metadata = {
-  title: "Pricing — Consequence",
+export const metadata = softwareMetadata({
+  title: "Pricing",
   description:
-    "Plans for Monte Carlo simulation, AI assistant usage, and Polygon-token metering on the decentralized ledger.",
-};
+    "Consequence.software pricing — Monte Carlo simulation, AI assistant usage, and Polygon-token metering on the decentralized ledger.",
+  path: "/pricing",
+});
 
 type Tier = {
   name: string;

@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { ccMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Shop — Consequence",
+export const metadata = ccMetadata({
+  title: "Marketplace",
   description:
-    "Immersive producer shop — feed, marketplace, sessions, and wallet on Consequence.",
-};
+    "Consequence.cc — personalized feed, stems, sessions, producer spotlight, and USDC wallet. Sourced from your network.",
+  path: "/",
+});
 
 export default function ShopLayout({ children }: { children: React.ReactNode }) {
   return children;

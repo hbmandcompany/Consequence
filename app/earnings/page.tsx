@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { softwareMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Creator earnings — Consequence",
-  description: "Creator earnings and payouts on Consequence.",
-};
+export const metadata: Metadata = softwareMetadata({
+  title: "Creator earnings",
+  description: "Creator earnings and payouts on Consequence.software.",
+  path: "/earnings",
+});
 
 export default function EarningsPage() {
   return (

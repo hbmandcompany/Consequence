@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { softwareMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Settlement FAQ — Consequence",
-  description: "Frequently asked questions about USDC settlement on Consequence.",
-};
+export const metadata: Metadata = softwareMetadata({
+  title: "Settlement FAQ",
+  description: "Frequently asked questions about USDC settlement on Consequence.software.",
+  path: "/faq/settlement",
+});
 
 export default function SettlementFaqPage() {
   return (

@@ -12,6 +12,14 @@ import {
 import { MonochromeAudioVisualizer } from "@/components/surface-cards/monochrome-audio-visualizer";
 import { ManifestoStepped } from "@/components/manifesto/manifesto-stepped";
 import { HeroConsequenceVisual } from "@/components/hero/hero-consequence-visual";
+import { softwareMetadata } from "@/lib/seo/metadata";
+
+export const metadata = softwareMetadata({
+  title: "Studio & consequence engine",
+  description:
+    "Consequence.software — real-time music production, Monte Carlo rehearsal, and creator royalty settlement from composition to USDC.",
+  path: "/",
+});
 
 export default function HomePage() {
   return (

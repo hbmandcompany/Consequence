@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
 import { TrendingView } from "@/components/trending/trending-view";
+import { ccMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Trending · For You — Consequence",
+export const metadata: Metadata = ccMetadata({
+  title: "Trending · For You",
   description:
-    "Personalized For You feed and Radio playback on Consequence — ranked discovery, Listen Now, and stream events tied to the consequence engine.",
-  openGraph: {
-    title: "Trending · For You",
-    description: "The listener surface — For You, Radio, and playback tied to twins and settlement.",
-    type: "website",
-  },
-};
+    "Consequence.cc Trending — personalized For You feed and Radio playback, ranked discovery tied to the consequence engine.",
+  path: "/trending",
+});
 
 export default function TrendingPage() {
   return <TrendingView />;

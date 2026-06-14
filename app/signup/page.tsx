@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { AuthShell } from "@/components/auth/auth-shell";
+import { softwareMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Sign Up — Consequence",
-  description: "Create a Consequence account for Shop and treasury access.",
-};
+export const metadata: Metadata = softwareMetadata({
+  title: "Sign Up",
+  description: "Create your producer identity on Consequence.software.",
+  path: "/signup",
+  noIndex: true,
+});
 
 export default function SignupPage() {
   return (

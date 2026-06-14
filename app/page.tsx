@@ -5,6 +5,7 @@ import {
   Display,
   Eyebrow,
   FadeUp,
+  HairlineRow,
   Lede,
   Section,
 } from "@/components/ui";
@@ -97,6 +98,7 @@ function Surfaces() {
   return (
     <Section id="surfaces" className="border-t border-ink/10 scroll-mt-28">
       <CreativeEngineSection />
+      <HouseRailsSection />
     </Section>
   );
 }
@@ -153,6 +155,50 @@ function CreativeEngineSection() {
               <ArrowUpRight className="w-4 h-4" />
             </Link>
           </FadeUp>
+        </div>
+      </Container>
+    </div>
+  );
+}
+
+function HouseRailsSection() {
+  return (
+    <div id="scale" className="scroll-mt-28 border-t border-ink/10 bg-snow-100 py-24 lg:py-32">
+      <Container>
+        <div className="flex items-end justify-between gap-8 mb-16">
+          <Display className="max-w-[16ch]">
+            Built for the whole house,
+            <br />
+            <span className="italic text-ink/75">feels like one room.</span>
+          </Display>
+          <div className="hidden md:block max-w-[28ch] text-[14px] text-ink/65 leading-[1.65]">
+            Conductor, Trending, and the Ledger Branch share one engine — you compose with Genesis,
+            program drums, draft lyrics, and settle on Base with USDC through Circle without the UI
+            turning into datacenter jargon.
+          </div>
+        </div>
+
+        <div className="border-t border-ink/15 pt-12">
+          <HairlineRow
+            left="Throughput"
+            right="Most activity shows in under half a second; heavier royalty and play totals stay under about one second"
+          />
+          <HairlineRow
+            left="Storage"
+            right="Song and session data, search indexes, analytics history, account ledgers, and quick cache — each stored where it fits best"
+          />
+          <HairlineRow
+            left="Compute"
+            right="Dedicated servers for everyday load, cloud burst for busy days, GPUs for AI audio and text"
+          />
+          <HairlineRow
+            left="Settlement"
+            right="Session Protocol logs who did what; when splits are final, Base runs the on-chain leg and Circle routes USDC"
+          />
+          <HairlineRow
+            left="Resilience"
+            right="Copies kept in three zones, careful AI rollouts, and quick rollback — you can keep writing while money catches up safely"
+          />
         </div>
       </Container>
     </div>

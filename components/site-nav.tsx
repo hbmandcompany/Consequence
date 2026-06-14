@@ -6,13 +6,19 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import clsx from "clsx";
 import { Mark } from "./mark";
 import { useScrollHideHeader } from "@/hooks/use-scroll-hide-header";
-import { getMainSiteUrl, getShopUrl, isShopHostname } from "@/lib/urls";
+import {
+  getHomeUrl,
+  getSoftwareUrl,
+  isHomeHostname,
+  isSoftwareHostname,
+} from "@/lib/urls";
 
 export function SiteNav() {
   const pathname = usePathname();
   const [hash, setHash] = useState("");
   const [scrolled, setScrolled] = useState(false);
-  const [onShopHost, setOnShopHost] = useState(false);
+  const [onHomeHost, setOnHomeHost] = useState(false);
+  const [onSoftwareHost, setOnSoftwareHost] = useState(false);
   const immersiveHero =
     pathname === "/session-protocol" || pathname === "/how-the-rails-connect";
   const [onImmersiveHero, setOnImmersiveHero] = useState(immersiveHero);
@@ -23,32 +29,58 @@ export function SiteNav() {
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setOnShopHost(isShopHostname(window.location.hostname));
+    const hostname = window.location.hostname;
+    setOnHomeHost(isHomeHostname(hostname));
+    setOnSoftwareHost(isSoftwareHostname(hostname));
   }, []);
 
   const links = [
     {
-      href: onShopHost ? getMainSiteUrl() : "/",
-      label: "Home",
-      suffix: undefined as string | undefined,
-      active: (p: string) => !onShopHost && p === "/",
+      key: "home",
+      href: onHomeHost ? "/" : getHomeUrl(),
+      active: onHomeHost && pathname === "/",
+      children: <span>Home</span>,
     },
     {
-      href: onShopHost ? "/" : getShopUrl(),
-      label: "Shop",
-      suffix: "Marketplace",
-      active: (p: string) =>
-        onShopHost ? p === "/" : p === "/shop" || p === "/cc",
+      key: "software",
+      href: getSoftwareUrl(),
+      active: onSoftwareHost && pathname === "/",
+      children: (
+        <span className="flex items-baseline gap-1">
+          <span>Consequence</span>
+          <span
+            className={clsx(
+              "text-[9px] tracking-[0.04em] lowercase font-normal",
+              "text-ink/35"
+            )}
+          >
+            software
+          </span>
+        </span>
+      ),
     },
     {
-      href: onShopHost ? getMainSiteUrl("/treasury") : "/treasury",
-      label: "Treasury",
-      suffix: "Governance",
-      active: (p: string) => p === "/treasury" || p === "/software",
+      key: "treasury",
+      href: onHomeHost ? getSoftwareUrl("/treasury") : "/treasury",
+      active: pathname === "/treasury" || pathname === "/software",
+      children: (
+        <span className="flex items-center gap-2">
+          <span>Treasury</span>
+          <span
+            className={clsx(
+              "text-[9px] tabular tracking-[0.16em] uppercase",
+              "text-ink/35"
+            )}
+          >
+            Governance
+          </span>
+        </span>
+      ),
     },
   ] as const;
 
-  const BAR_TRANSITION = "background-color 350ms cubic-bezier(0.4, 0, 0.2, 1), border-color 350ms cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 350ms cubic-bezier(0.4, 0, 0.2, 1)";
+  const BAR_TRANSITION =
+    "background-color 350ms cubic-bezier(0.4, 0, 0.2, 1), border-color 350ms cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 350ms cubic-bezier(0.4, 0, 0.2, 1)";
 
   useEffect(() => {
     const el = headerRef.current;
@@ -107,7 +139,10 @@ export function SiteNav() {
         )}
         style={barMotion}
       >
-        <Link href={onShopHost ? getMainSiteUrl() : "/"} className="flex items-center gap-3 group">
+        <Link
+          href={onHomeHost ? "/" : getHomeUrl()}
+          className="flex items-center gap-3 group"
+        >
           <Mark
             className={clsx(
               "w-6 h-6 transition-transform duration-700 ease-out-expo group-hover:rotate-180",
@@ -133,54 +168,46 @@ export function SiteNav() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
-          {links.map((l) => {
-            const active = l.active(pathname);
-            return (
-              <Link
-                key={l.label}
-                href={l.href}
+          {links.map((l) => (
+            <Link
+              key={l.key}
+              href={l.href}
+              className={clsx(
+                "group relative px-4 py-2 rounded-full text-[13px] tracking-tight transition-colors",
+                lightOnDark
+                  ? l.active
+                    ? "text-snow-0"
+                    : "text-snow-0/55 hover:text-snow-0"
+                  : l.active
+                    ? "text-ink"
+                    : "text-ink/55 hover:text-ink"
+              )}
+            >
+              <span
                 className={clsx(
-                  "group relative px-4 py-2 rounded-full text-[13px] tracking-tight transition-colors",
-                  lightOnDark
-                    ? active
-                      ? "text-snow-0"
-                      : "text-snow-0/55 hover:text-snow-0"
-                    : active
-                      ? "text-ink"
-                      : "text-ink/55 hover:text-ink"
+                  "relative z-10",
+                  l.key === "software" && lightOnDark && "[&_span:last-child]:text-snow-0/35"
                 )}
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  <span>{l.label}</span>
-                  {l.suffix && (
-                    <span
-                      className={clsx(
-                        "text-[9px] tabular tracking-[0.16em] uppercase",
-                        lightOnDark ? "text-snow-0/35" : "text-ink/35"
-                      )}
-                    >
-                      {l.suffix}
-                    </span>
+                {l.children}
+              </span>
+              {l.active && (
+                <span
+                  className={clsx(
+                    "absolute inset-0 rounded-full border",
+                    lightOnDark
+                      ? "bg-snow-0/[0.08] border-snow-0/15"
+                      : "bg-ink/[0.04] border-ink/[0.08]"
                   )}
-                </span>
-                {active && (
-                  <span
-                    className={clsx(
-                      "absolute inset-0 rounded-full border",
-                      lightOnDark
-                        ? "bg-snow-0/[0.08] border-snow-0/15"
-                        : "bg-ink/[0.04] border-ink/[0.08]"
-                    )}
-                  />
-                )}
-              </Link>
-            );
-          })}
+                />
+              )}
+            </Link>
+          ))}
         </nav>
 
         <div className="flex items-center gap-3">
           <Link
-            href="/pricing"
+            href={onHomeHost ? getSoftwareUrl("/pricing") : "/pricing"}
             className={clsx(
               "hidden sm:inline-flex items-center gap-2 text-[12px] tracking-tight uline",
               lightOnDark ? "text-snow-0/60 hover:text-snow-0" : "text-ink/60 hover:text-ink"

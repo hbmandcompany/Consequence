@@ -5,6 +5,12 @@
       "has": [{ "type": "host", "value": "consequence.software" }],
       "destination": "https://www.consequence.software/:path*",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "consequence.cc" }],
+      "destination": "https://www.consequence.cc/:path*",
+      "permanent": true
     }
   ]
 }

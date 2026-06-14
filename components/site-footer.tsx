@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Mark } from "./mark";
-import { getMainSiteUrl, getShopSectionUrl, getShopUrl } from "@/lib/urls";
+import { getHomeUrl, getShopSectionUrl, getShopUrl, getSoftwareUrl } from "@/lib/urls";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -32,8 +32,9 @@ export function SiteFooter() {
               <FooterCol
                 title="Surfaces"
                 items={[
+                  { label: "Home", href: getHomeUrl() },
                   { label: "Shop", href: getShopUrl() },
-                  { label: "Treasury", href: getMainSiteUrl("/treasury") },
+                  { label: "Treasury", href: getSoftwareUrl("/treasury") },
                   { label: "Marketplace", href: getShopSectionUrl("market") },
                   { label: "Feed", href: getShopSectionUrl("feed") },
                   { label: "Wallet", href: getShopSectionUrl("wallet") },

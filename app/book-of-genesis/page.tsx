@@ -27,7 +27,7 @@ export default function BookOfGenesisPage() {
             none blocks the others.
           </Lede>
           <Link
-            href="/login"
+            href="/download"
             className="mt-8 inline-flex h-11 items-center justify-center rounded-lg bg-snow-200 px-6 text-[15px] text-ink hover:bg-snow-300 transition-colors"
           >
             Download Consequence

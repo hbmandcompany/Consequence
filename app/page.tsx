@@ -80,7 +80,7 @@ function Hero() {
               <HeroConsequenceVisual className="h-full w-full max-w-[28rem] mx-auto" />
             </div>
             <Link
-              href="/login"
+              href="/download"
               className="group flex w-full h-11 shrink-0 items-center justify-center rounded-lg bg-snow-200 text-[15px] text-ink hover:bg-snow-300 active:bg-snow-300/90 transition-colors"
             >
               Download Consequence

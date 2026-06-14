@@ -78,6 +78,20 @@ export function getSoftwareUrl(path = ""): string {
   return suffix || "/";
 }
 
+/** Homepage for the current surface — stays on .cc or .software, never cross-links. */
+export function getSurfaceHomeUrl(hostname?: string): string {
+  if (hostname) {
+    if (isSoftwareHostname(hostname)) return getSoftwareUrl();
+    if (isHomeHostname(hostname)) return getHomeUrl();
+  }
+  return "/";
+}
+
+/** Desktop client download page — always on consequence.software. */
+export function getDownloadUrl(): string {
+  return getSoftwareUrl("/download");
+}
+
 /** @deprecated Use getSoftwareUrl */
 export function getMainSiteUrl(path = ""): string {
   return getSoftwareUrl(path);

@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: software, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
     { url: `${software}/treasury`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${software}/pricing`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${software}/download`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${software}/book-of-genesis`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${software}/session-protocol`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${software}/login`, lastModified: now, changeFrequency: "yearly", priority: 0.4 },

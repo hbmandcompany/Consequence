@@ -9,6 +9,7 @@ import { useScrollHideHeader } from "@/hooks/use-scroll-hide-header";
 import {
   getHomeUrl,
   getSoftwareUrl,
+  getSurfaceHomeUrl,
   isHomeHostname,
   isSoftwareHostname,
 } from "@/lib/urls";
@@ -19,6 +20,7 @@ export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
   const [onHomeHost, setOnHomeHost] = useState(false);
   const [onSoftwareHost, setOnSoftwareHost] = useState(false);
+  const [logoHref, setLogoHref] = useState("/");
   const immersiveHero =
     pathname === "/session-protocol" || pathname === "/how-the-rails-connect";
   const [onImmersiveHero, setOnImmersiveHero] = useState(immersiveHero);
@@ -32,6 +34,7 @@ export function SiteNav() {
     const hostname = window.location.hostname;
     setOnHomeHost(isHomeHostname(hostname));
     setOnSoftwareHost(isSoftwareHostname(hostname));
+    setLogoHref(getSurfaceHomeUrl(hostname));
   }, []);
 
   const links = [
@@ -140,7 +143,7 @@ export function SiteNav() {
         style={barMotion}
       >
         <Link
-          href={onHomeHost ? "/" : getHomeUrl()}
+          href={logoHref}
           className="flex items-center gap-3 group"
         >
           <Mark

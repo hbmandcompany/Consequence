@@ -5,6 +5,7 @@ import {
   Display,
   Eyebrow,
   FadeUp,
+  HairlineRow,
   Lede,
   Section,
 } from "@/components/ui";
@@ -105,15 +106,16 @@ function Manifesto() {
 function Surfaces() {
   return (
     <Section id="surfaces" className="border-t border-ink/10 scroll-mt-28">
-      <CreativeEngineSection />
       <CollaborationSection />
+      <CreativeEngineSection />
+      <InfrastructureSection />
     </Section>
   );
 }
 
 function CreativeEngineSection() {
   return (
-    <div id="creative-engine" className="scroll-mt-28 py-24 lg:py-32 bg-snow-0">
+    <div id="creative-engine" className="scroll-mt-28 border-t border-ink/10 py-24 lg:py-32 bg-snow-0">
       <Container>
         <div className="grid grid-cols-12 gap-y-8 gap-x-8 lg:gap-x-12 lg:gap-y-6 lg:items-start">
           <FadeUp className="col-span-12 lg:col-span-5 lg:row-start-1 order-1">
@@ -164,6 +166,35 @@ function CreativeEngineSection() {
             </Link>
           </FadeUp>
         </div>
+      </Container>
+    </div>
+  );
+}
+
+function InfrastructureSection() {
+  return (
+    <div id="scale" className="scroll-mt-28 border-t border-ink/10 bg-snow-100 py-24 lg:py-32">
+      <Container>
+        <HairlineRow
+          left="Throughput"
+          right="Most activity shows in under half a second; heavier royalty and play totals stay under about one second"
+        />
+        <HairlineRow
+          left="Storage"
+          right="Song and session data, search indexes, analytics history, account ledgers, and quick cache — each stored where it fits best"
+        />
+        <HairlineRow
+          left="Compute"
+          right="Dedicated servers for everyday load, cloud burst for busy days, GPUs for AI audio and text"
+        />
+        <HairlineRow
+          left="Settlement"
+          right="Session Protocol logs who did what; when splits are final, Base runs the on-chain leg and Circle routes USDC"
+        />
+        <HairlineRow
+          left="Resilience"
+          right="Copies kept in three zones, careful AI rollouts, and quick rollback — you can keep writing while money catches up safely"
+        />
       </Container>
     </div>
   );

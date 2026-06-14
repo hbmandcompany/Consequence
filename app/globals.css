@@ -148,54 +148,6 @@ html, body {
     0 48px 120px -40px rgba(10, 10, 10, 0.45);
 }
 
-@media (min-width: 1024px) {
-  .manifesto-bento {
-    grid-template-columns: 41% 1fr;
-    grid-template-rows: minmax(16rem, auto) auto;
-  }
-
-  /* One continuous L — right arm + bottom-left arm, flush at inner corner */
-  .manifesto-l-beige {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .manifesto-l-beige::before,
-  .manifesto-l-beige::after {
-    content: "";
-    position: absolute;
-    background: #f8f7f3; /* snow-100 */
-  }
-
-  /* Right / top arm (paragraphs + CTA) */
-  .manifesto-l-beige::before {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: calc(41% + 1.25rem);
-    border-radius: 2.75rem 2.75rem 2.75rem 0;
-  }
-
-  /* Bottom-left arm (Three pillars) — overlaps 1px so no white seam */
-  .manifesto-l-beige::after {
-    left: 0;
-    bottom: 0;
-    width: calc(41% + 1.25rem + 1px);
-    height: 42%;
-    min-height: 10.5rem;
-    border-radius: 2.75rem 0 0 2.75rem;
-  }
-
-  .manifesto-slab-right {
-    align-self: stretch;
-  }
-
-  .manifesto-slab-left {
-    align-self: end;
-  }
-}
 
 /* Waveform bars */
 .bar {

@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { TreasuryHero } from "@/components/immersive/surface-hero";
-import { EngineDeepDive } from "@/components/sw/engine-sections";
+import {
+  InfrastructureSettlementSection,
+  LedgerBranchSection,
+} from "@/components/sw/engine-sections";
 import { Container, Section } from "@/components/ui";
 
 export default function TreasuryPage() {
@@ -10,7 +13,7 @@ export default function TreasuryPage() {
       <Section className="py-6 border-b border-ink/10 bg-snow-0">
         <Container>
           <p className="text-[13px] text-ink/55">
-            Full engine narrative below — same substrate that powers{" "}
+            Ledger narrative and settlement infrastructure — same substrate that powers{" "}
             <Link href="/shop" className="uline text-ink">
               Shop
             </Link>
@@ -18,7 +21,8 @@ export default function TreasuryPage() {
           </p>
         </Container>
       </Section>
-      <EngineDeepDive />
+      <LedgerBranchSection />
+      <InfrastructureSettlementSection />
     </>
   );
 }

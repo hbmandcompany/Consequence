@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import clsx from "clsx";
 import { Mark } from "./mark";
 import { useScrollHideHeader } from "@/hooks/use-scroll-hide-header";
+import { SHOP_URL } from "@/lib/urls";
 
 const links = [
   {
@@ -15,7 +16,7 @@ const links = [
     active: (p: string) => p === "/",
   },
   {
-    href: "/shop",
+    href: SHOP_URL,
     label: "Shop",
     suffix: "Marketplace",
     active: (p: string) => p === "/shop" || p === "/cc",
@@ -130,7 +131,7 @@ export function SiteNav() {
             const active = l.active(pathname);
             return (
               <Link
-                key={l.href}
+                key={l.label}
                 href={l.href}
                 className={clsx(
                   "group relative px-4 py-2 rounded-full text-[13px] tracking-tight transition-colors",
@@ -173,13 +174,13 @@ export function SiteNav() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/signup"
+            href="/pricing"
             className={clsx(
               "hidden sm:inline-flex items-center gap-2 text-[12px] tracking-tight uline",
               lightOnDark ? "text-snow-0/60 hover:text-snow-0" : "text-ink/60 hover:text-ink"
             )}
           >
-            Sign up
+            Pricing
           </Link>
           <Link
             href="/login"

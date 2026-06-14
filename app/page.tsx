@@ -1,21 +1,16 @@
 import Link from "next/link";
-import clsx from "clsx";
 import { ArrowUpRight } from "lucide-react";
 import {
   Container,
   Display,
   Eyebrow,
   FadeUp,
-  HairlineRow,
   Lede,
-  NumberStat,
   Section,
 } from "@/components/ui";
 import { MonochromeAudioVisualizer } from "@/components/surface-cards/monochrome-audio-visualizer";
 import { ManifestoStepped } from "@/components/manifesto/manifesto-stepped";
-import { PartnerStackMarquee } from "@/components/partner-stack-marquee";
 import { HeroConsequenceVisual } from "@/components/hero/hero-consequence-visual";
-import { EngineDeepDive } from "@/components/sw/engine-sections";
 
 export default function HomePage() {
   return (
@@ -23,9 +18,6 @@ export default function HomePage() {
       <Hero />
       <Manifesto />
       <Surfaces />
-      <EngineDeepDive />
-      <Numbers />
-      <Closing />
     </>
   );
 }
@@ -84,6 +76,12 @@ function Hero() {
             >
               Download Consequence
             </Link>
+            <Link
+              href="/book-of-genesis"
+              className="group flex w-full h-11 shrink-0 items-center justify-center rounded-lg bg-snow-200 text-[15px] text-ink hover:bg-snow-300 active:bg-snow-300/90 transition-colors"
+            >
+              Book of Genesis
+            </Link>
           </div>
         </div>
       </Container>
@@ -109,7 +107,7 @@ function CreativeEngineSection() {
       <Container>
         <div className="grid grid-cols-12 gap-y-8 gap-x-8 lg:gap-x-12 lg:gap-y-6 lg:items-start">
           <FadeUp className="col-span-12 lg:col-span-5 lg:row-start-1 order-1">
-            <Eyebrow index="03 / 04" label="WorkSpace" />
+            <Eyebrow index="03 / 04" label="Conductor" />
             <Display className="mt-4 max-w-[16ch]">
               Creative
               <br />
@@ -148,7 +146,7 @@ function CreativeEngineSection() {
               ))}
             </ul>
             <Link
-              href="/#software"
+              href="/book-of-genesis"
               className="mt-8 inline-flex w-fit items-center gap-2 px-5 py-3 rounded-full bg-ink text-snow-50 text-[13px] hover:bg-ink/90 transition-colors"
             >
               Explore the engine
@@ -158,131 +156,5 @@ function CreativeEngineSection() {
         </div>
       </Container>
     </div>
-  );
-}
-
-function Numbers() {
-  return (
-    <Section id="scale" className="py-32 border-t border-ink/10 bg-snow-100 scroll-mt-28">
-      <Container>
-        <div className="flex items-end justify-between gap-8 mb-16">
-          <Display className="max-w-[16ch]">
-            Built for the whole house,
-            <br />
-            <span className="italic text-ink/75">feels like one room.</span>
-          </Display>
-          <div className="hidden md:block max-w-[28ch] text-[14px] text-ink/65 leading-[1.65]">
-            WorkSpace, Trending, and the Ledger Branch share one engine — you compose with Genesis,
-            program drums, draft lyrics, and settle on Base with USDC through Circle without the UI
-            turning into datacenter jargon.
-          </div>
-        </div>
-
-        <div className="grid grid-cols-12 gap-y-12 gap-x-8 border-t border-ink/15 pt-12">
-          <div className="col-span-12 md:col-span-3">
-            <NumberStat
-              value="12.4k"
-              unit="actions / sec"
-              label="How many music and money moments we record each second — a play, a purchase, a split edit, a payout step — so dashboards stay current."
-            />
-          </div>
-          <div className="col-span-12 md:col-span-3">
-            <NumberStat
-              value="47"
-              unit="ms typical"
-              label="How long AI helpers usually take to answer — feed ranking, stem ideas, lyric suggestions, and earnings estimates while you stay in session."
-            />
-          </div>
-          <div className="col-span-12 md:col-span-3">
-            <NumberStat
-              value="8.6M"
-              unit="live records"
-              label="Always-fresh profiles for songs, creators, shops, and balances — the shared memory behind collaboration, royalties, and who owns what."
-            />
-          </div>
-          <div className="col-span-12 md:col-span-3">
-            <NumberStat
-              value="10k"
-              unit="workers"
-              label="Extra machines spun up for big jobs — drum pattern runs, lyric batches, royalty what-if paths — then released when the work finishes."
-            />
-          </div>
-        </div>
-
-        <div className="mt-20">
-          <HairlineRow
-            left="Throughput"
-            right="Most activity shows in under half a second; heavier royalty and play totals stay under about one second"
-          />
-          <HairlineRow
-            left="Storage"
-            right="Song and session data, search indexes, analytics history, account ledgers, and quick cache — each stored where it fits best"
-          />
-          <HairlineRow
-            left="Compute"
-            right="Dedicated servers for everyday load, cloud burst for busy days, GPUs for AI audio and text"
-          />
-          <HairlineRow
-            left="Settlement"
-            right="Session Protocol logs who did what; when splits are final, Base runs the on-chain leg and Circle routes USDC"
-          />
-          <HairlineRow
-            left="Resilience"
-            right="Copies kept in three zones, careful AI rollouts, and quick rollback — you can keep writing while money catches up safely"
-          />
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-function Closing() {
-  return (
-    <Section id="closing" className="py-24 border-t border-ink/10 scroll-mt-28">
-      <Container>
-        <div className="grid grid-cols-12 gap-y-10 gap-x-8 items-end">
-          <div className="col-span-12 md:col-span-8">
-            <Display>
-              Step inside the
-              <br />
-              consequence.
-            </Display>
-          </div>
-          <div className="col-span-12 md:col-span-4 flex flex-col gap-4">
-            <Link
-              href="/trending"
-              className="group flex items-center justify-between rounded-xl bg-ink text-snow-50 px-6 py-5 hover:bg-ink/90 transition-colors"
-            >
-              <div>
-                <div className="text-[10px] tabular uppercase tracking-[0.22em] text-snow-50/55">
-                  Open For You
-                </div>
-                <div className="font-display text-2xl mt-1">Trending</div>
-              </div>
-              <ArrowUpRight className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </Link>
-            <Link
-              href="/#creative-engine"
-              className="group flex items-center justify-between rounded-xl border border-ink/15 px-6 py-5 hover:border-ink/60 transition-colors"
-            >
-              <div>
-                <div className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/55">
-                  Tour WorkSpace
-                </div>
-                <div className="font-display text-2xl mt-1">WorkSpace</div>
-              </div>
-              <ArrowUpRight className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </Link>
-          </div>
-        </div>
-
-        <div className="mt-10 pt-8 border-t border-ink/10 max-md:-mx-1">
-          <p className="text-[10px] tabular uppercase tracking-[0.22em] text-ink/35 mb-4">
-            Stack in motion
-          </p>
-          <PartnerStackMarquee />
-        </div>
-      </Container>
-    </Section>
   );
 }

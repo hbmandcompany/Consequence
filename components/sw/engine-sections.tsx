@@ -6,32 +6,14 @@ import {
   Display,
   Eyebrow,
   FadeUp,
-  HairlineRow,
   Lede,
   Pill,
   Section,
 } from "@/components/ui";
-import { ArchitectureDiagram } from "@/components/sw/architecture";
 import { RoyaltyTransactionPanel } from "@/components/sw/royalty-transaction";
-import { CollaborationSessionIllustration } from "@/components/sw/collaboration-session-illustration";
-import { COLLABORATION_FEATURES } from "@/lib/collaboration-features";
 import { GenesisSynthCoverIllustration } from "@/components/sw/genesis-synth-cover-illustration";
 import { LyricsAcceleratorIllustration } from "@/components/sw/lyrics-accelerator-illustration";
 import { SimulationMpcIllustration } from "@/components/sw/simulation-mpc-illustration";
-
-/** WorkSpace / engine narrative — embedded on the homepage. */
-export function EngineDeepDive() {
-  return (
-    <>
-      <SwHero />
-      <Pillars />
-      <Architecture />
-      <Collaboration />
-      <Resilience />
-      <CTA />
-    </>
-  );
-}
 
 const RESERVE_ENGINES = [
   {
@@ -60,7 +42,7 @@ const RESERVE_ENGINES = [
   },
 ] as const;
 
-function SwHero() {
+export function LedgerBranchSection() {
   return (
     <Section
       id="software"
@@ -100,7 +82,7 @@ function SwHero() {
               <Lede className="max-w-none text-[14px] lg:text-[15px] leading-[1.68] text-ink/65">
                 Operators see end-to-end trace in real time; creators see earnings bands and available balance without
                 waiting for batch close; publishers see attribution and audit refs tied to every leg. Whether the
-                surface is WorkSpace, Trending, or the reserve itself, the core does not fork — it projects the same
+                surface is Conductor, Trending, or the reserve itself, the core does not fork — it projects the same
                 state, enforces the same ordering, and closes the loop when USDC lands on Solana and the twins refresh.
               </Lede>
             </div>
@@ -190,19 +172,19 @@ type Pillar = {
   bullets: string[];
 };
 
-function Pillars() {
+export function GenesisPillarsSection() {
   const pillars: Pillar[] = [
     {
       id: "inference",
       n: "Genesis",
       tag: "Flagship synth · Neural timbre · Patch memory",
-      title: "The flagship instrument for WorkSpace.",
-      body: "Genesis is Consequence’s flagship synthesizer — a neural timbre engine built for composition in WorkSpace, not a full control surface on the marketing page. Patches evolve with context: harmonic tension, rhythmic lane, and twin-backed earnings bands inform how a sound develops before you commit a take. The instrument ships as identity and cover art here; the playable matrix, modulation matrix, and performance macros live inside the studio where attribution and splits already run beside the session.",
+      title: "The flagship instrument for Conductor.",
+      body: "Genesis is Consequence’s flagship synthesizer — a neural timbre engine built for composition in Conductor, not a full control surface on the marketing page. Patches evolve with context: harmonic tension, rhythmic lane, and twin-backed earnings bands inform how a sound develops before you commit a take. The instrument ships as identity and cover art here; the playable matrix, modulation matrix, and performance macros live inside the studio where attribution and splits already run beside the session.",
       bullets: [
         "Neural timbre core — continuous morphing between analog warmth and digital edge",
         "Patch lineage tied to work, contributor, and session — not anonymous presets",
         "Context-aware voicing: arrangement lane, key center, and groove grid inform the model",
-        "Studio-native surface: full synth UI opens in WorkSpace, not on this page",
+        "Studio-native surface: full synth UI opens in Conductor, not on this page",
       ],
     },
     {
@@ -210,7 +192,7 @@ function Pillars() {
       n: "Drum & Sequence",
       tag: "Step grid · Pattern memory · Swing · Export",
       title: "Lock the groove before the arrangement moves.",
-      body: "A dedicated drum machine and step sequencer for pattern-first composition — sixteen steps, four lanes, swing and probability per cell, and pattern chains that export directly to the shared bus. Program kick, snare, hat, and open textures on a 4×4 performance grid, audition variations in place, and commit the winning pattern to the arrangement without leaving WorkSpace. Patterns carry attribution like any other compositional act: who programmed the groove, which take shipped, and how it routes to settlement.",
+      body: "A dedicated drum machine and step sequencer for pattern-first composition — sixteen steps, four lanes, swing and probability per cell, and pattern chains that export directly to the shared bus. Program kick, snare, hat, and open textures on a 4×4 performance grid, audition variations in place, and commit the winning pattern to the arrangement without leaving Conductor. Patterns carry attribution like any other compositional act: who programmed the groove, which take shipped, and how it routes to settlement.",
       bullets: [
         "16-step grid with per-lane velocity, probability, and micro-timing offsets",
         "4×4 pad surface for live performance and step entry — pattern A/B and chain mode",
@@ -322,97 +304,7 @@ function PillarRow({ p, index }: { p: Pillar; index: number }) {
   );
 }
 
-function Architecture() {
-  return (
-    <Section id="architecture" className="py-32 border-t border-ink/10 bg-snow-100 scroll-mt-28">
-      <Container>
-        <div className="grid grid-cols-12 gap-y-12 gap-x-8 items-end mb-12">
-          <div className="col-span-12 md:col-span-7">
-            <Eyebrow label="Architecture" />
-            <Display className="mt-6 max-w-[14ch]">
-              Seven layers,
-              <br />
-              <span className="italic text-ink/80">one breath.</span>
-            </Display>
-          </div>
-          <div className="col-span-12 md:col-span-5 text-[15px] text-ink/65 leading-[1.7]">
-            Bottom to top: bare-metal Hetzner with mixed NVIDIA H100 / L40S
-            pools, Kubernetes orchestration with regional clusters, a Kafka
-            stream for plays, sales, and settlements, the data layer, the inference
-            fleet, the simulation orchestrator, the twin layer for compositions
-            creators and capital, and finally Shop and Treasury. Each layer
-            scales and fails on its own clock.
-          </div>
-        </div>
-        <ArchitectureDiagram />
-      </Container>
-    </Section>
-  );
-}
-
-function Collaboration() {
-  return (
-    <Section id="collaboration" className="py-32 border-t border-ink/10 scroll-mt-28">
-      <Container>
-        <div className="grid grid-cols-12 gap-y-12 gap-x-8">
-          <div className="col-span-12 md:col-span-5">
-            <Eyebrow label="Collaboration" accent="tiff" />
-            <Display className="mt-6 max-w-[16ch]">
-              In the room,
-              <br />
-              <span className="italic text-ink/80">on the record.</span>
-            </Display>
-            <Lede className="mt-8 text-[15px] leading-[1.65]">
-              Live melodic, harmonic, and rhythmic composition in one shared canvas — every voice,
-              chord change, and groove edit synchronized in sub-second time. Collaborators see the
-              same evolving score, not a stale export; presence and attribution track who shaped
-              which line as the piece grows. A live earnings rail runs beside the music so splits stay
-              honest while you write. Composer A sketches the hook, Composer B answers with harmony,
-              and Composer C (10%) watches each melodic decision accrue — +$1.35 per sale toward
-              settlement as the motif lands — with every note change logged for split and review before
-              it commits.
-            </Lede>
-            <div className="mt-12">
-              <HairlineRow
-                left={COLLABORATION_FEATURES["live-session"].label}
-                right={COLLABORATION_FEATURES["live-session"].tagline}
-                href={COLLABORATION_FEATURES["live-session"].href}
-              />
-              <HairlineRow
-                left={COLLABORATION_FEATURES["shared-workspace"].label}
-                right={COLLABORATION_FEATURES["shared-workspace"].tagline}
-                href={COLLABORATION_FEATURES["shared-workspace"].href}
-              />
-              <HairlineRow
-                left={COLLABORATION_FEATURES["split-proposals"].label}
-                right={COLLABORATION_FEATURES["split-proposals"].tagline}
-                href={COLLABORATION_FEATURES["split-proposals"].href}
-              />
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-7 flex flex-col">
-            <CollaborationSessionIllustration />
-            <ul className="mt-8 lg:mt-10 grid sm:grid-cols-2 gap-x-8 gap-y-3 border-t border-ink/10 pt-8 lg:pt-10">
-              {[
-                "Sub‑second sync on shared melodic lines, harmonic voicings, and rhythm grids",
-                "Presence and cursors anchored to the phrase, bar, and beat — not static files",
-                "Per-decision attribution: who wrote the motif, who voiced the harmony, who locked the groove",
-                "Reviewer‑gated merges with live split preview before a compositional choice ships",
-              ].map((b) => (
-                <li key={b} className="flex items-start gap-2.5 text-[13px] text-ink/70 leading-[1.5]">
-                  <Zap className="mt-1 h-3 w-3 shrink-0 text-tiff-500" />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-function Resilience() {
+export function InfrastructureSettlementSection() {
   const modes = [
     {
       t: "Base settlement continuity",
@@ -458,7 +350,7 @@ function Resilience() {
             </Display>
           </div>
           <div className="col-span-12 md:col-span-5 text-[15px] text-ink/65 leading-[1.7]">
-            Consequence holds creative state, WorkSpace collaboration, and attribution in a
+            Consequence holds creative state, Conductor collaboration, and attribution in a
             replicated mesh — realtime music stays off-chain. Session Protocol governs
             synchronization and authorship ordering before commits ship. Coinbase Base handles
             settlement and on-chain execution; Circle handles USDC liquidity, custody, and
@@ -486,55 +378,6 @@ function Resilience() {
               </div>
             </FadeUp>
           ))}
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-function CTA() {
-  return (
-    <Section id="contact" className="py-32 border-t border-ink/10 scroll-mt-28">
-      <Container>
-        <div className="grid grid-cols-12 gap-y-10 gap-x-8 items-end">
-          <div className="col-span-12 md:col-span-8">
-            <Display>
-              Build on the
-              <br />
-              consequence.
-            </Display>
-            <Lede className="mt-8">
-              The engine is currently in private deployment for the HBM & Company
-              music vertical. Partner integrations open Q4. If you are building a
-              vertical that needs a real-time consequence substrate, we would
-              like to hear about it.
-            </Lede>
-          </div>
-          <div className="col-span-12 md:col-span-4 bg-ink text-snow-50 p-8">
-            <div className="text-[10px] tabular uppercase tracking-[0.22em] text-snow-50/55">
-              Client login
-            </div>
-            <div className="font-display text-3xl mt-2">Treasury</div>
-            <p className="mt-4 text-[13px] text-snow-50/60 leading-relaxed">
-              Partner and operator access to settlement rails, ledger APIs, and
-              deployment consoles.
-            </p>
-            <div className="mt-8 flex flex-col gap-3">
-              <Link
-                href="/login"
-                className="w-full inline-flex items-center justify-center gap-2 bg-snow-50 text-ink py-3 rounded-full text-[12px] tracking-tight hover:bg-snow-50/90 transition-colors"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-tiff animate-breathe" />
-                Client login
-              </Link>
-              <Link
-                href="/signup"
-                className="w-full inline-flex items-center justify-center py-3 rounded-full text-[12px] tracking-tight border border-snow-50/25 text-snow-50/90 hover:border-snow-50/50 transition-colors"
-              >
-                Sign up
-              </Link>
-            </div>
-          </div>
         </div>
       </Container>
     </Section>

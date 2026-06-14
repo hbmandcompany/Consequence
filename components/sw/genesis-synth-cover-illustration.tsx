@@ -56,7 +56,7 @@ export function GenesisSynthCoverIllustration() {
         <div className="relative z-10 flex h-full flex-col justify-between p-6 sm:p-8 md:p-10">
           <div className="flex items-start justify-between gap-4">
             <span className="rounded-full border border-snow-50/15 bg-snow-50/[0.06] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.28em] text-snow-50/70 backdrop-blur-sm">
-              Flagship · WorkSpace
+              Flagship · Conductor
             </span>
             <span className="font-mono text-[10px] tabular-nums tracking-tight text-snow-50/40">v 1.0</span>
           </div>

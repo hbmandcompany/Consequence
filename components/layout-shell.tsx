@@ -8,10 +8,10 @@ import { HashScroll } from "@/components/hash-scroll";
 
 export function LayoutShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const isChromeless =
-    pathname.startsWith("/workspace") || pathname === "/download";
+  const isWorkspace = pathname.startsWith("/workspace");
+  const hideFooter = isWorkspace || pathname === "/download";
 
-  if (isChromeless) {
+  if (isWorkspace) {
     return <>{children}</>;
   }
 
@@ -20,7 +20,7 @@ export function LayoutShell({ children }: { children: ReactNode }) {
       <SiteNav />
       <HashScroll />
       <main className="relative">{children}</main>
-      <SiteFooter />
+      {!hideFooter && <SiteFooter />}
     </>
   );
 }

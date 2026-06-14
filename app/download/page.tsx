@@ -63,7 +63,7 @@ const REQUIREMENTS = [
 export default function DownloadPage() {
   return (
     <>
-      <Section className="relative pt-16 md:pt-20 lg:pt-24 pb-20 overflow-hidden border-b border-ink/10 min-h-svh">
+      <Section className="relative pt-28 md:pt-32 lg:pt-36 pb-20 overflow-hidden border-b border-ink/10 min-h-svh">
         <div
           className="pointer-events-none absolute inset-0 opacity-80"
           style={{
